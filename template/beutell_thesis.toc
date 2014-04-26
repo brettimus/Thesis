@@ -13,18 +13,20 @@
 \contentsline {chapter}{Chapter 2: Monte Carlo with Markov Chains}{13}
 \contentsline {section}{\numberline {2.1}GOFMC}{13}
 \contentsline {section}{\numberline {2.2}Markov Chains}{15}
-\contentsline {section}{\numberline {2.3}MCMC}{18}
-\contentsline {chapter}{Chapter 3: Mathematics and Science}{21}
-\contentsline {section}{\numberline {3.1}Math}{21}
-\contentsline {section}{\numberline {3.2}Physics}{21}
-\contentsline {chapter}{Chapter 4: Tables and Graphics}{23}
-\contentsline {section}{\numberline {4.1}Tables}{23}
-\contentsline {section}{\numberline {4.2}Figures}{25}
-\contentsline {section}{\numberline {4.3}More Figure Stuff}{27}
-\contentsline {section}{\numberline {4.4}Even More Figure Stuff}{27}
-\contentsline {subsection}{\numberline {4.4.1}Common Modifications}{27}
-\contentsline {chapter}{Conclusion}{29}
-\contentsline {section}{\numberline {4.1}More info}{29}
-\contentsline {chapter}{Appendix A: The First Appendix}{31}
-\contentsline {chapter}{Appendix B: The Second Appendix, for Fun}{33}
-\contentsline {chapter}{References}{35}
+\contentsline {section}{\numberline {2.3}The Ergodic Theorem}{17}
+\contentsline {section}{\numberline {2.4}MCMC}{19}
+\contentsline {chapter}{Chapter 3: Bayesian Model Averaging for Bayesian Networks}{21}
+\contentsline {chapter}{Chapter 4: Mathematics and Science}{23}
+\contentsline {section}{\numberline {4.1}Math}{23}
+\contentsline {section}{\numberline {4.2}Physics}{23}
+\contentsline {chapter}{Chapter 5: Tables and Graphics}{25}
+\contentsline {section}{\numberline {5.1}Tables}{25}
+\contentsline {section}{\numberline {5.2}Figures}{27}
+\contentsline {section}{\numberline {5.3}More Figure Stuff}{29}
+\contentsline {section}{\numberline {5.4}Even More Figure Stuff}{29}
+\contentsline {subsection}{\numberline {5.4.1}Common Modifications}{29}
+\contentsline {chapter}{Conclusion}{31}
+\contentsline {section}{\numberline {4.1}More info}{31}
+\contentsline {chapter}{Appendix A: The First Appendix}{33}
+\contentsline {chapter}{Appendix B: The Second Appendix, for Fun}{35}
+\contentsline {chapter}{References}{37}

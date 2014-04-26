@@ -1,0 +1,58 @@
+# 2/22/14
+
+# M should be its own object
+# M could contain
+#   V - vector of (possible?) vertices
+#   E - list of ordered pairs of vertices
+#       (each ordered pair can be a vector)
+#   BNNA - Binary node-node adjacency matrix
+#   RASTAS - sum of BNNA's powers up to N = length(V)
+#         Trace of RASTAS must be 0 for acyclic
+
+
+# Define the prior probability dist. for a given model
+p.m <- function(f,d,N) {
+    k <- (2*log(N)*sqrt( (N^2 - N + 2)/2 ) - 4*sqrt(N) + 4)^(-1)
+    2*k*log( (f+1) / f)*(sqrt(d+1) - sqrt(d))
+}
+
+# Likelihood of Data Given Model
+L <- function(DATA,M) {
+
+}
+
+# Propose Arc
+# M = (V,E)
+proposal.helper <- function(M) {
+
+    V <- # Vertices,
+    E <- # Edges, should be a list tuples
+
+    p <- sample(V,2,replace=F)
+    # Check if an arc from the two random vertices exists
+    if (p %in% E) {
+      # If it exists, we propose its removal
+      M.p <-
+      propose(M,)
+    } else {
+      # If not, check the proposed arc preserves BN properites
+      is.valid(E,)
+    }
+
+    #
+}
+
+# Proposal / Acceptance Rule
+propose <- function(M,M.p) {
+
+}
+
+# Checks properties of model with one addt'l arc
+# Two things:
+#            1. Does the arc go to the Class node?
+#            2. Is there a path from the arc.TO to the arc.FROM?
+
+# The MCMC Algorithm
+mcmc <- function(DATA,init.M) {
+
+}

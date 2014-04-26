@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  23 APR 2014 19:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  25 APR 2014 18:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -514,7 +514,7 @@ LaTeX Warning: Label `inheritance' multiply defined.
 LaTeX Warning: Label `subd' multiply defined.
 
 
-./beutell_thesis.aux:82: Package natbib Error: Bibliography not compatible with
+./beutell_thesis.aux:87: Package natbib Error: Bibliography not compatible with
  author-year citations.
 (natbib)                Press <return> to continue in numerical citation style.
 
@@ -523,7 +523,7 @@ See the natbib package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.82 ...mand\NAT@force@numbers{}\NAT@force@numbers
+l.87 ...mand\NAT@force@numbers{}\NAT@force@numbers
                                                   
 ? 
 )
@@ -657,10 +657,7 @@ Non-PDF special ignored!
 
 ] [13] [14
 
-]
-Underfull \vbox (badness 2042) has occurred while \output is active []
-
- [1
+] [1
 
 ]
 
@@ -670,12 +667,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
@@ -787,17 +784,17 @@ Missing character: There is no 2 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no ] in font nullfont!
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
@@ -859,113 +856,112 @@ Missing character: There is no ! in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no ] in font nullfont!
- [10] [11] [12
+
+
+Package natbib Warning: Citation `koel' on page 10 undefined on input line 414.
+
+
+[10] [11] [12
 
 ]
 Chapter 2.
 <mn.pdf, id=113, 505.89pt x 505.89pt>
 File: mn.pdf Graphic file (type pdf)
  <use mn.pdf>
-Package pdftex.def Info: mn.pdf used on input line 430.
+Package pdftex.def Info: mn.pdf used on input line 438.
 (pdftex.def)             Requested size: 205.96889pt x 180.67458pt.
  [13 <./mn.pdf>]
 <mn_box_pts.pdf, id=123, 505.89pt x 505.89pt>
 File: mn_box_pts.pdf Graphic file (type pdf)
  <use mn_box_pts.pdf>
-Package pdftex.def Info: mn_box_pts.pdf used on input line 456.
+Package pdftex.def Info: mn_box_pts.pdf used on input line 464.
 (pdftex.def)             Requested size: 205.96889pt x 180.67458pt.
- [14 <./mn_box_pts.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 486.
-
- (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 486.
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+ [14 <./mn_box_pts.pdf>] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 522--523
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--518
+Underfull \hbox (badness 10000) in paragraph at lines 524--527
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
+Underfull \hbox (badness 10000) in paragraph at lines 528--529
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--522
+Underfull \hbox (badness 10000) in paragraph at lines 530--531
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 538--539
+Underfull \hbox (badness 10000) in paragraph at lines 564--565
 
  []
 
+[17] [18] [19] [20]
+Chapter 3.
+[21
 
-Underfull \hbox (badness 10000) in paragraph at lines 538--539
-
- []
-
-[17] [18] [19] [20
+] [22
 
 ]
-Chapter 3.
+Chapter 4.
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 624.
+(amsmath)                 on input line 670.
 
 
-LaTeX Warning: Reference `commands' on page 21 undefined on input line 680.
+LaTeX Warning: Reference `commands' on page 23 undefined on input line 726.
 
-[21] [22]
-Chapter 4.
-[23
+[23] [24]
+Chapter 5.
+[25
 
-] [24
+] [26
 
-] [25] <subdivision.pdf, id=169, 220.825pt x 89.33376pt>
+] [27] <subdivision.pdf, id=175, 220.825pt x 89.33376pt>
 File: subdivision.pdf Graphic file (type pdf)
 
 <use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf used on input line 823.
+Package pdftex.def Info: subdivision.pdf used on input line 869.
 (pdftex.def)             Requested size: 220.82445pt x 89.33353pt.
- [26 <./subdivision.pdf>]
+ [28 <./subdivision.pdf>]
 File: subdivision.pdf Graphic file (type pdf)
  <use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf used on input line 836.
+Package pdftex.def Info: subdivision.pdf used on input line 882.
 (pdftex.def)             Requested size: 110.41222pt x 44.66676pt.
 File: subdivision.pdf Graphic file (type pdf)
 
 <use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf used on input line 848.
+Package pdftex.def Info: subdivision.pdf used on input line 894.
 (pdftex.def)             Requested size: 72.26979pt x 72.26979pt.
 File: subdivision.pdf Graphic file (type pdf)
  <use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf used on input line 859.
+Package pdftex.def Info: subdivision.pdf used on input line 905.
 (pdftex.def)             Requested size: 110.41222pt x 44.66676pt.
- [27
+ [29
 
-] [28
+] [30
 
-] [29] [30
+] [31] [32
 
 ]
 Appendix A.
-[31] [32
+[33] [34
 
 ]
 Appendix B.
-[33] [34
+[35] [36
 
-] [35
+]
+
+Package natbib Warning: There were undefined citations.
+
+[37
 
 ] (./beutell_thesis.aux)
 
@@ -976,13 +972,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11979 strings out of 493315
- 219525 string characters out of 6137904
+ 11961 strings out of 493315
+ 219200 string characters out of 6137904
  300182 words of memory out of 5000000
- 15135 multiletter control sequences out of 15000+600000
+ 15120 multiletter control sequences out of 15000+600000
  12817 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,12n,68p,907b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,12n,68p,793b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -999,10 +995,10 @@ ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
 2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2
 013/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texli
 ve/2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on beutell_thesis.pdf (53 pages, 283041 bytes).
+Output written on beutell_thesis.pdf (55 pages, 286693 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
+ 288 PDF objects out of 1000 (max. 8388607)
+ 200 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
