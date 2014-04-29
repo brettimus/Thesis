@@ -97,14 +97,14 @@
 
 % The preface is optional
 % To remove it, comment it out or delete it.
-    \chapter*{Preface}
-	This is an example of a thesis setup to use the reed thesis document class.
+ %   \chapter*{Preface}
+%	This is an example of a thesis setup to use the reed thesis document class.
 
     \tableofcontents
 % if you want a list of tables, optional
-    \listoftables
+ %   \listoftables
 % if you want a list of figures, also optional
-    \listoffigures
+  %  \listoffigures
 
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
@@ -131,14 +131,14 @@
 % single spacing with the \singlespacing command.
 % \onehalfspacing
 % \doublespacing
-	If it were not for convention, this chapter could perhaps be titled, ``An Irresponsibly Quick Introduction to Bayes' Theorem." It is wholly optional for the reader who has taken an undergraduate course in mathematical statistics. This chapter introduces the ideas, terminology, and some historical minutiae about Bayesian reasoning. Naturally, we provide a definition of Bayes' theorem, and we explore its meaning in an inferential framework. 
+	If it were not for convention, this chapter could perhaps be titled, ``An Irresponsibly Quick Introduction to Bayes' Theorem." It is wholly optional for the reader who has taken an undergraduate course in mathematical statistics. This chapter introduces the ideas, terminology, and some historical minutiae about Bayesian reasoning. Naturally, we provide a statement of Bayes' theorem for events and distributions, and we explore its meaning in an inferential framework. 
 	\section{Much Ado About Bayes}
-	At its inception, Bayes' theorem was not particularly controversial. In the early 19th century, Pierre Simon LaPlace offered its first formalization, and he believed that with a sufficient amount of data, the answers it provided were the same as those obtained from his frequency based methods \cite{hist}. (This belief was ultimately proven wrong in the mid-twentieth century.)
-	As time passed, LaPlace preferred his frequentist techniques for the relative ease of their calculations, but he did not outright condemn the use of Bayes in practice. Over a half-century after his death, this failure to disown Bayesian reasoning caught the attention of a Scottish mathematician named George Chrystal, who remarked, ``The indiscretions of great men should be quietly allowed to be forgotten" \cite{hist}.
+	At its inception, Bayes' theorem was not particularly controversial. Pierre Simon LaPlace offered its first formalization in the early 19th century, and he believed that with a sufficient amount of data, the answers it provided were equivalent to those obtained from his frequency based methods [McGrayne, 2011]. (This belief was ultimately proven wrong in the mid-twentieth century.)
+	As time passed, LaPlace preferred his frequentist techniques for the relative ease of their calculations, but he did not outright condemn the use of Bayes in practice. Over a half-century after his death, LaPlace's failure to disown Bayesian reasoning caught the attention of a Scottish mathematician named George Chrystal, who remarked, ``The indiscretions of great men should be quietly allowed to be forgotten" [McGrayne, 2011].
 	
-	Chrystal's comment represents the attitude of early $20^{\text{th}}$ century statisticians quite well. At this time, frequentism reigned supreme. In fact, the attitude towards Bayes' theorem and its role in statistics was so sour that for years, those who employed Bayes' theorem to answer statistical questions would fear for their reputation if they explicitly made reference to Bayes \cite{hist}. 
+	Chrystal's comment represents the attitude of early twentieth century statisticians quite well. At this time, frequentism reigned supreme, and the attitude towards Bayes' theorem and its role in statistics was surprisingly sour. For years, statisticians in the academy who employed Bayesian reasoning feared for their reputation if they explicitly made reference to Bayes' theorem in their work [McGrayne, 2011]. 
 	
-	Fortunately, with due thanks to the computational advances of the past thirty years, Bayes survived its temporary relegation to the catacombs of statistics, and it has emerged as an astoundingly useful tool for the modern statistician. At the time of this writing, the phrase ``Bayesian Inference" appears regularly among submissions to respected journals. Furthermore, it is now far more commonplace for statisticians to use both Bayesian and frequentist techniques in their work, tailoring their methods to the problem at hand \cite{liu}.
+	Fortunately, with due thanks to the computational advances of the past three decades, Bayes survived its temporary relegation to the catacombs of statistics, and it has emerged as an astoundingly useful tool for the modern statistician. The phrase ``Bayesian Inference" fails to evoke the religious fervor it once did. Furthermore, it is now far more commonplace for statisticians to use both Bayesian and frequentist techniques in their work, tailoring their methods to the problem at hand [Liu et al, 2013].
 	
 	Summarily, the use of Bayesian reasoning is no longer divisive or taboo, and it is a recent phenomenon that we may begin our inquiry without several pages apologizing for our inferential philosophy. With that said, it does not hurt to quickly consider the differences between a Bayesian and a frequentist. 
 		
@@ -160,16 +160,17 @@
 	
 	Frequentist techniques have two main advantages. Namely, the math involved in their calculations is generally tidy, and their calculations do not require the subjective prior of Bayes' theorem. However, frequentist methods often suffer from having nuanced and unintuitive interpretations. 
 	
-	For instance, a frequentist p-value in a hypothesis test is a conditional probability that assumes the null hypothesis is true. Hence, it evaluates how probable the observed data would be if $\theta = \theta_0$. On the other hand, a Bayesian p-value would provide the probability of the null hypothesis being true, conditioned on the data. To see why, consider that $P(\vec{X} = \vec{x} | \theta = \theta_0 )$ is, by definition, a statement about the probability of observing $\vec{x}$, given that $\theta = \theta_0$. Frequentists are more apt to talk about the probability of seeing our data, given $\theta$ is a specific value.
+	For instance, a frequentist p-value in a hypothesis test is a conditional probability that assumes the null hypothesis is true. Hence, it evaluates how probable the observed data would be if $\theta = \theta_0$. On the other hand, a Bayesian p-value would provide the probability of the null hypothesis being true, conditioned on the data. 
+	
+	To see this symbolically, consider that $P(\vec{X} = \vec{x} | \theta = \theta_0 )$ is, by definition, a statement about the probability of observing $\vec{x}$, given that $\theta = \theta_0$. Frequentists are more apt to talk about the probability of seeing our data, given $\theta$ is a specific value.
 
 \begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
 \caption[Comparison of Bayesian and Frequentist Reasoning]{A Broad Comparison of Bayesian and Frequentist Methodologies} 
 % The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
 \begin{center}
 % makes the table centered
-\begin{tabular}{c c c c} 
-% the tabular environment is used to make the table itself. The {c c c c} specify that the table will have four columns and they will all be center-aligned. You can make the cell contents left aligned by replacing the Cs with Ls or right aligned by using Rs instead. Add more letters for more columns, and pipes (the vertical line above the backslash) for vertical lines. Another useful type of column is the p{width} column, which forces text to wrap within whatever width you specify e.g. p{1in}. Text will wrap badly in narrow columns though, so beware.
-\toprule % a horizontal line, slightly thicker than \hline, depends on the booktabs package
+\begin{tabular}{l l l l} 
+
    &  \textbf{To the Bayesian} & \textbf{To the frequentist} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
   \midrule % another horizontal line
 \textbf{Parameters are} & Distributions  & Fixed-valued \\ % another row
@@ -189,7 +190,7 @@ We introduce a formal, symbolic expression of Bayes' theorem:
 \end{center}
 where $P$ is a function from the set of all possible events, $\Omega$, to $[0,1]$; $A, B \in \Omega$ are events; and $P(\Omega) = 1$. We may also call $\Omega$ the {\em sample space}.
 
-	The proof of Bayes' theorem for events follows quickly from the axioms of probability and the definition of conditional probability. For our purposes, we note that Bayes' theorem also extends to probability distributions. Let $\theta$ be our parameter of interest and $x$ be an observation of a random variable $X$. Let $\pi(\theta)$ be the prior probability distribution on $\theta$, and let $f(x | \theta)$ be a density function for $X$. We may then express the posterior as follows:
+	The proof of Bayes' theorem for events follows quickly from the axioms of probability and the definition of conditional probability. For our purposes, we note that Bayes' theorem also extends to probability distributions. Let $\theta$ be our parameter of interest and $x$ be an observation of a random variable $X$. Let $\pi(\theta)$ be the prior probability distribution on $\theta$, and let $f(X = x | \theta)$ be a density function for $X$. We may then express the posterior as follows:
 \begin{center}
 	$\pi(\theta | X = x) = \displaystyle\frac{f(x | \theta)\pi(\theta)}{\int_{\theta \in \Theta}f(x |\theta)\pi(\theta)d\theta} \propto f({x} | \theta)\pi(\theta)$,
 \end{center}
@@ -197,21 +198,41 @@ where $\propto$ denotes proportionality, $\Theta$ is the set of all possible par
 
 The above is conventionally presented alongside the pithy, assonant phrase, ``The posterior is proportional to the prior times the likelihood." The numerator of Bayes' theorem is used so frequently that it has its own name, the {\em marginal} of the posterior. Because the denominator, also called the {\em normalization constant}, can be a ghastly integral, it is often more practical to reason about the posterior in terms of its marginal. For example, the denominator of Bayes' theorem disappears from consideration when we compare two possible parameter values given the data. (Not to get ahead of ourselves, but this property of proportionality is also central to running Markov Chain Monte Carlo simulations.)
 
-\section{Classification Models}
+\section{Classification and Learning}
 
 A classification model is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}.
 
 Put tersely, classification requires evaluating probability estimates in a decision theoretic framework. That is to say, we estimate the relative probabilities of some datum belonging to each possible class of the unknown categorical variable, and we have a corresponding decision rule that dictates the class to which said datum should be assigned. This all may seem rather abstract, though. So, let us get concrete.
 
 	\subsection*{Example: Spam Email Detection}
-	Spam detection is an oft-cited example of classification. It is suitable for our discussion, since it is an area of classification that has benefited greatly from application of Bayes' rule. In a 1998 study, researchers at Microsoft found that filtering emails for spam based off of hard-coded rules was significantly outperformed by even the most reductive of Bayesian classifiers, the aptly-named {\em Na\"{i}ve Bayes} \cite{msft}. Here, we use their paper to contextualize what is meant by a classification model. We will continue with this example in subsequent chapters in order to help characterize Bayesian classifiers. \\ \\
+	Spam detection is an oft-cited example of classification. It is suitable for our discussion, since it is an area of classification that has benefited greatly from application of Bayes' rule. In a 1998 study, researchers at Microsoft found that filtering emails for spam based off of hard-coded rules was significantly outperformed by even the most reductive of Bayesian classifiers, the aptly-named {\em Na\"{i}ve Bayes} [Sahami et al, 1998]. Here, we use their paper to contextualize what is meant by a classification model. We will continue with this example in the next chapter in order to help characterize Bayesian classifiers. \\ \\
 	
-	Suppose we have a set of $1,000$ emails, and for each email, we record four pieces of information. First, the number of hyperlinks contained in the body of the email; second, the domain of the email's sender; third, the timestamp of the email; and lastly, whether or not the email was ``spam" (the class variable). From these data, we may make predictions about whether or not future, incoming emails are spam. Ultimately, we may conclude that, say, a message from @reed.edu, sent at noon and containing zero hyperlinks, is unlikely to be spam. On the other hand, an email from @ALL\_UR\_InBoXX-R-beLoNg-2-us.com, which was sent at midnight and contains thirty hyperlinks, would seem a little suspicious. Hopefully, our model would classify it as spam.
+	Suppose we have a set of $1,000$ emails, and for each email, we record four pieces of information according to the table below:
 	
-\section{A Note on Learning}
-	Our method will necessitate data from which we can {\em train} our classification model. That is, in order to use our model, we must first have a set of pre-classified data from which we can estimate our models' parameters. Thus, in the preceding example, we began with a set of $1,000$ emails that had already been classified as either spam or not-spam. From these initial data, we could make a judgement about new, unclassified data. This approach is sometimes described as {\em learning} the parameters of the model.
+	\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
+\caption[Example Data for Classifications]{Information on a set of 1,000 emails} 
+% The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
+\begin{center}
+% makes the table centered
+\begin{tabular}{l | l l} 
+ \toprule
+  \textbf{Variable} & \textbf{Description} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+  \midrule % another horizontal line
+  Hyperlinks  & A count of the number of hyperlinks in the body of the email \\ % another row
+  Domain & The domain of the email's sender (e.g., @reed.edu) \\
+  Timestamp & The time at which the email was sent \\
+  Spam & Whether or not the email was spam \\
+\bottomrule % yet another horizontal line
+\end{tabular}
+\end{center}
+\label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
+\end{table}
+
+From these data, we can make predictions about whether or not future, incoming emails are spam. If our data were similar to those used by Sahami et al, we may conclude that, say, a message from @reed.edu, sent at noon and containing zero hyperlinks, is unlikely to be spam. On the other hand, an email from @ALL\_UR\_InBoXX-R-beLoNg-2-us.com, which was sent at midnight and contains thirty hyperlinks, would seem a little suspicious. Hopefully, our model would classify it as spam.
 	
-Without further ado, we introduce the theory behind Bayesian Networks and their corresponding classifiers in the proceeding chapter.
+	\subsection*{A Note on Learning}
+	Our method will necessitate data from which we can {\em train} our classification model. That is, in order to use our model, we must first have a set of pre-classified data from which we can estimate our models' parameters. Thus, in the preceding example, we began with a set of $1,000$ emails that had already been classified as either spam or not-spam. From these initial data, we could make a judgement about new, unclassified data. Such an approach is can be described as {\em learning} the parameters of the model.
+	
     \chapter{The Bayesian Network}
 
     	Bayesian Networks are a useful means of visualizing and reasoning about classification models. Put succinctly, a Bayesian Network is a directed acyclic graph (DAG) where each node represents a random variable in the model, and each edge represents a conditional dependency between two random variables.
@@ -221,13 +242,13 @@ Without further ado, we introduce the theory behind Bayesian Networks and their 
 	Suppose we have a set of random variables $V = \{C, X_1, \ldots, X_n\}$, and we seek to predict the value of $C$, a categorical variable, using $X_1, \ldots, X_n$. We call $C$ the {\em class variable}, and we refer to the $X_i$ as the {\em feature variables}. For notational convenience, we may denote the set of feature variables by $\vec{X}$, and we may denote a single set of observed values of $\vec{X}$ as the vector $\vec{x} = (X_1 = x_1, \ldots, X_n = x_n)$.
 	\subsection*{The Bayesian Approach}
 	Let $C$ have $k$ possible classes. 
-	Our goal in a classification setting is to find the most likely class of $C$, given the values of the feature variables. Formally, this is equivalent to finding the value of the class node that maximizes the equation $P(C | \vec{X})$. We appeal to Bayes' theorem:
+	Our goal in a classification setting is to find the probabilities of each class of $C$, given the observed values of the feature variables. Usually (but not always), we seek the value of the class node that maximizes the equation $P(C | \vec{X})$. We appeal to Bayes' theorem:
 	\begin{center}
-		$P(C = c_i | \vec{X}) = \displaystyle\frac{P(\vec{X} | C = c_i) P(C = c_i)}{P(\vec{X})}$,
+		$P(C = c_i | \vec{X}) = \displaystyle\frac{P(\vec{X} | C = c_i) P(C = c_i)}{\displaystyle\sum_{c_j \in \textrm{dom}\{C\}} P(\vec{X} | C = c_j)P(C=c_j)}$,
 	\end{center}
-	where $P(\vec{X} | C = c_i)$ is our likelihood function and $P(C = c_i)$ is our prior probability for the class variable when it equals $c_i$. Notably, our problem does not require we compute the denominator of the posterior, since
+	where $P(\vec{X} | C = c_i)$ is our likelihood function and $P(C = c_i)$ is our prior probability for the class variable when it is equal to $c_i$. Notably, our problem does not require we compute the denominator of the posterior, since
 	\begin{center} 
-	$\displaystyle\textrm{arg}\max_{c_i \in C}{\{ P(C=c_i | \vec{X} = \vec{x}) \}} = \displaystyle\textrm{arg}\max_{c_i \in C}\{ P(\vec{X} = \vec{x} | C = c_i) P(C=c_i) \}$.
+	$\displaystyle\textrm{arg}\max_{c_i \in \textrm{dom}\{C\}}{\{ P(C=c_i | \vec{X} = \vec{x}) \}} = \displaystyle\textrm{arg}\max_{c_i \in \textrm{dom}\{C\}}\{ P(\vec{X} = \vec{x} | C = c_i) P(C=c_i) \}$.
 	\end{center}
 	To see why, compare the posterior distributions of two possible class values, $c_i$ and $c_j$, given a vector of inputs $\vec{X}$. Assuming these classes have nonzero posterior probabilities, the normalization constant disappears from the following equation:
 	\begin{center}
@@ -270,8 +291,7 @@ Without further ado, we introduce the theory behind Bayesian Networks and their 
 	\subsection*{Paths and Cycles}
 	It is natural to consider the {\em paths} through $G$. A path $P$ of length $n$ is simply an ordered $n$-tuple of edges. 
 	We refer to the first and last nodes in this sequence as the {\em starting node} $V_s$ and {\em terminal node} $V_t$, respectively. 
-	 Further, for $i < n$, if the $i^{\text{th}}$ member of $P$ is an edge that points {\em to} the node $V_j$, then the $(i+1)^{\text{th}}$ member is an edge pointing {\em from} node $V_j$ to another node $V_k$. 
-	 Of course, the terminal node is an exception, as it does not point to any other nodes. 
+	 With the exception of $V_t$, if the $i^{\text{th}}$ member of $P$ is an edge that points {\em to} the node $V_j$, then the $(i+1)^{\text{th}}$ member is an edge pointing {\em from} node $V_j$ to another node $V_k$. 
 	 Thus, a path of length $n$ defines a sequence of $n+1$ nodes, such that each node has an edge from itself to its successor. 
 	 By $\mathcal{P}(G)$, let us mean the family of all paths defined on $G$. For any $P \in \mathcal{P}(G)$, we call $P$ a {\em cycle} if $V_s = V_t$. We say that a graph $G$ is {\em cyclic} if there exists at least one cycle in $\mathcal{P}(G)$. Otherwise, we say that $G$ is {\em acyclic}.
 	
@@ -311,16 +331,9 @@ Without further ado, we introduce the theory behind Bayesian Networks and their 
 	
 	\section{Bayesian Networks}	
 	Let $\mathcal{B} \equiv \langle G, \Theta \rangle$, where $G = (V,E)$ is a directed acyclic graph, $V = \{V_0, V_1, \ldots, V_n \}$ is a set of $n + 1$ random variables, and $\Theta$ is a set of parameter estimates corresponding to the structure of $G$. We say that $\mathcal{B}$ is a Bayesian Network.
-	In a classification setting, we place a few extra constraints on the graph of $\mathcal{B}$.
-	Namely, we may call $V_0$ the class variable, and we may require that the binary node-node adjacency matrix $A$ of $G$ satisfies the following properties:
-	\begin{center}
-		$\displaystyle\sum_{i=1}^{n}a_{i1} = 0$,\ \ \ and \ \ \ 
-		$\displaystyle\sum_{j=1}^{n}a_{1j} \neq 0$.
-	\end{center}
-	In words, we mean there are no directed edges pointing to the class node, and the class node has an edge to at least one feature node. Obviously, the class node is the root of $G$.
-		
+
 	\subsection*{Restricted Bayesian Networks}
-	A {\em restricted} Bayesian network caps the number of possible conditional dependencies for a given feature variable at some nonnegative integer $k$. Hence, the graph used to represent the network has at most $k$ arcs from each of its feature nodes. The Tree Augmented Network (TAN), displayed below, is an example of a restricted Bayesian Network with $k = 1$.
+	A {\em restricted} Bayesian network caps the number of possible conditional dependencies for a given feature variable at some nonnegative integer $k$. Hence, the graph that represents the network should have at most $k$ arcs from each of its feature nodes. The Tree Augmented Network (TAN), displayed below, is an example of a restricted Bayesian Network with $k = 1$.
 
 	\begin{figure}[htpb]
 	\begin{center}
@@ -335,21 +348,34 @@ Without further ado, we introduce the theory behind Bayesian Networks and their 
     	  \draw (\from) -- (\to);
 	\end{tikzpicture}
 	\end{center}
-	\caption{A simple TAN}
+	\caption{TAN with three features}
 	\label{simple tan}
 	\end{figure}
 	 Of course, a Bayesian network without restrictions on its nodes' conditional dependencies is called an {\em unrestricted} Bayesian network.
 	
 	\section{Bayesian Classifiers}
-	A Bayesian classifier is simply a Bayesian Network applied to a classification problem. 
+	A Bayesian classifier is simply a Bayesian network applied to a classification problem.
+	We consider the necessary structural and decision theoretic modifications to $\mathcal{B}$ that are necessary for this application.
+	
+		\subsection*{Networks Constraints}
+	In a classification setting, we place a few extra constraints on the graph of $\mathcal{B}$.
+	Namely, we may call $V_0$ the class variable, and we may require that the binary node-node adjacency matrix $A$ of $G$ satisfies the following properties:
+	\begin{center}
+		$\displaystyle\sum_{i=1}^{n}a_{i1} = 0$,\ \ \ and \ \ \ 
+		$\displaystyle\sum_{j=1}^{n}a_{1j} \neq 0$.
+	\end{center}
+	In words, we mean there are no directed edges pointing to the class node, and the class node has an edge to at least one feature node. Obviously, the class node is the root of $G$.
+		
+		\subsection*{Making a Decision}
+	
 	To predict the class for an observation, we use a {\em decision rule}.
 	Our decision rule provides a means of selecting one proposed classification over another, given a set of pre-classified data and a new input that has yet to be classified.
 	Recall that in surveying the general problem of classification, we chose a decision rule that returned the class maximizing our posterior probability. 
 	Albeit common, this is not the only possible decision rule. 
 	For instance, there may be an unequal cost associated with certain misclassifications of $\vec{x}$. In such cases, we can modify our decision rule's {\em loss function} accordingly; however, this facet of decision theory is not central to our discussion.
 	 
-	\subsection*{Example: Naive Bayesian Spam Detection} % \"{} won't compile
-	The Na\"{i}ve Bayes Classifier (NBC) is highly reductive; yet, it is a surprisingly effective means of classifying data. 
+	\subsection*{The Naive Bayes Classifier} % \"{} won't compile
+	The Na\"{i}ve Bayes classifier (NBC) is highly reductive; yet, it is a surprisingly effective means of classifying data. 
 	In essence, we make a simplifying assumption about our data in order to yield a more wieldy computation of the posterior.
 	Recall that the posterior distribution of the class variable $C \equiv X_0$ has the following property:
 	\begin{center}
@@ -363,33 +389,33 @@ Without further ado, we introduce the theory behind Bayesian Networks and their 
 		$P(X_0) \displaystyle\prod_{j=1}^{n} P(X_j | \displaystyle\cap_{k=0}^{j-1}X_k)
 		= P(C) \displaystyle\prod_{j=1}^{n} P(X_j | C)$.
 	\end{center}
-	Note that our independence assumption makes the NBC's graph a restricted Bayesian network with $k = 0$. \\ \\ \\ 
-	
+	Note that our independence assumption makes the NBC's graph a restricted Bayesian network with $k = 0$.
+	\subsection*{Example: Spam Detection}
 	Let us continue the classification example from section 0.4. Recall that we are given a set of 1,000 emails, pre-classified as either spam or not-spam. Further, for each email, we have information on the sender's domain, the number of hyperlinks in the body of the email, and the time at which the email was sent. 
 	
-	It is generally easier to learn the parameters of a Bayesian network when the feature variables are categorical. Thus, we might use the domain information to create a variable that indicates whether or not the sender's domain ended in ``.edu." For the count of hyperlinks, we might define categories of Low (0 to 4 hyperlinks), Medium (5 to 10 hyperlinks), and High (more than 10 hyperlinks). Using the timestamp of the emails, we might create an indicator for whether or not an email was sent after midnight but before 6 in the morning. In the end, we could assign our variables to nodes in a graph as follows:
+	It is generally easier to learn the parameters of a Bayesian network when the feature variables are categorical. Thus, we might use the domain information to create a variable that indicates whether or not the sender's domain ended in ``.edu." For the count of hyperlinks, we might define categories of Low (0 to 4 hyperlinks), Medium (5 to 10 hyperlinks), and High (more than 10 hyperlinks). Using the timestamp of the emails, we might create an indicator for whether or not an email was sent between midnight and noon. In the end, we could assign our variables to nodes in a graph as follows:
 
 \begin{table}[htdp] % begins the table floating environment. 
-\caption[Example Training Data for Na\"{i}ve Bayes Classification]{The Training Set of 1,000 Emails} 
+\caption[Example Training Data for Na\"{i}ve Bayes Classification]{Variables from the training set of 1,000 emails} 
 % The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
 \begin{center} 
 % makes the table centered
-\begin{tabular}{c | c c} 
+\begin{tabular}{c | l l} 
 % the tabular environment is used to make the table itself. The {c c c c} specify that the table will have four columns and they will all be center-aligned. You can make the cell contents left aligned by replacing the Cs with Ls or right aligned by using Rs instead. Add more letters for more columns, and pipes (the vertical line above the backslash) for vertical lines. Another useful type of column is the p{width} column, which forces text to wrap within whatever width you specify e.g. p{1in}. Text will wrap badly in narrow columns though, so beware.
 \toprule % a horizontal line, slightly thicker than \hline, depends on the booktabs package
-  Node &  Variable  \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+  Node &  Variable & Description  \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
   \midrule % another horizontal line
- $V_0$ & Spam Indicator \\ % another row
- $V_1$ & .edu Indicator \\
- $V_2$ & Hyperlink Count \\
- $V_3$ & Timestamp Indicator  \\
+ $V_0$ & Spam & 1 if Spam; 0 otherwise \\ % another row
+ $V_1$ & edu & 1 if from .edu; 0 otherwise \\
+ $V_2$ & Hyperlink Count & Low, Medium, or High \\
+ $V_3$ & Time & 1 if sent between midnight and noon; 0 otherwise.  \\
 \bottomrule % yet another horizontal line
 \end{tabular}
 \end{center}
 \label{inheritance} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
 \end{table}
 	
-Our Na\"{i}ve Bayes Classifier would have a graph with the structure depicted in Figure 1.3. Of course, to complete our classifier, we would learn our model parameters from the training set.
+Our Na\"{i}ve Bayes classifier would have a graph with the structure depicted in Figure 1.3. Of course, to complete our classifier, we would learn our model parameters from the training set.
 	
 	\begin{figure}[htpb]
 	\begin{center}
@@ -408,11 +434,11 @@ Our Na\"{i}ve Bayes Classifier would have a graph with the structure depicted in
 	\label{Example NBC}
 	\end{figure}
 
-	\section{Network Structure}
+	\section{Model Structure}
 	Unless we have overwhelming prior knowledge that tells us to use a specific graph, we need a means of finding the structure for our Bayesian classifier's network. 
 	Sadly, though, the size of the space of all possible network structures is {\em super-exponential} on the number of nodes in a network's graph. 
-	Specifically, the number of possible structures is $2^{O(n^2\log{n})}$, where $n$ is the number of nodes in our graph [[\cite{koel}]]. 
-	Thus, when we have a large number of variables in our model, some form of restriction on the number of conditional dependencies in our model is desirable. 
+	Specifically, if $n$ is the number of nodes in a graph, the structure space increases at $2^{O(n^2\log{n})}$ [Koeller, 2001]. 
+	Thus, when we have a large number of variables in our model, restricting the number of conditional dependencies in our model is sometimes desirable, as it reduces the size of the structure space. 
 	Most importantly, though, we may choose between two modes of reasoning about model structure. 
 
 	\subsection*{Model Selection}	
@@ -619,7 +645,7 @@ $$
 			$P\left( \displaystyle \frac{1}{n} \sum_{j=0}^{n-1} f(\theta^{j}) 
 			= \sum_{s_k \in \mathcal S} \pi(s_k) f(s_k) \right) = 1$, as $n \longrightarrow \infty$.
 		\end{center}
-		This corollary justifies the use of Monte Carlo methods to simulate draws from the stationary distribution of our Markov chain.
+		This corollary justifies the use of Monte Carlo methods that estimate expectation of a function over simulated draws from the stationary distribution of our Markov chain.
 	\section{MCMC}
 			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws. To perform GOFMC, we must know the PDF for $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation tends to towards intractability. Thus, we seek an alternative way to simulate draws from $\pi$ when we only know $\pi$ up to a constant. For this, we can use a Markov chain.
 		\subsection*{Metropolis Hastings}
@@ -660,273 +686,14 @@ $$
 
 \chapter{Bayesian Model Averaging for Bayesian Networks}
 
-\chapter{Mathematics and Science}	
-\section{Math}
-	\TeX\ is the best way to typeset mathematics. Donald Knuth designed \TeX\ when he got frustrated at how long it was taking the typesetters to finish his book, which contained a lot of mathematics. 
-	
-	If you are doing a thesis that will involve lots of math, you will want to read the following section which has been commented out. If you're not going to use math, skip over this next big red section. (It's red in the .tex file but does not show up in the .pdf.)
-	
-%%MATH and PHYSICS majors: Uncomment the following section	
-	$$\sum_{j=1}^n (\delta\theta_j)^2 \leq {{\beta_i^2}\over{\delta_i^2 + \rho_i^2}}
-\left[ 2\rho_i^2 + {\delta_i^2\beta_i^2\over{\delta_i^2 + \rho_i^2}} \right] \equiv \omega_i^2
-$$
+	\section{Bayes' Theorem for Models}
 
-From Informational Dynamics, we have the following (Dave Braden):
-
-After {\it n} such encounters the posterior density for $\theta$ is
-
-$$
-\pi(\theta|X_1< y_1,\dots,X_n<y_n) \varpropto \pi(\theta) \prod_{i=1}^n\int_{-\infty}^{y_i}
-   \exp\left(-{(x-\theta)^2\over{2\sigma^2}}\right)\ dx
-$$
-
-
-
-Another equation:
-
-$$\det\left|\,\begin{matrix}%
-c_0&c_1\hfill&c_2\hfill&\ldots&c_n\hfill\cr
-c_1&c_2\hfill&c_3\hfill&\ldots&c_{n+1}\hfill\cr
-c_2&c_3\hfill&c_4\hfill&\ldots&c_{n+2}\hfill\cr
-\,\vdots\hfill&\,\vdots\hfill&
-  \,\vdots\hfill&&\,\vdots\hfill\cr
-c_n&c_{n+1}\hfill&c_{n+2}\hfill&\ldots&c_{2n}\hfill\cr
-\end{matrix}\right|>0$$
-
-%
-%Lapidus and Pindar, Numerical Solution of Partial Differential Equations in Science and
-%Engineering.  Page 54
-
-%$$
-%\int_t\left\{\sum_{j=1}^3 T_j \left({d\phi_j\over dt}+k\phi_j\right)-kT_e\right\}w_i(t)\ dt=0,
-%   \qquad\quad i=1,2,3. 
-%$$
-
-%L\&P  Galerkin method weighting functions.  Page 55
-
-%$$
-%\sum_{j=1}^3 T_j\int_0^1\left\{{d\phi_j\over dt} + k\phi_j\right\} \phi_i\ dt 
-%   = \int_{0}^1k\,T_e\phi_idt, \qquad i=1,2,3 $$
-%   
-%Another L\&P (p145)
-
-%$$
-%\int_{-1}^1\!\int_{-1}^1\!\int_{-1}^1 f\big(\xi,\eta,\zeta\big) 
-%   = \sum_{k=1}^n\sum_{j=1}^n\sum_{i=1}^n w_i w_j w_k f\big( \xi,\eta,\zeta\big).
-%$$
-
-%Another L\&P (p126)
-
-%$$
-%\int_{A_e} (\,\cdot\,) dx dy = \int_{-1}^1\!\int_{-1}^1 (\,\cdot\,) \det[J] d\xi d\eta.
-%$$
-
-\section{Physics}
-
-Many of the symbols you will need can be found on the math page (\url{http://web.reed.edu/cis/help/latex/math.html}) and the Comprehensive \LaTeX\ Symbol Guide (enclosed in this template download).  You may wish to create custom commands for commonly used symbols, phrases or equations, as described in Chapter \ref{commands}.
-
-\chapter{Tables and Graphics}
-
-\section{Tables}
-	The following section contains examples of tables, most of which have been commented out for brevity. (They will show up in the .tex document in red, but not at all in the .pdf). For more help in constructing a table (or anything else in this document), please see the LaTeX pages on the CUS site. 
-
-\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
-\caption[Basic Table 1]{A Basic Table: Correlation of Factors between Parents and Child, Showing Inheritance} 
-% The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
-\begin{center} 
-% makes the table centered
-\begin{tabular}{c c c c} 
-% the tabular environment is used to make the table itself. The {c c c c} specify that the table will have four columns and they will all be center-aligned. You can make the cell contents left aligned by replacing the Cs with Ls or right aligned by using Rs instead. Add more letters for more columns, and pipes (the vertical line above the backslash) for vertical lines. Another useful type of column is the p{width} column, which forces text to wrap within whatever width you specify e.g. p{1in}. Text will wrap badly in narrow columns though, so beware.
-\toprule % a horizontal line, slightly thicker than \hline, depends on the booktabs package
-  Factors &  Correlation between Parents \& Child & Inherited \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
-  \midrule % another horizontal line
-Education & -0.49 & Yes \\ % another row
-Socio-Economic Status & 0.28 & Slight \\
-Income & 0.08 & No\\
-Family Size & 0.19 & Slight \\
-Occupational Prestige &0.21 & Slight \\
-\bottomrule % yet another horizontal line
-\end{tabular}
-\end{center}
-\label{inheritance} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
-\end{table}
-
-	\clearpage 
-%% \clearpage ends the page, and also dumps out all floats. 
-%% Floats are things like tables and figures.
-
-If you want to make a table that is longer than a page, you will want to use the longtable environment. Uncomment the table below to see an example, or see our online documentation.
-
-	\begin{longtable}{||c|c|c|c||}
-	 	\caption[Long Table]{An example of a long table, with headers that repeat on each subsequent page: Results from the summers of 1998 and 1999 work at Reed College done
-by Grace Brannigan, Robert Holiday and Lien Ngo in 1998 and Kate Brown and
-Christina Inman in 1999.}\\ \hline
-	    	  \multicolumn{4}{||c||}{Chromium Hexacarbonyl} \\\hline
-		   State & Laser wavelength & Buffer gas & Ratio of $\frac{\textrm{Intensity
-at vapor pressure}}{\textrm{Intensity at 240 Torr}}$ \\ \hline
-		  \endfirsthead
-		\hline     State & Laser wavelength & Buffer gas & Ratio of
-$\frac{\textrm{Intensity at vapor pressure}}{\textrm{Intensity at 240 Torr}}$\\
-\hline
-		    \endhead
-
-	    $z^{7}P^{\circ}_{4}$ & 266 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{2}$ & 355 nm & Argon & 0.57 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 266 nm & Argon & 1 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 355 nm & Argon & 0.14 \\\hline
-	    $y^{7}P^{\circ}_{2}$ & 355 nm & Argon & 0.14 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 266 nm & Argon & 1.2 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.04 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Helium & 0.02 \\\hline
-	    $z^{5}P^{\circ}_{2}$ & 355 nm & Argon & 0.07 \\\hline
-	    $z^{5}P^{\circ}_{1}$ & 355 nm & Argon & 0.05 \\\hline
-	    $y^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.05, 0.4 \\\hline
-	    $y^{5}P^{\circ}_{3}$ & 355 nm & Helium & 0.25 \\\hline
-	    $z^{5}F^{\circ}_{4}$ & 266 nm & Argon & 1.4 \\\hline
-	    $z^{5}F^{\circ}_{4}$ & 355 nm & Argon & 0.29 \\\hline
-	    $z^{5}F^{\circ}_{4}$ & 355 nm & Helium & 1.02 \\\hline
-	    $z^{5}D^{\circ}_{4}$ & 355 nm & Argon & 0.3 \\\hline
-	    $z^{5}D^{\circ}_{4}$ & 355 nm & Helium & 0.65 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 266 nm & Argon & 0.17 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 355 nm & Argon & 0.13 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 355 nm & Helium & 0.11 \\\hline
-	    $a^{5}D_{3}$ & 266 nm & Argon & 0.71 \\\hline
-	    $a^{5}D_{2}$ & 266 nm & Argon & 0.77 \\\hline
-	    $a^{5}D_{2}$ & 355 nm & Argon & 0.63 \\\hline
-	    $a^{3}D_{3}$ & 355 nm & Argon & 0.05 \\\hline
-	    $a^{5}S_{2}$ & 266 nm & Argon & 2 \\\hline
-	    $a^{5}S_{2}$ & 355 nm & Argon & 1.5 \\\hline
-	    $a^{5}G_{6}$ & 355 nm & Argon & 0.91 \\\hline
-	    $a^{3}G_{4}$ & 355 nm & Argon & 0.08 \\\hline
-	    $e^{7}D_{5}$ & 355 nm & Helium & 3.5 \\\hline
-	    $e^{7}D_{3}$ & 355 nm & Helium & 3 \\\hline
-	    $f^{7}D_{5}$ & 355 nm & Helium & 0.25 \\\hline
-	    $f^{7}D_{5}$ & 355 nm & Argon & 0.25 \\\hline
-	    $f^{7}D_{4}$ & 355 nm & Argon & 0.2 \\\hline
-	    $f^{7}D_{4}$ & 355 nm & Helium & 0.3 \\\hline
-	    \multicolumn{4}{||c||}{Propyl-ACT} \\\hline
-%	    State & Laser wavelength & Buffer gas & Ratio of $\frac{\textrm{Intensity
-%at vapor pressure}}{\textrm{Intensity at 240 Torr}}$\\ \hline
-	    $z^{7}P^{\circ}_{4}$ & 355 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{3}$ & 355 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{2}$ & 355 nm & Argon & 1.25 \\\hline
-	    $z^{7}F^{\circ}_{5}$ & 355 nm & Argon & 2.85 \\\hline
-	    $y^{7}P^{\circ}_{4}$ & 355 nm & Argon & 0.07 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 355 nm & Argon & 0.06 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.12 \\\hline
-	    $z^{5}P^{\circ}_{2}$ & 355 nm & Argon & 0.13 \\\hline
-	    $z^{5}P^{\circ}_{1}$ & 355 nm & Argon & 0.14 \\\hline
-	    \multicolumn{4}{||c||}{Methyl-ACT} \\\hline
-%	    State & Laser wavelength & Buffer gas & Ratio of $\frac{\textrm{Intensity
-% at vapor pressure}}{\textrm{Intensity at 240 Torr}}$\\ \hline
-	    $z^{7}P^{\circ}_{4}$ & 355 nm & Argon & 1.6, 2.5 \\\hline
-	    $z^{7}P^{\circ}_{4}$ & 355 nm & Helium & 3 \\\hline
-	    $z^{7}P^{\circ}_{4}$ & 266 nm & Argon & 1.33 \\\hline
-	    $z^{7}P^{\circ}_{3}$ & 355 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{2}$ & 355 nm & Argon & 1.25, 1.3 \\\hline
-	    $z^{7}F^{\circ}_{5}$ & 355 nm & Argon & 3 \\\hline
-	    $y^{7}P^{\circ}_{4}$ & 355 nm & Argon & 0.07, 0.08 \\\hline
-	    $y^{7}P^{\circ}_{4}$ & 355 nm & Helium & 0.2 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 266 nm & Argon & 1.22 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 355 nm & Argon & 0.08 \\\hline
-	    $y^{7}P^{\circ}_{2}$ & 355 nm & Argon & 0.1 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 266 nm & Argon & 0.67 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.08, 0.17 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Helium & 0.12 \\\hline
-	    $z^{5}P^{\circ}_{2}$ & 355 nm & Argon & 0.13 \\\hline
-	    $z^{5}P^{\circ}_{1}$ & 355 nm & Argon & 0.09 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 355 nm & Argon & 0.06, 0.05 \\\hline
-	    $a^{5}D_{3}$ & 266 nm & Argon & 2.5 \\\hline
-	    $a^{5}D_{2}$ & 266 nm & Argon & 1.9 \\\hline
-	    $a^{5}D_{2}$ & 355 nm & Argon & 1.17 \\\hline
-	    $a^{5}S_{2}$ & 266 nm & Argon & 2.3 \\\hline
-	    $a^{5}S_{2}$ & 355 nm & Argon & 1.11 \\\hline
-	    $a^{5}G_{6}$ & 355 nm & Argon & 1.6 \\\hline
-	    $e^{7}D_{5}$ & 355 nm & Argon & 1 \\\hline
-
-		\end{longtable}
-
-   
-   \section{Figures}
-   
-	If your thesis has a lot of figures, \LaTeX\ might behave better for you than that other word processor.  One thing that may be annoying is the way it handles ``floats'' like tables and figures. \LaTeX\ will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.   There are some optional arguments to the figure and table environments to specify where you want it to appear; see the comments in the first figure.
-
-	If you need a graphic or tabular material to be part of the text, you can just put it inline. If you need it to appear in the list of figures or tables, it should be placed in the floating environment. 
-	
-	To get a figure from StatView, JMP, SPSS or other statistics program into a figure, you can print to pdf or save the image as a jpg or png. Precisely how you will do this depends on the program: you may need to copy-paste figures into Photoshop or other graphic program, then save in the appropriate format.
-	
-	Below we have put a few examples of figures. For more help using graphics and the float environment, see our online documentation.
-	
-	And this is how you add a figure with a graphic:
-	\begin{figure}[h]
-	% the options are h = here, t = top, b = bottom, p = page of figures.
-	% you can add an exclamation mark to make it try harder, and multiple
-	% options if you have an order of preference, e.g.
-	% \begin{figure}[h!tbp]
-	   
-	       \centering
-	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
-	    \includegraphics{subdivision}
-	     \caption{A Figure}
-	 \label{subd}
-	\end{figure}
-
-\clearpage %% starts a new page and stops trying to place floats such as tables and figures
-
-\section{More Figure Stuff}
-You can also scale and rotate figures.
- 	\begin{figure}[h!]
-	   
-	       \centering
-	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
-	    \includegraphics[scale=0.5,angle=180]{subdivision}
-	    % if your figure shows up not where you want it, it may just be too big to fit. You can use the scale argument to shrink it, e.g. scale=0.85 is 85 percent of the original size. 
-	     \caption{A Smaller Figure, Flipped Upside Down}
-	 \label{subd2}
-	\end{figure}
-
-\section{Even More Figure Stuff}
-With some clever work you can crop a figure, which is handy if (for instance) your EPS or PDF is a little graphic on a whole sheet of paper. The viewport arguments are the lower-left and upper-right coordinates for the area you want to crop.
-
- 	\begin{figure}[h!]
-	    	       \centering
-	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
-	   \includegraphics[clip=true, viewport=.0in .0in 1in 1in]{subdivision}
-	    \caption{A Cropped Figure}
-	 \label{subd3}
-	\end{figure}
-	
-      \subsection{Common Modifications}
-      The following figure features the more popular changes thesis students want to their figures. This information is also on the web at \url{web.reed.edu/cis/help/latex/graphics.html}.
-           \renewcommand{\thefigure}{0.\arabic{figure}} %Renumbers the figure to the type 0.x
-    \addtocounter{figure}{4} %starts the figure numbering at 4
-    \begin{figure}[htbp]
-    \begin{center}
-   \includegraphics[scale=0.5]{subdivision}
-    \caption[Flower type and percent specialization]{\footnotesize{Interaction bar plot showing the degree of specialization for each flower type.}} %the special ToC caption is in square brackets. The \footnotesize makes the figure caption smaller
-    \label{barplot}
-    \end{center}
-    \end{figure} 
-
-\chapter*{Conclusion}
-         \addcontentsline{toc}{chapter}{Conclusion}
-	\chaptermark{Conclusion}
-	\markboth{Conclusion}{Conclusion}
-	\setcounter{chapter}{4}
-	\setcounter{section}{0}
-	
-Here's a conclusion, demonstrating the use of all that manual incrementing and table of contents adding that has to happen if you use the starred form of the chapter command. The deal is, the chapter command in \LaTeX\ does a lot of things: it increments the chapter counter, it resets the section counter to zero, it puts the name of the chapter into the table of contents and the running headers, and probably some other stuff. 
-
-So, if you remove all that stuff because you don't like it to say ``Chapter 4: Conclusion'', then you have to manually add all the things \LaTeX\ would normally do for you. Maybe someday we'll write a new chapter macro that doesn't add ``Chapter X'' to the beginning of every chapter title.
-
-\section{More info}
-And here's some other random info: the first paragraph after a chapter title or section head \emph{shouldn't be} indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there. 
-
+	\section{MCMC for BMA}
 
 %If you feel it necessary to include an appendix, it goes here.
     \appendix
-      \chapter{The First Appendix}
-      \chapter{The Second Appendix, for Fun}
+      \chapter{Appendix A}
+      \section{The Chain Rule for Probability}
 
 
 %This is where endnotes are supposed to go, if you have them.
@@ -937,13 +704,15 @@ And here's some other random info: the first paragraph after a chapter title or 
 \newpage
 \begin{thebibliography}{1}
 
-\bibitem{msft} Sahami, M., et al. (1998). A Bayesian Approach to Filtering Junk E-Mail. 
+\bibitem{msft} M. Sahami, S. Dumais, D. Heckerman, and E. Horvitz. A Bayesian approach to filtering junk email., AAAI Workshop on Learning for Text Categorization, July 1998, Madison, Wisconsin. AAAI Technical Report WS-98-05
 
-\bibitem{mcmc} Gamerman, D, and Lopes, H. F. (2006). \em{Markov Chain Monte Carlo}. Boca Raton, FL: Chapman \& Hall/CRC.
+\bibitem{mcmc} D. Gamerman and H. F. Lopes. \em{Markov Chain Monte Carlo}. Boca Raton, FL: Chapman \& Hall/CRC, 2006.
 
-\bibitem{hist} McGrayne, S. B. (2011). \em{The theory that would not die}. New Haven: CT: Yale University Program.
+\bibitem{hist} S.B. McGrayne. \em{The theory that would not die: How Bayes' rule cracked the enigma code, hunted down Russian submarines, and emerged triumphant from two centuries of controversy}. New Haven, CT: Yale University Press, 2011.
 
-\bibitem{liu} Liu, S., Zhu, M., \& Yang, Y. (2012). A Bayesian Classifier Learning Algorithm Based on Optimization Model. \em{Mathematical Problems in Engineering}, \em{2013}. Retrieved from http://dx.doi.org/10.1155/2013/975935. % wtf is DOI?
+\bibitem{liu} S. Liu, M. Zhu, and Y. Yang. A Bayesian Classifier Learning Algorithm Based on Optimization Model. \em{Mathematical Problems in Engineering}, {2013}. doi: 10.1155/2013/975935. % wtf is DOI?
+
+\bibitem{kiel} N. Friedman and D. Koller. Being Bayesian About Network Structure. Netherlands: Kluwer Academic Publishers, 2000. URL http://robotics.stanford.edu/~koller/Papers/Friedman+Koller:MLJ03.pdf
 
 \end{thebibliography}
 % if you're using bibtex, the next line forces every entry in the bibtex file to be included
