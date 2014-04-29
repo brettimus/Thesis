@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2014 04:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2014 10:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -511,7 +511,7 @@ LaTeX Warning: Label `bvf' multiply defined.
 LaTeX Warning: Label `subd' multiply defined.
 
 
-./beutell_thesis.aux:55: Package natbib Error: Bibliography not compatible with
+./beutell_thesis.aux:48: Package natbib Error: Bibliography not compatible with
  author-year citations.
 (natbib)                Press <return> to continue in numerical citation style.
 
@@ -520,7 +520,7 @@ See the natbib package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.55 ...mand\NAT@force@numbers{}\NAT@force@numbers
+l.48 ...mand\NAT@force@numbers{}\NAT@force@numbers
                                                   
 ? 
 )
@@ -639,9 +639,17 @@ Non-PDF special ignored!
 
 ] [7] [8
 
-] [1
+]
+Underfull \vbox (badness 2042) has occurred while \output is active []
+
+ [1
 
 ]
+Overfull \hbox (5.42963pt too wide) in paragraph at lines 157--158
+[]\OT1/cmr/m/n/12 Besides the in-her-ent sub-jec-tiv-ity of the prior, the es-s
+en-tial char-ac-ter-is-tic of Bayesian
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -813,16 +821,12 @@ Missing character: There is no ! in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no ] in font nullfont!
- [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-[12]
+ [10] [11] [12]
 Chapter 2.
 <mn.pdf, id=94, 505.89pt x 505.89pt>
 File: mn.pdf Graphic file (type pdf)
  <use mn.pdf>
-Package pdftex.def Info: mn.pdf used on input line 463.
+Package pdftex.def Info: mn.pdf used on input line 465.
 (pdftex.def)             Requested size: 205.96889pt x 180.67458pt.
  [13
 
@@ -830,20 +834,23 @@ Package pdftex.def Info: mn.pdf used on input line 463.
 <mn_box_pts.pdf, id=104, 505.89pt x 505.89pt>
 File: mn_box_pts.pdf Graphic file (type pdf)
  <use mn_box_pts.pdf>
-Package pdftex.def Info: mn_box_pts.pdf used on input line 489.
+Package pdftex.def Info: mn_box_pts.pdf used on input line 491.
 (pdftex.def)             Requested size: 205.96889pt x 180.67458pt.
- [14 <./mn_box_pts.pdf>] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 547--548
+ [14 <./mn_box_pts.pdf>]
+Overfull \hbox (11.12961pt too wide) in paragraph at lines 521--523
+\OT1/cmr/m/n/12 green, yel-low, or red. Hence, An-drey's state space $\OMS/cmsy
+/m/n/12 S$ \OT1/cmr/m/n/12 may be writ-ten as $\OMS/cmsy/m/n/12 S \OT1/cmr/m/n/
+12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 B; G; Y; R\OMS/cmsy/m/n/12 g$\OT1/cmr/m
+/n/12 . 
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 549--550
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--552
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 553--554
+Underfull \hbox (badness 10000) in paragraph at lines 551--554
 
  []
 
@@ -852,74 +859,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 555--556
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 557--558
+
+ []
+
 [16]
 
-./beutell_thesis.tex:587: LaTeX Error: Environment theorem undefined.
+./beutell_thesis.tex:594: LaTeX Error: Environment theorem undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.587 		\begin{theorem}
+l.594 		\begin{theorem}
                        
 ? 
 [17]
 
-./beutell_thesis.tex:609: LaTeX Error: \begin{document} ended by \end{theorem}.
+./beutell_thesis.tex:616: LaTeX Error: \begin{document} ended by \end{theorem}.
 
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.609 		\end{theorem}
+l.616 		\end{theorem}
                      
 ? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 612--613
-
- []
-
-[18] [19] [20]
-Chapter 3.
-[21
-
-] [22
+[18] [19] [20] [21] [22
 
 ]
-Appendix A.
-[23] [24
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 774--775
 []\OT1/cmr/m/n/12 P. Domin-gos and M. Paz-zani. Be-yond In-de-pen-dence: Con-di
 -tions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 774--775
 \OT1/cmr/m/n/12 for the Op-ti-mal-ity of the Sim-ple Bayesian Clas-si-fier. \OT
 1/cmr/m/it/12 Pro-ceed-ings
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 774--775
 \OT1/cmr/m/it/12 of the In-ter-na-tional Con-fer-ence on Ma-chine Learn-ing\OT1
 /cmr/m/n/12 , 1996. URL
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--733
+Underfull \hbox (badness 10000) in paragraph at lines 776--777
 []\OT1/cmr/m/n/12 N. Fried-man and D. Koller. Be-ing Bayesian About Net-work
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--733
+Underfull \hbox (badness 10000) in paragraph at lines 776--777
 \OT1/cmr/m/n/12 Struc-ture. Nether-lands: Kluwer Aca-demic Pub-lish-ers, 2000. 
 URL
  []
 
-[25
+[23
 
 ] (./beutell_thesis.aux)
 
@@ -927,10 +926,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11955 strings out of 493315
- 219101 string characters out of 6137904
- 270144 words of memory out of 5000000
- 15122 multiletter control sequences out of 15000+600000
+ 11958 strings out of 493315
+ 219137 string characters out of 6137904
+ 270160 words of memory out of 5000000
+ 15125 multiletter control sequences out of 15000+600000
  12648 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,12n,68p,756b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -944,13 +943,14 @@ ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
 l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on beutell_thesis.pdf (37 pages, 227608 bytes).
+live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on beutell_thesis.pdf (35 pages, 239331 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
+ 188 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  35 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -13,10 +13,6 @@
 \contentsline {section}{\numberline {2.1}GOFMC}{13}
 \contentsline {section}{\numberline {2.2}Markov Chains}{15}
 \contentsline {section}{\numberline {2.3}The Ergodic Theorem}{17}
-\contentsline {section}{\numberline {2.4}MCMC}{19}
-\contentsline {chapter}{Chapter 3: Bayesian Model Averaging for Bayesian Networks}{21}
-\contentsline {section}{\numberline {3.1}Bayes' Theorem for Models}{21}
-\contentsline {section}{\numberline {3.2}MCMC for BMA}{21}
-\contentsline {chapter}{Appendix A: Appendix A}{23}
-\contentsline {section}{\numberline {A.1}The Chain Rule for Probability}{23}
-\contentsline {chapter}{References}{25}
+\contentsline {section}{\numberline {2.4}Metropolis-Hastings for MCMC}{19}
+\contentsline {section}{\numberline {2.5}Bayesian Model Averaging for Bayesian Networks}{21}
+\contentsline {chapter}{References}{23}
