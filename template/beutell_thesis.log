@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2014 04:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  29 APR 2014 04:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -503,18 +503,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 code.tex
 File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
 \arrowsize=\dimen171
-))
-
-./beutell_thesis.tex:83: LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.83 \setcitestyle[s
-                    quare]
-? 
-(./beutell_thesis.aux
+)) (./beutell_thesis.aux
 
 LaTeX Warning: Label `bvf' multiply defined.
 
@@ -522,7 +511,7 @@ LaTeX Warning: Label `bvf' multiply defined.
 LaTeX Warning: Label `subd' multiply defined.
 
 
-./beutell_thesis.aux:58: Package natbib Error: Bibliography not compatible with
+./beutell_thesis.aux:55: Package natbib Error: Bibliography not compatible with
  author-year citations.
 (natbib)                Press <return> to continue in numerical citation style.
 
@@ -531,7 +520,7 @@ See the natbib package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.58 ...mand\NAT@force@numbers{}\NAT@force@numbers
+l.55 ...mand\NAT@force@numbers{}\NAT@force@numbers
                                                   
 ? 
 )
@@ -610,13 +599,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-ABD: EveryShipout initializing macros [1
-Non-PDF special ignored!
-Non-PDF special ignored!
-
-{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-]
+ABD: EveryShipout initializing macros
 LaTeX Font Info:    Try loading font information for U+lasy on input line 90.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ulasy.fd
@@ -631,10 +614,14 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 90.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1] [2
+) [1
+Non-PDF special ignored!
+Non-PDF special ignored!
 
-]
-[3] [4
+
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+] [3] [4
 
 ] [1
 
@@ -647,7 +634,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [3] [4
 
-] [5] [6
+] [5]
+[6
 
 ] [7] [8
 
@@ -831,7 +819,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [11]
 [12]
 Chapter 2.
-<mn.pdf, id=101, 505.89pt x 505.89pt>
+<mn.pdf, id=94, 505.89pt x 505.89pt>
 File: mn.pdf Graphic file (type pdf)
  <use mn.pdf>
 Package pdftex.def Info: mn.pdf used on input line 463.
@@ -839,7 +827,7 @@ Package pdftex.def Info: mn.pdf used on input line 463.
  [13
 
  <./mn.pdf>]
-<mn_box_pts.pdf, id=110, 505.89pt x 505.89pt>
+<mn_box_pts.pdf, id=104, 505.89pt x 505.89pt>
 File: mn_box_pts.pdf Graphic file (type pdf)
  <use mn_box_pts.pdf>
 Package pdftex.def Info: mn_box_pts.pdf used on input line 489.
@@ -941,7 +929,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  11955 strings out of 493315
  219101 string characters out of 6137904
- 270151 words of memory out of 5000000
+ 270144 words of memory out of 5000000
  15122 multiletter control sequences out of 15000+600000
  12648 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -959,10 +947,10 @@ xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
 ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texliv
 e/2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on beutell_thesis.pdf (39 pages, 227600 bytes).
+Output written on beutell_thesis.pdf (37 pages, 227608 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 193 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  35 words of extra memory for PDF output out of 10000 (max. 10000000)
 
