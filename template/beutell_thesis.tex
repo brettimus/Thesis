@@ -134,10 +134,10 @@
 % \doublespacing
 	If it were not for convention, this chapter could perhaps be titled, ``An Irresponsibly Quick Introduction to Bayes' Theorem." It is wholly optional for the reader who has taken an undergraduate course in mathematical statistics. This chapter introduces the ideas, terminology, and some historical minutiae about Bayesian reasoning. Naturally, we provide a statement of Bayes' theorem for events and distributions.
 	\section{Much Ado About Bayes}
-	At its inception, Bayes' theorem was not particularly controversial. Pierre Simon LaPlace offered its first formalization in the early 19th century, and he held the belief (one that was ultimately proven wrong by the mid-twentieth century) that with a sufficient amount of data, the answers it provided were equivalent to those obtained from his frequency based methods [McGrayne, 2011]. 
+	At its inception, Bayes' theorem was not particularly controversial. Pierre Simon LaPlace offered its first formalization in the early 19th century, and he believed (incorrectly, as was proven by the mid-twentieth century) that with a sufficient amount of data, the answers it provided were equivalent to those obtained from his frequency based methods [McGrayne, 2011]. 
 	As time passed, LaPlace preferred his frequentist techniques for the relative ease of their calculations, but he did not outright condemn the use of Bayes in practice. Interestingly, over a half-century after his death, LaPlace's failure to disown Bayesian reasoning caught the attention of a Scottish mathematician named George Chrystal, who remarked, ``The indiscretions of great men should be quietly allowed to be forgotten" [McGrayne, 2011].
 	
-	Chrystal's comment represents the attitude of early twentieth century statisticians quite well. At this time, frequentism reigned supreme, and the attitude towards Bayes' theorem and its role in statistics was surprisingly sour. For years, statisticians in the academy who employed Bayesian reasoning feared for their reputation if they explicitly made reference to Bayes' theorem in their work [McGrayne, 2011]. 
+	Chrystal's comment represents the attitude of early twentieth century statisticians quite well. At the time, frequentism reigned supreme, and the attitude towards Bayes' theorem and its role in statistics was surprisingly sour. For years, statisticians in the academy who employed Bayesian reasoning feared for their reputation if they explicitly made reference to Bayes' theorem in their work [McGrayne, 2011]. 
 	
 	Fortunately, with due thanks to the computational advances of the past three decades, Bayes survived its temporary relegation to the catacombs of statistics, and it has emerged as an astoundingly useful tool for the modern statistician. The phrase ``Bayesian Inference" fails to evoke the contention it once did. Furthermore, it is now far more commonplace for statisticians to use both Bayesian and frequentist techniques in their work, tailoring their methods to the problem at hand [Liu et al, 2013].
 	
@@ -154,15 +154,15 @@
 	
 	We can think of a Bayesian model's presumed truths (often called {\em prior beliefs}, the {\em prior distribution} or, simply, the {\em prior}) as a starting point, from which data are used to {\em update} the subjective belief about the estimate.  Bayesians use what are called {\em non-informative priors} to approximate a lack of prior knowledge about $\theta$. 
 	
-	Besides the inherent subjectivity of the prior, the essential characteristic of Bayesian methods is that they treat parameters as random variables. Consequently, Bayesian estimates return a probability distribution, which is called the {\em posterior distribution}. The posterior describes the relative likelihoods of different values of $\theta$ given the data and given the {\em a priori} beliefs encoded in the prior distribution.
+	Besides the inherent subjectivity of the prior, the essential characteristic of Bayesian methods is that they treat parameters as random variables. Consequently, Bayesian estimates can return a probability distribution for $\theta$, which is called the {\em posterior distribution} of $\theta$. The posterior describes the relative likelihoods of different values of $\theta$ given the data and given the {\em a priori} beliefs encoded in the prior distribution.
 
 	\subsection*{``Not To Bayes"}
 	For the student of frequentism, the Bayesian approach may lend itself to confusion (or, years ago, anger), since frequentists treat $\theta$ as fixed ($\theta = \theta_0$), and think of their observed data as probabilistic draws that, in the long run, converge to a particular distribution.
 	
 	Frequentist techniques have two main advantages. Namely, the math involved in their calculations is generally tidy, and their calculations do not require the subjective prior of Bayes' theorem. However, frequentist methods often suffer from having rigid and unintuitive interpretations. 
 	
-	For instance, a frequentist p-value in a hypothesis test is a conditional probability that assumes the null hypothesis is true. Hence, it evaluates how probable the observed data would be if $\theta = \theta_0$. On the other hand, a Bayesian p-value would provide the probability of the null hypothesis being true, conditioned on the data. 
-	To see this symbolically, consider that $P(\vec{X} = \vec{x} | \theta = \theta_0 )$ is, by definition, a statement about the probability of observing $\vec{x}$, given that $\theta = \theta_0$. Frequentists are more apt to talk about the probability of seeing our data, given $\theta$ is a specific value.
+	For instance, a frequentist p-value in a hypothesis test is a conditional probability that assumes the null hypothesis (e.g., $\theta = \theta_0$) is true. Hence, it evaluates how probable the observed data would be if $\theta = \theta_0$. On the other hand, a Bayesian p-value would provide the probability of the null hypothesis being true, conditioned on the data. 
+	To see this symbolically, consider that $P(\vec{X} = \vec{x} | \theta = \theta_0 )$ is, by definition, a statement that concerns the probability of observing $\vec{x}$, given that $\theta = \theta_0$, whereas $P(\theta = \theta_0 | \vec{X} = \vec{x})$ is the probability of the parameter taking a specific value. Frequentists are more apt to talk about the probability of seeing our data, given $\theta$ is a specific value.
 
 \begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
 \caption[Comparison of Bayesian and Frequentist Reasoning]{A Broad Comparison of Bayesian and Frequentist Methodologies} 
@@ -200,7 +200,7 @@ The above is conventionally presented alongside the pithy, assonant phrase, ``Th
 
 \section{Classification and Learning}
 
-A classification model is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}. When we speak of {\em learning} the parameters of a classification model, we assume that there is a set of pre-classified data from which we can make inferences about future data. 
+A {\em classification model} is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}. When we speak of {\em learning} the parameters of a classification model, we assume that there is a set of pre-classified data from which we can make inferences about future unclassified data. 
 
 We shall define a Bayesian classifier in the proceeding chapter, but we will not address the specifics of learning model parameters. For some insightful examples on how Bayesian classifiers learn parameters, the reader is encouraged to read David Heckerman's ``A Tutorial on Learning With Bayesian Networks," which is available online [Heckerman, 1996]. A URL is provided under the references. 
 
@@ -213,7 +213,7 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 	Suppose we have a set of random variables $V = \{C, X_1, \ldots, X_n\}$, and we seek to predict the value of $C$, a categorical variable, using $X_1, \ldots, X_n$. We call $C$ the {\em class variable}, and we refer to the $X_i$ as the {\em feature variables}. For notational convenience, we may denote the set of feature variables by $\vec{X}$, and we may denote a single set of observed values of $\vec{X}$ as the vector $\vec{x} = (X_1 = x_1, \ldots, X_n = x_n)$.
 	\subsection*{The Bayesian Approach}
 	Let $C$ have $k$ possible classes. 
-	The goal in a classification setting is to find the probabilities of each class of $C$, given the observed values of the feature variables. Usually (but not always), we seek the value of the class node that maximizes the value of $P(C | \vec{X})$. We appeal to Bayes' theorem:
+	The goal in a classification setting is to find the probabilities of each class of $C$, given the observed values of the feature variables. Usually (but not always), we seek the value of the class that maximizes the value of $P(C | \vec{X})$. We appeal to Bayes' theorem:
 	\begin{center}
 		$P(C = c_i | \vec{X}) = \displaystyle\frac{P(\vec{X} | C = c_i) P(C = c_i)}{\displaystyle\sum_{c_j \in \textrm{dom}\{C\}} P(\vec{X} | C = c_j)P(C=c_j)}$,
 	\end{center}
@@ -226,7 +226,7 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 		$\displaystyle\frac{P(C=c_i | \vec{X} = \vec{x})}{P(C=c_j | \vec{X} = \vec{x})} = 
 		\displaystyle\frac{\displaystyle\frac{P(\vec{x} | c_i)P( c_i)}{P(\vec{x})}}{\displaystyle\frac{P(\vec{x} | c_j) P( c_j)}{P(\vec{x})}} = \frac{P(\vec{x} | c_i) P( c_i)}{P(\vec{x} | c_j) P( c_j)}$.
 	\end{center}
-	Clearly, then, if we obtain a value greater than 1 from the above, we find the class $c_i$ to be more likely than $c_j$, given the data. Since the normalization constant $P(\vec{x})$ can be unwieldy to compute, this is a very convenient property of Bayesian classifiers. That is, in this setting, we need only compute the marginal of the posterior for each class.
+	Clearly, then, if we obtain a value greater than 1 from the above, we find the class $c_i$ to be more likely than $c_j$, given the data. Since the normalization constant $P(\vec{x})$ can be unwieldy to compute, this is a very convenient property of Bayesian classifiers. 
 	\subsection*{Finding the Marginal}
 	With a few simple results from probability theory, we can refactor the numerator of the posterior.
 	For starters, we invoke the multiplication rule:
@@ -261,13 +261,13 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 
 	\subsection*{Paths and Cycles}
 	It is natural to consider the {\em paths} through $G$. A path $P$ of length $n$ is simply an ordered $n$-tuple of edges. 
-	We refer to the first and last nodes in this sequence as the {\em starting node} $V_s$ and {\em terminal node} $V_t$, respectively. 
+	We refer to the first and last nodes of $P$ as the {\em starting node} $V_s$ and {\em terminal node} $V_t$, respectively. 
 	 With the exception of $V_t$, if the $i^{\text{th}}$ member of $P$ is an edge that points {\em to} the node $V_j$, then the $(i+1)^{\text{th}}$ member is an edge pointing {\em from} node $V_j$ to another node $V_k$. 
 	 Thus, a path of length $n$ defines a sequence of $n+1$ nodes, such that each node has an edge from itself to its successor. 
 	 By $\mathcal{P}(G)$, let us mean the family of all paths defined on $G$. For any $P \in \mathcal{P}(G)$, we call $P$ a {\em cycle} if $V_s = V_t$. We say that a graph $G$ is {\em cyclic} if there exists at least one cycle in $\mathcal{P}(G)$. Otherwise, we say that $G$ is {\em acyclic}.
 	
 	\subsection*{Relatives}
-	The vocabulary used to describe the relationships amongst nodes in a graph is markedly familial. Given the nodes $V_i, V_j, V_k \in V$, we say that $V_i$ is an {\em ancestor} of $V_j$ if there exists a $P \in \mathcal{P}(G)$ such that $V_i$ precedes $V_j$ in the sequence of nodes defined by $P$. Conversely, we call $V_j$ a {\em descendant} of $V_i$. We also give special names to a node's immediate ancestors and descendants. Formally, for $V_j$, we may define the set of {\em parents} of $V_j$ as $\{V_i : (V_i,V_j) \in E \}$. Similarly, we define the set of {\em children} of $V_j$ as $\{V_k : (V_j, V_k) \in E\}$. A node whose set of parents is empty is called the {\em root node} of our graph.
+	The vocabulary used to describe the relationships amongst nodes in a graph is markedly familial. Given the nodes $V_i, V_j, V_k \in V$, we say that $V_i$ is an {\em ancestor} of $V_j$ if there exists a $P \in \mathcal{P}(G)$ such that $V_i$ precedes $V_j$ in the sequence of nodes defined by $P$. Conversely, we call $V_j$ a {\em descendant} of $V_i$. We also give special names to a node's immediate ancestors and descendants. Formally, for $V_j$, we may define the set of {\em parents} of $V_j$ as $\{V_i : (V_i,V_j) \in E \}$. Similarly, we define the set of {\em children} of $V_j$ as $\{V_k : (V_j, V_k) \in E\}$. A node whose set of parents is empty is called the {\em root} of our graph.
 	
 	\subsection*{The Adjacency Matrix}
 	We may represent $G=(V,E)$, where $V = \{V_0, \ldots, V_{n-1} \}$ has order $n$, with an $n \times n$ matrix $A = (a_{ij})$, such that for each entry $a_{ij}$, 
@@ -301,7 +301,7 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 	(For example, we identify two distinct paths from $V_0$ to $V_1$, so $y_{1,2} = 2$.)
 	
 	\section{Bayesian Networks}	
-	Let $\mathcal{B} \equiv \langle G, \Theta \rangle$, where $G = (V,E)$ is a directed acyclic graph, $V = \{V_0, V_1, \ldots, V_n \}$ is a set of $n + 1$ random variables, and $\Theta$ is a set of parameter estimates generated from some pre-classified data. Each parameter of $\Theta$ corresponds an arc in the graph structure $G$. That is, the parameters of our model are conditional probabilities. We say that $\mathcal{B}$ is a Bayesian Network.
+	Let $\mathcal{B} \equiv (G, \Theta)$, where $G = (V,E)$ is a directed acyclic graph, $V = \{V_0, V_1, \ldots, V_n \}$ is a set of $n + 1$ random variables, and $\Theta$ is a set of parameter estimates generated from some pre-classified data. Each parameter of $\Theta$ corresponds to an arc in the graph $G$. (That is, the parameters of our model are conditional probabilities.) We say that $\mathcal{B}$ is a Bayesian network.
 
 	\subsection*{Restricted Bayesian Networks}
 	A {\em restricted} Bayesian network caps the number of possible conditional dependencies for a given feature variable at some nonnegative integer $k$. Hence, the graph that represents the network should have at most $k$ arcs from each of its feature nodes. The Tree Augmented Network (TAN), displayed below, is an example of a restricted Bayesian Network with $k = 1$.
@@ -329,8 +329,8 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 	We consider the necessary structural and decision theoretic modifications to $\mathcal{B}$ that are necessary for this application.
 	
 		\subsection*{Networks Constraints}
-	In a classification setting, we place a few extra constraints on the graph of $\mathcal{B}$.
-	Namely, we may call $V_0$ the class variable, and we may require that the binary node-node adjacency matrix $A$ of $G$ satisfies the following properties:
+	In a classification setting, we call $V_0$ the class variable, and we also place particular constraints on the graph of $\mathcal{B}$ [Liu et al, 2013].
+	Namely, we require that the adjacency matrix $A$ of $G$ satisfies the following properties:
 	\begin{center}
 		$\displaystyle\sum_{i=1}^{n}a_{i1} = 0$,\ \ \ and \ \ \ 
 		$\displaystyle\sum_{j=1}^{n}a_{1j} \neq 0$.
@@ -339,16 +339,15 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 		
 		\subsection*{Making a Decision}
 	
-	To predict the class for an observation, we use a {\em decision rule}.
-	Our decision rule provides a means of selecting one proposed classification over another, given a set of pre-classified data and a new input that has yet to be classified.
+	To predict the class $C$ of an input $\vec{x}$, we use a {\em decision rule}.
+	Our decision rule provides a means of selecting one proposed classification over another, given a set of pre-classified data and the unclassified input $\vec{x}$.
 	Recall that in surveying the general problem of classification, we chose a decision rule that returned the class maximizing our posterior probability. 
 	Albeit common, this is not the only possible decision rule. 
 	For instance, there may be an unequal cost associated with certain misclassifications of $\vec{x}$. In such cases, we can modify our decision rule's {\em loss function} accordingly; however, this facet of decision theory is not central to our discussion.
 	 
 	\subsection*{The Naive Bayes Classifier} % \"{} won't compile
-	The Na\"{i}ve Bayes classifier (NBC) is highly reductive; 
-	yet, it is a surprisingly effective means of classifying data. 
-	The NBC assumes conditional independence amongst feature variables of the model in order to yield a more wieldy computation of the posterior.
+	The NBC assumes conditional independence amongst feature variables of the model in order to yield a more wieldy computation of the posterior. 
+	In light of its reductive assumption, the NBC is a surprisingly effective means of classifying data.
 	
 	Recall that the posterior distribution of the class variable $C \equiv X_0$ has the following property:
 	\begin{center}
@@ -373,23 +372,22 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 % The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
 \begin{center}
 % makes the table centered
-\begin{tabular}{l |} 
+\begin{tabular}{| l | l |} 
  \toprule
-  \textbf{Information} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+  \textbf{Information} & \textbf{Description} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
   \midrule % another horizontal line
-   	Whether or not the email was spam \\
- 	The domain of the email's sender (e.g., @reed.edu) \\	
-	A count of the number of hyperlinks in the body of the email \\ % another row
-  	The time at which the email was sent \\
+   	Spam & Whether or not the email was spam \\
+ 	Domain & The domain of the email's sender (e.g., @reed.edu) \\	
+	Hyperlinks & A count of the number of hyperlinks in the body of the email \\ % another row
+  	Timestamp & The time at which the email was sent \\
 \bottomrule % yet another horizontal line
 \end{tabular}
 \end{center}
 \label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
 \end{table}
-	Note that we assume a human has pre-classified each email as either spam or not-spam.
-	This is necessary for our classifier to learn the parameters of the model's network.
+	Note that we assume a human has pre-classified each email as either spam or not-spam, which is necessary for our classifier to learn the parameters of the model's network.
 	
-	It is generally easier to learn the parameters of a Bayesian network when the feature variables are categorical. Thus, we might use the domain information to create a variable that indicates whether or not the sender's domain ended in ``.edu." For the count of hyperlinks, we might define categories of Low (0 to 4 hyperlinks), Medium (5 to 10 hyperlinks), and High (more than 10 hyperlinks). Using the timestamp of the emails, we might create an indicator for whether or not an email was sent between midnight and noon. In the end, we could assign our variables to nodes in a graph as follows:
+	It is generally easier to learn the parameters of a Bayesian network when the feature variables are categorical. Thus, we might use the domain information to create a variable that indicates whether or not the sender's domain ended in ``.edu." For the count of hyperlinks, we might define categories of Low (0 to 4 hyperlinks), Medium (5 to 10 hyperlinks), and High (more than 10 hyperlinks). Using the timestamp of the emails, we might create an indicator for whether or not an email was sent after midnight but before noon. In the end, we could assign our variables to nodes in a graph as follows:
 
 \begin{table}[htdp] % begins the table floating environment. 
 \caption[Example Training Data for Na\"{i}ve Bayes Classification]{Variables from the training set of 1,000 emails} 
@@ -400,17 +398,17 @@ We shall define a Bayesian classifier in the proceeding chapter, but we will not
 \toprule
   \textbf{Node} &  \textbf{Variable} & \textbf{Description}  \\ 
   \midrule % another horizontal line
- $V_0$ & Spam & 1 if Spam; 0 otherwise \\ % another row
+ $V_0$ & spam & 1 if Spam; 0 otherwise \\ % another row
  $V_1$ & edu & 1 if from .edu; 0 otherwise \\
- $V_2$ & Hyperlink Count & Low, Medium, or High \\
- $V_3$ & Time & 1 if sent between midnight and noon; 0 otherwise.  \\
+ $V_2$ & link-count & Low, Medium, or High \\
+ $V_3$ & AM & 1 if sent between midnight and noon; 0 otherwise  \\
 \bottomrule % yet another horizontal line
 \end{tabular}
 \end{center}
 \label{inheritance} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
 \end{table}
 	
-Our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the structure depicted in Figure 1.3. To complete the classifier, we would learn our model parameters from the training set. The parameters in our example would be $P(V_0 | V_1)$, $P(V_0 | V_2)$, and $P(V_0 | V_3)$. 
+Because of its independence assumption, our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the structure depicted in Figure 1.3. To complete the classifier, we would learn our model parameters from the training set. The parameters in our example would be $P(V_0 | V_1)$, $P(V_0 | V_2)$, and $P(V_0 | V_3)$. 
 	
 	\begin{figure}[htpb]
 	\begin{center}
@@ -430,28 +428,31 @@ Our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the st
 	\end{figure}
 
 	\section{Model Structure}
-	We mentioned in the previous section that the Na\"{i}ve Bayes classifier is a surprisingly effective model. The performance of the NBC is surprising because in practice, feature variables are rarely independent, and ignoring the dependencies between them should give us biased probability estimates for $P(C | \vec{X})$. However, even if our probability estimates are incorrect, we can still predict classifications correctly [Domingos and Pazzani, 1996].
+	We mentioned in the previous section that the Na\"{i}ve Bayes classifier is a surprisingly effective model. The performance of the NBC is surprising because in practice, feature variables are rarely independent, and ignoring the dependencies between them should give us biased probability estimates for $P(C | \vec{X})$. However, even if our probability estimates are incorrect, we can still predict classifications correctly, so long as their relative probabilities conform with a correct classification of the data [Domingos and Pazzani, 1996].
 	
 	%For example, suppose we that $C$ has two possible classes, $c_i$ and $c_j$, such that for an input $\vec{x}$, our NBC returns the biased estimates $P(c_i | \vec{x}) = .9$ and $P(c_j | \vec{x}) = .1$. Obviously, we would assign $\vec{x}$ to class $c_j$. If the unbiased estimates, obtained from a classifier that accounted for the true dependence structure of the feature variables, were $P(c_i | \vec{x}) = .6$ and $P(c_j | \vec{x})$, we would come to the same conclusion as the NBC.
 	
-	That being said, the NBC is not all-powerful. It works better than we would expect, but it is not guaranteed to be optimal when the feature variables of our model are not all independent. Hence, to improve upon the NBC, we need a means of finding the structure of our Bayesian classifier's network. 
+	That being said, the NBC is not all-powerful. It works better than we would expect, but it is not guaranteed to be optimal when the feature variables of our model are not all independent [Domingos and Pazzani, 1996]. Hence, to improve upon the NBC, we need a means of finding the structure of our Bayesian classifier's network. 
 	
 	\subsection*{The Structure Space}
-	Unfortunately, though, the size of the space of all possible network structures is {\em super-exponential} on the number of nodes in a network's graph. 
-	Specifically, if $n$ is the number of nodes in a graph, the structure space increases in size at $2^{O(n^2\log{n})}$ [Friedman and Koeller, 2001].
-	There are ways of decreasing the size of the structure space, one of which is using restricted Bayesian networks. 
-	More importantly, though, we may choose between two modes of reasoning about model structure. 
+	By $\mathcal G$, we denote the space of all possible graphs for a set of random variables $V$.
+	Unfortunately, the order $\mathcal G$ is {\em super-exponential} on the order of $V$. 
+	Specifically, if $n$ is the number of nodes in a graph, the structure space increases in size at a rate of $2^{O(n^2\log{n})}$, which makes exhaustive search through $\mathcal G$ impractical for unrestricted networks with even a moderate number of variables [Friedman and Koeller, 2001].
+	%There are ways of decreasing the size of the structure space, one of which is using restricted Bayesian networks. 
+	Importantly, we may choose between two modes of reasoning about model structure. 
 
 	\subsection*{Model Selection}	
-	The first, called {\em model selection}, involves finding the most probable model structure given our data, which we can then use to estimate our parameters. Generally, this would involve cleverly searching through the space of possible models (or a subset thereof) and ranking structures according to a score function. The structure with the highest score would be our most likely model, and we then would use it to estimate our parameters.  
+	The first, called {\em model selection}, involves finding the most probable model structure given our data, which we can then use to estimate our parameters. Generally, this would involve cleverly searching through the space of possible models (or a subset thereof) and ranking structures according to a scoring function. The structure with the highest score would be our most likely model, and we then would use it to estimate our parameters.  
 	
 	\subsection*{Model Averaging}
-	The second technique, called {\em model averaging} is a little more involved. In lieu of selecting one highly likely model, model averaging would have us make estimates across a space of possible network structures, which are each weighted by their likelihood. Hence, model averaging is a useful tool when we have several model structures that are roughly equiprobable. There are many ways to go about model averaging, and we shall get to one of them in due time. For now, though, it suffices to know that model averaging is computationally very difficult, so we require a means to approximate it by simulation.
+	The second technique, called {\em model averaging} is a little more involved. In lieu of selecting one high-scoring model, model averaging would have us make estimates across a space of possible network structures, which are each weighted by their probability of being the correct model. Hence, model averaging is a useful tool when we have several model structures that are roughly equiprobable. There are a handful ways to go about model averaging, and we shall get to one of them in due time. For now, though, it suffices to know that model averaging is computationally very difficult, so we require a means to approximate it by simulation.
 	
 \chapter{Monte Carlo with Markov Chains}
 	The reader may be familiar with Good Old Fashioned Monte Carlo (GOFMC) methods involving independent and identically distributed (IID) data. However, Monte Carlo simulations can also be done with a surprisingly simple stochastic process called Markov Chains. In fact, these Markov Chain Monte Carlo (MCMC) techniques are quite useful for approximating draws from posterior distributions for which we cannot easily find the normalization constant. 
 	
-	This chapter provides a cursory overview of GOFMC, and then defines Markov chains with the intent of introducing a class of algorithms for Markov Chain Monte Carlo simulation.
+	This chapter provides a cursory overview of GOFMC, and then defines Markov chains with the intent of introducing a class of algorithms for Markov Chain Monte Carlo simulation. 
+	We close with an application of MCMC to averaging estimates over Bayesian network structures.
+	
 	\section{GOFMC}
 		\subsection*{An Intuitive Example}
 		Imagine we seek to find the area of a peculiar two-dimensional shape called Minnesota. 
@@ -463,7 +464,7 @@ Our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the st
 	       	\centering
 	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
 	    	\includegraphics[clip=true, viewport=.3in 1in 6in 6in,scale=0.5]{mn}
-	     	\caption{A Two-Dimensional Shape Called Minnesota}
+	     	\caption{A two-dimensional shape called Minnesota}
 	 	\label{subd}
 		\end{figure}	
 		We are given no general formula for its area, and all of our attempts to analytically represent the curve that traces its perimeter have proven themselves fruitless. With credit to a talk on Monte Carlo Tree Search given by Peter Drake at the University of Portland, the technique suggested by GOFMC would be the following:
@@ -495,7 +496,7 @@ Our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the st
 
 			Obviously, our estimate is not exact, but as $n \rightarrow \infty$, the Law of Large Numbers tells us that we get closer and closer to the true area of Minnesota. Thus is the motivation for GOFMC.
 		\subsection*{The General Case}
-			Suppose we are given a distribution $\pi$ and we seek to find the expectation of a function $f$ over $\pi$. The central idea of GOFMC is that we may generate IID random variables $X_1, \ldots, X_n$ from $\pi$ in order to estimate $E[f(X_i)]$. A logical estimator, then, by simple application of the method of moments, is 
+			Suppose we are given a distribution $\pi$ and we seek to find the expectation of a function $f$ over $\pi$. The central idea of GOFMC is that we may generate IID random variables $X_1, \ldots, X_n$ from $\pi$ in order to estimate $E[f(X_i)]$. A logical choice of estimator would thus be
 			\begin{center}
 				$\displaystyle\frac{1}{n}\displaystyle\sum_{i=1}^{n}{f(X_i)}$.
 			\end{center}		
@@ -505,21 +506,21 @@ Our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the st
 				$\epsilon = E[f(X_i)] - \displaystyle\frac{1}{n}\displaystyle\sum_{i=1}^{n}f(X_i)$.
 			\end{center}
 			By application of the Central Limit Theorem, we know that as $n \rightarrow \infty$, the above converges to a normal distribution with a mean $\mu = 0$ and variance inversely proportional to $n$.
-			Hence, with large enough $n$, we can produce fairly accurate estimates from our randomly generated data, and we can have an idea of how erroneous our estimates are. 
+			Hence, with large enough $n$, we can produce accurate estimates from our randomly generated data. 
 	\section{Markov Chains}
-	Andrey Markov used his eponymous chain only once in practice, to analyze the occurrence of vowels in a Pushkin poem [McGrayne, 2011]. According to legend, Enrico Fermi ran Markov chains in his head to combat insomnia, but we normal humans tend to reserve such calculations for computers. Though they can be treacherous to compute, the basic intuition behind Markov chains is, thankfully, fairly easy to grasp.
+	Andrey Markov used his eponymous chain only once in practice, to analyze the occurrence of vowels in a Pushkin poem [McGrayne, 2011]. According to legend, Enrico Fermi ran Markov chains in his head to combat insomnia, but we normal humans tend to reserve such calculations for computers [McGrayne, 2011]. Though they can be treacherous to compute, the basic intuition behind Markov chains is, thankfully, fairly easy to grasp.
 	 
 	 			\subsection*{Definition}
 			Let $s_i$ be a state from a set of possible states (the {\em state space}) $\mathcal S$, and let $I$ be an index set. What we call a {\em Markov chain} $\theta^{(i)}$ is a collection of states from $\mathcal S$ indexed by $i \in I$. Markov chains can be thought of as a sequence of probabilistic transitions from state to state, where the probability of transitioning to the next state in the chain depends solely on the current state. 
 			
 			Thus, Markov chains have associated {\em transition probabilities}. When $\mathcal S$ is discrete and has finite order $n$, we may specify these probabilities in an $n$ by $n$ {\em transition matrix}, $T = (t_{jk})$, where $t_{jk} = P(\theta^{i+1} = s_k | \theta^{i} = s_j)$. Each row of $T$ admits a probability distribution for a corresponding state in $\mathcal S$. 
 			
-			Using $T$, we may define a {\em transition function} $p: \mathcal{S}\times\mathcal{S} \rightarrow [0,1]$ on our Markov chain, where $p(s_j,s_k) = t_{jk}$. Consistent with our definition above, $p(s_j,s_k)$ is a conditional probability that depends solely on $s_j$, and not on any past or future states of the chain. For the sake of concision, we may also refer to transitions as {\em steps}, and when the chain assumes a state $s_j$, we also say that it {\em hits} state $s_j$. 
+			Using $T$, we may define a {\em transition function} $p: \mathcal{S}\times\mathcal{S} \rightarrow [0,1]$ on our Markov chain, where $p(s_j,s_k) = t_{jk}$. Consistent with our definition above, $p(s_j,s_k)$ is a conditional probability for $\theta^{i + 1} = s_k$ that depends solely on the information that $\theta^{i} = s_j$, and not on any past or future states of the chain. For the sake of concision, we may also refer to transitions as {\em steps}, and when the chain assumes a state $s_j$, we also say that it {\em hits} state $s_j$. 
 			
 	 
 	\subsection*{Example: Andrey the Chameleon}
-	To illustrate our definition of Markov chains, we introduce a charismatic chameleon named Andrey. 
-	Suppose that Andrey can only assume four distinct colors: blue, green, yellow, or red. Hence, Andrey's state space $\mathcal S$ may be written as $\mathcal{S} = \{B, G, Y, R\}$. 
+	To illustrate our definition of a Markov chain, we introduce a charismatic chameleon named Andrey. 
+	Suppose that Andrey the chameleon can only assume four distinct colors: blue, green, yellow, or red. Hence, Andrey's state space $\mathcal S$ may be written as $\mathcal{S} = \{B, G, Y, R\}$. 
 	
 	We assume that Andrey has no control over the color to which he changes. Instead, his color changes are a probabilistic process, and each change depends only upon the color that he currently assumes. Andrey's transition matrix $T$ is given by
 $$
@@ -546,15 +547,15 @@ $$
 	%Andrei Markov's first application of his eponymous idea (Markov chains) was to a poem by Poeshkin. Over the next century, others found a wealth of uses for Markov chains. One recent example would be Google, whose idea of a "random surfer" informed their page ranking algorithm [cite the paper!].
 
 		\subsection*{Basic Properties}
-		We say a state $s_j \in \mathcal{S}$ is {\em irreducible} if it is possible to get to any other $s_k \in \mathcal{S}$ from $s_j$. If all $s_j \in \mathcal{S}$ are irreducible, the Markov chain $\theta^{(i)}$ over $\mathcal{S}$ is also said to be irreducible. \\
+		We say a state $s_j \in \mathcal{S}$ is {\em irreducible} if it is possible to (eventually) get to any other $s_k \in \mathcal{S}$, starting from $s_j$. If all $s_j \in \mathcal{S}$ are irreducible, the Markov chain $\theta^{(i)}$ over $\mathcal{S}$ is also said to be irreducible. \\
 		
-		By $Z_i$ we denote the number of steps before a chain hits state $s_i$ for the first time. 
-		We refer to this quantity as the {\em recurrence} or {\em hitting time} for state $s_i$.
-		We denote the number of steps before a chain hits $s_i$ an arbitrary number of times as $Z^{q}_i$, where $q$ is a positive integer. Clearly, $Z^{q}_i$ is always an integer, and $Z_i$ is simply shorthand for $Z^{1}_i$. We also define $Z^{0}_i = 0$. \\
+		By $Z_j$ we denote the number of steps before a chain hits state $s_j$ for the first time. 
+		We refer to this quantity as the {\em recurrence} or {\em hitting time} for state $s_j$.
+		We denote the number of steps before a chain hits $s_j$ an arbitrary number of times as $Z^{q}_j$, where $q$ is a positive integer. Clearly, $Z^{q}_j$ is always an integer, and $Z_j$ is simply shorthand for $Z^{1}_j$. We also define $Z^{0}_j = 0$. \\
 		
-		Since Markov chains are stochastic processes, $Z^{q}_i$ is a random variable. Hence, we may consider its expectation $E[Z^{q}_i]$. If for all $s_i \in \mathcal S$, the expected hitting time is finite ($E[Z^{1}_i] < \infty$), then we say our Markov chain is {\em positive recurrent}. \\
+		Since Markov chains are stochastic processes, $Z^{q}_j$ is a random variable. Hence, we may consider its expectation $E[Z^{q}_j]$. If for all $s_j \in \mathcal S$, the expected hitting time is finite ($E[Z^{1}_j] < \infty$), then we say our Markov chain is {\em positive recurrent}. \\
 		
-		A Markov chain is {\em periodic} if, for at least one state $s_i$, it can only return to $s_i$ after a number of steps equal to a multiple of some positive integer $k > 1$. Markov chains that contain no periodic states are called {\em aperiodic}. We say a Markov chain is $ergodic$ if it is both aperiodic and positive recurrent. \\
+		A state $s_j$ is {\em periodic} if $\theta^(i)$ can only return to $s_j$ after a number of steps equal to a multiple of some positive integer $k > 1$. Markov chains that contain no periodic states are called {\em aperiodic}. We say a Markov chain is $ergodic$ if it is both aperiodic and positive recurrent. \\
 		
 		Lastly, the {\em stationary distribution} $\pi$ of a Markov chain is a PDF such that the transition matrix $T$ of $\theta^{(i)}$ maintains $\pi$. Symbolically, this looks like the following:
 		\begin{center}
@@ -565,7 +566,9 @@ $$
 		The stationary distribution is not guaranteed to exist, but once the run of a Markov chain admits a stationary distribution $\pi$, it stays in $\pi$.
 		
 		\subsection*{Non-trivial Properties}
+		A Markov chain that is irreducible and aperiodic must be positive recurrent. \\
 		
+		For a stationary distribution $\pi$, we find that $\pi(s_j) * E[Z_j] = 1$.
 		
 		\section{The Ergodic Theorem}
 		The Ergodic Theorem for Markov chains is an analog of the Law of Large Numbers for IID data. It ties together the concepts of aperiodicity, positive recurrence, and the stationary distribution. Importantly, it is through a basic corollary to the Ergodic theorem that we are able to justify use of MCMC in order to estimate draws from intractable distributions.
@@ -616,19 +619,19 @@ $$
 		\end{theorem}
 		
 		\begin{proof}
-		We begin our proof by recalling that the proportion of times we hit $s_j$ in the chain is the same regardless of $\theta^0$ as $n \rightarrow \infty$. Hence, without loss of generality, we assume $s_j$ is the initial state of the chain ($\theta^0 = s_j$).
+		We begin our proof by recalling that the proportion of times we hit $s_j$ in our ergodic Markov chain is the same regardless of $\theta^0$ as $n \rightarrow \infty$. Hence, without loss of generality, we assume $s_j$ is the initial state of the chain ($\theta^0 = s_j$).
 		
 		Now, recall from our preliminary results that 
 		\begin{center}
 		 $\displaystyle\sum_{k=1}^{q}U_j^k 
 		 = Z_j^q$,
 		 \end{center}
-		 and 
+		 and for all positive integers $q$, 
 		 \begin{center}
 			 $E[U_{j}^q] = E[Z_j] = m_j$.
 		 \end{center}
-		Hence, we can consider $\frac{1}{n}\sum_{k=1}^{n}U_j^k$ an estimator for $m_j$. 
-		Further, by the Strong Law of Large Numbers, we obtain the following as $n \rightarrow \infty$: 
+		Hence, we treat $\frac{1}{n}\sum_{k=1}^{n}U_j^k$ as an estimator for $m_j$, 
+		and by the Strong Law of Large Numbers, we obtain the following as $n \rightarrow \infty$: 
 		\begin{center}
 		$
 		P\left(\displaystyle\frac{\sum_{k=1}^{n}U_j^k}{n} \rightarrow m_j \right) = 1
@@ -643,14 +646,14 @@ $$
 		\begin{center}
 		$\displaystyle\sum_{k=1}^{V_j(n) + 1}U_j^k \geq n$,
 		\end{center}
-		where our summation may also be written $Z_j^{V_j(n) + 1}$, which is the number of steps until the first hit of $s_j$ after step $\theta^{n-1}$. 
+		which is the number of steps until the first hit of $s_j$ after step $\theta^{n-1}$. 
 		Thus, we may squeeze $n$ and divide the resulting inequality by $V_j(n)$.
 		\begin{center}
 		$$\displaystyle\frac{\displaystyle\sum_{k=1}^{V_j(n)}U_j^k}{V_j(n)} \leq 
 		\frac{n}{V_j(n)} \leq 
 		\frac{\displaystyle\sum_{k=1}^{V_j(n) + 1}U_j^k}{V_j(n)}$$.
 		\end{center}
-		Using the convergence in probability of the $U_j^k$ to $m_j$, our sums become
+		Using the convergence of the $U_j^k$ to $m_j$, our sums become
 		\begin{center}
 		$$\displaystyle\frac{V_j(n) * m_j}{V_j(n)} \leq 
 		\frac{n}{V_j(n)} \leq 
@@ -663,7 +666,7 @@ $$
 		 Hence, as $n \rightarrow \infty$,
 		 \begin{center}
 		 $$
-		 P\left( \displaystyle\frac{n}{V_j(n)} \longrightarrow {m_j} \right) = 1
+		 P\left( \displaystyle\frac{n}{V_j(n)} \longrightarrow {m_j} \right) = 1,
 		 $$
 		 \end{center}
 		 and we have our result.
@@ -674,9 +677,9 @@ $$
 %			$P\left( \displaystyle \frac{1}{n} \sum_{j=0}^{n-1} f(\theta^{j}) 
 %			= \sum_{s_k \in \mathcal S} \pi(s_k) f(s_k) \right) = 1$, as $n \longrightarrow \infty$.
 %		\end{center}
-		Suppose we run an ergodic Markov chain $\theta^{(i)}$ for $n$ steps, where $n$ is large. The consequence of the Ergodic theorem for Markov chains is that $\frac{V_j(n)}{n}$ yields an estimate of $\frac{1}{m_j}$, which is equal to $\pi(s_j)$, since $\pi(s_j) * m_j = 1$.
+		Suppose we run an ergodic Markov chain $\theta^{(i)}$ with stationary distribution $\pi$ for $n$ steps, where $n$ is large. The consequence of the Ergodic theorem for Markov chains is that $\pi$ is the unique stationary distribution of the chain, and $\frac{V_j(n)}{n}$ yields an estimate of $\frac{1}{m_j}$, which is equal to $\pi(s_j)$, since $\pi(s_j) * m_j = 1$.
 	\section{Metropolis-Hastings for MCMC}
-			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws. Thus, to perform GOFMC, we must know the PDF for $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation can be a function integrated over hundreds (if not, more) dimensions. Thus, we seek an alternative way to simulate draws from $\pi$ when we only know how to calculate the marginal of $\pi$. For this, we can use a Markov chain.
+			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws from $\pi$. Thus, to perform GOFMC, we must be able to specify the distribution of $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation can be a function integrated over hundreds of dimensions, if not more. Thus, we seek an alternative way to simulate draws from $\pi$ when we only know how to calculate the marginal of $\pi$. For this, we use a Markov chain.
 			
 		\subsection*{Detailed Balance}
 			To construct a Markov chain with a stationary distribution equal to our posterior $\pi$, we need to ensure that the stationary distribution of our chain exists. 
@@ -711,9 +714,9 @@ $$
 			$
 			\end{center}
 			When the state space $\mathcal S$ is finite, the integral above is a summation.
-			The result is a Markov chain that converges to $\pi$, our posterior distribution.
+			By any means, the result is a Markov chain that converges to $\pi$, our posterior distribution.
 			
-		\subsection*{Sources of Error}
+		\subsection*{Methodological Issues}
 			We face two issues with running Markov chains to approximate the posterior. 
 			First, if we sample from the chain directly, each sample depends upon the previous sample. 
 			Hence, taking all of the values from our simulation would not be an IID sample from the posterior. 
@@ -722,13 +725,12 @@ $$
 			To deal with the latter issue, we can run a {\em burn-in} period for the chain, which gives it time to {\em mix} to the posterior. To resolve the former issue, we sample every $n^{\text{th}}$ state of the chain.
 			
 	\section{Bayesian Model Averaging for Bayesian Networks}
-	Our application of MCMC is to the realm of Bayesian model averaging. 
+	One application of MCMC is to the realm of Bayesian model averaging. 
 	In this scenario, we consider $\mathcal G$, the space of all possible graph structures for a Bayesian network $\mathcal B$.
-		\subsection*{Being Bayesian}
+		\subsection*{Being Bayesian About Structure}
 			Let $G \in \mathcal G$ be a possible structure for $\mathcal B$. 
 			Let $D$ be the set of all observed data used to train the parameters $\Theta$ of $\mathcal B$. 
-			As Bayesians, we are apt to treat $G$ as a random variable, since it is uncertain. 
-			Hence, we write
+			As Bayesians, we treat $G$ as a random variable, and we express its posterior as
 			\begin{center}
 				$P(G | D) = \displaystyle \frac{P(D|G)P(G)}{P(D)}$,
 			\end{center}
@@ -736,7 +738,7 @@ $$
 			\begin{center}
 				$P(D) = \displaystyle \sum_{G \in \mathcal G}P(D | G) P(G)$.
 			\end{center}
-			For the above summation, recall that $\mathcal G$ has dimension that grows super-exponentially with respect to the order of $V$, the number of variables in the model. 
+			Regarding the above summation, recall that $\mathcal G$ has dimension that grows super-exponentially with respect to the order of $V$, the number of variables in the model. 
 			Thus, computation of the normalizing constant of the posterior is undesirable. 
 			However, the likelihood function for the data $D$ given a network structure $G$ has a manageable closed form expression when we the data are composed of categorical random variables [Baesans et al, 2002]. 
 			Hence, we can use Markov Chain Monte Carlo to sample from the posterior $P(G | D)$.
@@ -744,10 +746,9 @@ $$
 		\subsection*{The Proposal}
 			For the sake of illustration, we suppose the current state of the chain is $G=(V,E)$. 
 			The proposal function $q$ for our Metropolis-Hastings algorithm randomly chooses an ordered pair of vertices $(V_i, V_j)$ for $V_i, V_j \in V, \ i \neq j$. 
-			Then, if $(V_i, V_j) \in E$, $q$ proposes $G^{'} = (V,E - \{(V_i,V_j)\})$. 
-			That is, $q$ proposes a removal of the arc from $E$. 
+			Then, if $(V_i, V_j) \in E$, $q$ proposes the structure $G^{'} = (V,E - \{(V_i,V_j)\})$, which is the removal of the given arc from $E$. 
 			Otherwise, $q$ proposes addition of the arc $(V_i, V_j)$ to $E$, so long as such an addition preserves the acyclic property of the graph structure. 
-			We denote the set of all directed acyclic graphs with one fewer or one greater arc than $G$ as $\mathcal{N}(G)$. 
+			We denote the count of all directed acyclic graphs with one fewer or one greater arc than $G$ as $\mathcal{N}(G)$. 
 			Hence, the probability that $q$ proposes a graph $G^{'} \in \mathcal G$ (given the current graph is $G$) is $\frac{1}{\mathcal{N}(G)}$.
 			
 		\subsection*{The Acceptance}
