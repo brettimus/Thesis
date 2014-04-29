@@ -80,6 +80,7 @@
     minimum width=0.5em, minimum height=0.5em}% arbre rouge noir, nil
 }
 
+\setcitestyle[square]
 %%
 %% End Preamble
 %%
@@ -200,41 +201,10 @@ The above is conventionally presented alongside the pithy, assonant phrase, ``Th
 
 \section{Classification and Learning}
 
-A classification model is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}.
+A classification model is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}. When we speak of {\em learning} the parameters of a classification model, we assume that there is a set of pre-classified data from which we can make inferences about future data. 
 
-Put tersely, classification requires evaluating probability estimates in a decision theoretic framework. That is to say, we estimate the relative probabilities of some datum belonging to each possible class of the unknown categorical variable, and we have a corresponding decision rule that dictates the class to which said datum should be assigned. This all may seem rather abstract, though. So, let us get concrete.
+We shall define a Bayesian classifier in the proceeding chapter, but we will not address the specifics of learning model parameters. For some insightful examples on how Bayesian classifiers learn parameters, the reader is encouraged to read David Heckerman's ``A Tutorial on Learning With Bayesian Networks." It is available online, and a URL is provided under the references [Heckerman, 1996]. 
 
-	\subsection*{Example: Spam Email Detection}
-	Spam detection is an oft-cited example of classification. It is suitable for our discussion, since it is an area of classification that has benefited greatly from application of Bayes' rule. In a 1998 study, researchers at Microsoft found that filtering emails for spam based off of hard-coded rules (e.g., rules like ``classify all emails containing more than ten hyperlinks as spam") was significantly outperformed by even the most reductive of Bayesian classifiers, the aptly-named {\em Na\"{i}ve Bayes} \cite{msft}. Here, we use their paper to contextualize what is meant by a classification model. We will continue with this example in the next chapter in order to help characterize Bayesian classifiers. \\ \\
-	
-	Suppose we have a set of $1,000$ emails, and for each email, we record four pieces of information according to the table below:
-	
-	\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
-\caption[Example Data for Classifications]{Information on a set of 1,000 emails} 
-% The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
-\begin{center}
-% makes the table centered
-\begin{tabular}{l | l l} 
- \toprule
-  \textbf{Variable} & \textbf{Description} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
-  \midrule % another horizontal line
-  Hyperlinks  & A count of the number of hyperlinks in the body of the email \\ % another row
-  Domain & The domain of the email's sender (e.g., @reed.edu) \\
-  Timestamp & The time at which the email was sent \\
-  Spam & Whether or not the email was spam \\
-\bottomrule % yet another horizontal line
-\end{tabular}
-\end{center}
-\label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
-\end{table}
-
-Note that these data require a human to first classify each email as either spam or not spam. Once we have a set pre-classified data, our model can make predictions about whether or not future, incoming emails are spam. It makes such predictions by comparing the probability that an email is spam to the probability it is not spam, given the data. 
-
-If our data were similar to those used by Sahami et al, we may conclude that, say, a message from @reed.edu, sent at noon and containing zero hyperlinks, is unlikely to be spam. On the other hand, an email from @ALL\_UR\_InBoXX-R-beLoNg-2-us.com, which was sent at midnight and contains thirty hyperlinks, would seem a little suspicious. Hopefully, our model would classify it as spam.
-	
-	\subsection*{A Note on Learning}
-	Our method necessitates data from which we can {\em train} our classification model. That is, in order to use a Bayesian classifier, we must first have a set of pre-classified data from which we can estimate our models' parameters. Thus, in the preceding example, we began with a set of $1,000$ emails that had already been classified as either spam or not-spam. From these initial data, we could make a judgement about new, unclassified data. Such an approach is can be described as {\em learning} the parameters of the model.
-	
     \chapter{The Bayesian Network}
 
     	Bayesian Networks are a useful means of visualizing and reasoning about classification models. Put succinctly, a Bayesian Network is a directed acyclic graph (DAG) where each node represents a random variable in the model, and each edge represents a conditional dependency between two random variables.
@@ -329,7 +299,7 @@ If our data were similar to those used by Sahami et al, we may conclude that, sa
 	0 & 1 & 0
 	\end{pmatrix} \]
 	which is consistent with our visualization of the graph. 
-	(For example, we identify two distinct paths from $V_0$ to $V_1$, and $y_{1,2} = 2$.)
+	(For example, we identify two distinct paths from $V_0$ to $V_1$, so $y_{1,2} = 2$.)
 	
 	\section{Bayesian Networks}	
 	Let $\mathcal{B} \equiv \langle G, \Theta \rangle$, where $G = (V,E)$ is a directed acyclic graph, $V = \{V_0, V_1, \ldots, V_n \}$ is a set of $n + 1$ random variables, and $\Theta$ is a set of parameter estimates generated from some pre-classified data. Each parameter of $\Theta$ corresponds an arc in the graph structure $G$. We say that $\mathcal{B}$ is a Bayesian Network.
@@ -380,7 +350,8 @@ If our data were similar to those used by Sahami et al, we may conclude that, sa
 	The Na\"{i}ve Bayes classifier (NBC) is highly reductive; 
 	yet, it is a surprisingly effective means of classifying data. 
 	The NBC assumes conditional independence amongst feature variables of the model in order to yield a more wieldy computation of the posterior.
-	To demonstrate, recall that the posterior distribution of the class variable $C \equiv X_0$ has the following property:
+	
+	Recall that the posterior distribution of the class variable $C \equiv X_0$ has the following property:
 	\begin{center}
 		$P(X_0 | X_1, \ldots , X_n) \propto
 		P(X_0,\ldots,X_n) = 
@@ -394,7 +365,29 @@ If our data were similar to those used by Sahami et al, we may conclude that, sa
 	\end{center}
 	Note that our independence assumption makes the NBC's graph a restricted Bayesian network with $k = 0$.
 	\subsection*{Example: Spam Detection}
-	Let us continue the classification example from section 0.4. Recall that we are given a set of 1,000 emails, pre-classified as either spam or not-spam. Further, for each email, we have information on the sender's domain, the number of hyperlinks in the body of the email, and the time at which the email was sent. 
+	Spam detection is an oft-cited example of a classification problem. It is suitable for our discussion, since it is an area of classification that has benefited greatly from application of Bayes' rule. For example, in a 1998 study, researchers at Microsoft found that existing methods for spam-filtering were significantly out-performed by a simple Na\"{i}ve Bayes classifier [Sahani et al, 1998]. We shall use their results to contextualize 
+	
+	Suppose we are given a set of 1,000 emails, and for each email, we record four pieces of information according to the table below:
+	
+		\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
+\caption[Example Data for Classifications]{Information on a set of 1,000 emails} 
+% The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
+\begin{center}
+% makes the table centered
+\begin{tabular}{l | l l} 
+ \toprule
+  \textbf{Variable} & \textbf{Description} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+  \midrule % another horizontal line
+  Hyperlinks  & A count of the number of hyperlinks in the body of the email \\ % another row
+  Domain & The domain of the email's sender (e.g., @reed.edu) \\
+  Timestamp & The time at which the email was sent \\
+  Spam & Whether or not the email was spam \\
+\bottomrule % yet another horizontal line
+\end{tabular}
+\end{center}
+\label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
+\end{table}
+	Note that we assume a human has pre-classified each email as either spam or not-spam. 
 	
 	It is generally easier to learn the parameters of a Bayesian network when the feature variables are categorical. Thus, we might use the domain information to create a variable that indicates whether or not the sender's domain ended in ``.edu." For the count of hyperlinks, we might define categories of Low (0 to 4 hyperlinks), Medium (5 to 10 hyperlinks), and High (more than 10 hyperlinks). Using the timestamp of the emails, we might create an indicator for whether or not an email was sent between midnight and noon. In the end, we could assign our variables to nodes in a graph as follows:
 
@@ -404,9 +397,7 @@ If our data were similar to those used by Sahami et al, we may conclude that, sa
 \begin{center} 
 % makes the table centered
 \begin{tabular}{c | l l} 
-% the tabular environment is used to make the table itself. The {c c c c} specify that the table will have four columns and they will all be center-aligned. You can make the cell contents left aligned by replacing the Cs with Ls or right aligned by using Rs instead. Add more letters for more columns, and pipes (the vertical line above the backslash) for vertical lines. Another useful type of column is the p{width} column, which forces text to wrap within whatever width you specify e.g. p{1in}. Text will wrap badly in narrow columns though, so beware.
-\toprule % a horizontal line, slightly thicker than \hline, depends on the booktabs package
-  Node &  Variable & Description  \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+  Node &  Variable & Description  \\ 
   \midrule % another horizontal line
  $V_0$ & Spam & 1 if Spam; 0 otherwise \\ % another row
  $V_1$ & edu & 1 if from .edu; 0 otherwise \\
@@ -438,15 +429,15 @@ Our Na\"{i}ve Bayes classifier has a graph with the structure depicted in Figure
 	\end{figure}
 
 	\section{Model Structure}
-	We mentioned in the previous section that the Na\"{i}ve Bayes classifier is a surprisingly effective model, in spite of the simplifying independence assumption that it makes about the data. Its performance is surprising because in theory, ignoring the dependencies between feature variables should give us biased probability estimates for $P(C | \vec{X})$. However, even if our probability estimates are incorrect, we can still predict classifications correctly.
+	We mentioned in the previous section that the Na\"{i}ve Bayes classifier is a surprisingly effective model, in spite of its simplifying assumption about the data. The performance of the NBC is surprising because in practice, feature variables are rarely independent, and ignoring the dependencies between them should give us biased probability estimates for $P(C | \vec{X})$. However, even if our probability estimates are incorrect, we can still predict classifications correctly [Domingos and Pazzani, 1996].
 	
-	For example, suppose that $C$ has two possible classes, $c_i$ and $c_j$, such that for an input $\vec{x}$, our NBC returns the biased estimates $P(c_i | \vec{x}) = .9$ and $P(c_j | \vec{x}) = .1$. Obviously, we would assign $\vec{x}$ to class $c_j$. If the unbiased estimates, obtained from a classifier that accounted for the dependence structure of the feature variables, were $P(c_i | \vec{x}) = .6$ and $P(c_j | \vec{x})$, we would come to the same conclusion as the NBC.  [[BEYOND INDEPENDENCE]]
+	For example, suppose we that $C$ has two possible classes, $c_i$ and $c_j$, such that for an input $\vec{x}$, our NBC returns the biased estimates $P(c_i | \vec{x}) = .9$ and $P(c_j | \vec{x}) = .1$. Obviously, we would assign $\vec{x}$ to class $c_j$. If the unbiased estimates, obtained from a classifier that accounted for the true dependence structure of the feature variables, were $P(c_i | \vec{x}) = .6$ and $P(c_j | \vec{x})$, we would come to the same conclusion as the NBC.
 	
 	
-	That being said, the NBC is not all-powerful. It works better than we would expect, but it is still prone to misclassification when the feature variables of our model are not all independent. Hence, to improve upon the NBC, we need a means of finding the structure for our Bayesian classifier's network. 
+	That being said, the NBC is not all-powerful. It works better than we would expect, but it is still prone to misclassification when the feature variables of our model are not all independent. Hence, to improve upon the NBC, we need a means of finding the structure of our Bayesian classifier's network. 
 	Unfortunately, though, the size of the space of all possible network structures is {\em super-exponential} on the number of nodes in a network's graph. 
-	Specifically, if $n$ is the number of nodes in a graph, the structure space increases at $2^{O(n^2\log{n})}$ [Koeller, 2001]. 
-	Thus, when we have a large number of variables in our model, restricting the number of conditional dependencies in our model is sometimes desirable, as it reduces the size of the structure space. 
+	Specifically, if $n$ is the number of nodes in a graph, the structure space increases at $2^{O(n^2\log{n})}$ [Friedman and Koeller, 2001]. 
+	When we have a large number of variables in our model, this immense size of the structure space is what motivates using restricted Bayesian networks. That is, doing so reduces the size of the structure space. 
 	Most importantly, though, we may choose between two modes of reasoning about model structure. 
 
 	\subsection*{Model Selection}	
@@ -514,7 +505,7 @@ Our Na\"{i}ve Bayes classifier has a graph with the structure depicted in Figure
 			By application of the Central Limit Theorem, we know that as $n \rightarrow \infty$, the above converges to a normal distribution with a mean $\mu = 0$ and variance inversely proportional to $n$.
 			Hence, with large enough $n$, we can produce fairly accurate estimates from our randomly generated data, and we can have an idea of how erroneous our estimates are. 
 	\section{Markov Chains}
-	Andrey Markov used his eponymous chain only once in practice, to analyze the occurrence of vowels in a Pushkin poem \cite{hist}. According to legend, Enrico Fermi ran Markov chains in his head to combat insomnia, but we normal humans tend to reserve such calculations for computers. Thankfully, though, the intuition behind Markov chains is fairly easy to grasp.
+	Andrey Markov used his eponymous chain only once in practice, to analyze the occurrence of vowels in a Pushkin poem [Gamerman and Lopes, 2006]. According to legend, Enrico Fermi ran Markov chains in his head to combat insomnia, but we normal humans tend to reserve such calculations for computers. Thankfully, though, the intuition behind Markov chains is fairly easy to grasp.
 	 
 	 			\subsection*{Definition}
 			Let $s_i$ be a state from a set of possible states (the {\em state space}) $\mathcal S$, and let $I$ be an index set. What we call a {\em Markov chain} $\theta^{(i)}$ is a collection of states from $\mathcal S$ indexed by $i \in I$. Markov chains can be thought of as a sequence of probabilistic transitions from state to state, where the probability of transitioning to the next state in the chain depends solely on the current state. 
@@ -563,22 +554,21 @@ $$
 		
 		A Markov chain is {\em periodic} if, for at least one state $s_i$, it can only return to $s_i$ after a number of steps equal to a multiple of some positive integer $k > 1$. Markov chains that contain no periodic states are called {\em aperiodic}. We say a Markov chain is $ergodic$ if it is both aperiodic and positive recurrent. \\
 		
-		Lastly, the {\em stationary distribution} $\pi$ of a Markov chain is a PDF such that the transition matrix $T$ defined by $\theta^{(i)}$ maintains $\pi$. Symbolically, this looks like the following:
+		Lastly, the {\em stationary distribution} $\pi$ of a Markov chain is a PDF such that the transition matrix $T$ of $\theta^{(i)}$ maintains $\pi$. Symbolically, this looks like the following:
 		\begin{center}
 			$\displaystyle\sum_{s_j \in \mathcal S} \pi(s_j) * p(s_j,s_k) 
 			= \displaystyle\sum_{s_j \in \mathcal S} \pi(s_j) * P(s_k | s_j)
 			= \pi(s_k)$.
-		\end{center}	
+		\end{center}
+		That is, once a 
 		\section{The Ergodic Theorem}
 		The Ergodic Theorem for Markov chains is an analog of the Law of Large Numbers for IID data. It ties together the concepts of aperiodicity, positive recurrence, and the stationary distribution. Importantly, it is through a basic corollary to the Ergodic theorem that we are able to justify use of MCMC in order to estimate draws from intractable distributions.
 		\subsection*{Preliminary Results}
-		Proof of the Ergodic Theorem for Markov chains requires a few preliminary results. Rigorous treatment of the following results can be found in [[James Norris Markov Chains U of Cambridge press 1998]]. Essentially, these properties all derive from Markov chains' goldfish-like memories.
+		Proof of the Ergodic Theorem for Markov chains requires some preliminary results. Rigorous treatment of the following two results can be found in James Norris' {\em Markov Chains}. 
 		
-		First, the proportion of times we hit $s_j$ in an ergodic Markov chain $\theta^{(i)}$ is the same regardless of the initial state $\theta^0$ of the chain as $n$ goes to $\infty$. 
+		First, the proportion of times we hit $s_j$ in an ergodic Markov chain $\theta^{(i)}$ is the same regardless of the initial state $\theta^0$ of the chain as $n$ goes to $\infty$. If we use the fact that ergodic Markov chains admit a unique stationary distribution, this result is almost immediate. 
 		
-		Second, we note that for finite $q$, the $q^{\textrm{th}}$ hitting time of state $s_j$, denoted $Z^q_j$, is independent of all $\theta^{i}$ such that $i < {Z^q_j}$. 
-		
-		Third, we define $U_{j}^q = Z_{j}^{q} - Z_{j}^{q-1}$. 
+		Second, we define $U_{j}^q = Z_{j}^{q} - Z_{j}^{q-1}$. 
 		Intuitively, this is the number of steps from the  $(q-1)^{\textrm{th}}$ hit of $s_j$ to the $q^{th}$ hit of $s_j$ in a Markov chain. 
 		Clearly, then,
 		\begin{center}
@@ -586,9 +576,13 @@ $$
 		 = (Z_j^1 - Z_j^0) + \cdots + (Z_j^{r-1} - Z_j^{r-2}) + (Z_j^r - Z_j^{r-1}) 
 		 = Z_j^r$. 
 		 \end{center}
-		 We will need to use the fact that the quantities $U_j^1, \ldots, U_j^r$ are IID random variables. 
-		 A heuristic argument for this result involves observing that any $U_j^k$ considers the steps from $\theta^{Z_j^{k-1}}$ to $\theta^{Z_j^k}$. By our definition of Markov chains, the states 
-		
+		 We consider the expectation of these quantities. 
+		 We see that for all $q > 0$,
+		\begin{center}
+		$E[U_{j}^q] = E[Z_j^{q} - Z_j^{q-1}] = q*E[Z_j] - (q-1) *E[Z_j] = E[Z_j]$, 
+		\end{center}
+		which follows from the linearity of expectation.
+		 
 		\subsection*{Statement and Proof}
 		\begin{theorem}
 		Let $\theta^{(i)}$ be an ergodic Markov Chain. 
@@ -622,14 +616,11 @@ $$
 		 $\displaystyle\sum_{k=1}^{r}U_j^k 
 		 = Z_j^r$,
 		 \end{center}
-		 and the quantities $U_j^1, \ldots, U_j^r$ are IID random variables.
-		 Hence, we can find their expectation. 
-		 We see that for all $r > 0$,
-		\begin{center}
-		$E[U_{j}^r] = E[Z_j^{r} - Z_j^{r-1}] = r *E[Z_j] - (r-1) *E[Z_j] = E[Z_j] = m_j$, 
-		\end{center}
-		which follows from the linearity of expectation.
-		Hence, by the Strong Law of Large Numbers [[APPENDIX?]], we get: 
+		 and 
+		 \begin{center}
+			 $E[U_{j}^q] = E[Z_j] = m_j$.
+		 \end{center}
+		Hence, by the Strong Law of Large Numbers, we get: 
 		\begin{center}
 		$
 		P\left(\displaystyle\frac{\sum_{k=1}^{n}U_j^k}{n} \rightarrow m_j \right) = 1
@@ -670,12 +661,12 @@ $$
 		 and we have our result.
 		 \end{proof}
 		\subsection*{Corollary}
-		Given a bounded function $f: \mathcal{S} \rightarrow B$,
-		\begin{center}
-			$P\left( \displaystyle \frac{1}{n} \sum_{j=0}^{n-1} f(\theta^{j}) 
-			= \sum_{s_k \in \mathcal S} \pi(s_k) f(s_k) \right) = 1$, as $n \longrightarrow \infty$.
-		\end{center}
-		This corollary justifies the use of Monte Carlo methods that estimate expectation of a function over simulated draws from the stationary distribution of our Markov chain.
+%		Given a bounded function $f: \mathcal{S} \rightarrow B$,
+%		\begin{center}
+%			$P\left( \displaystyle \frac{1}{n} \sum_{j=0}^{n-1} f(\theta^{j}) 
+%			= \sum_{s_k \in \mathcal S} \pi(s_k) f(s_k) \right) = 1$, as $n \longrightarrow \infty$.
+%		\end{center}
+		Suppose we run a Markov chain $\theta^(i)$ for $n$ steps, where $n$ is large. The consequence of the Ergodic theorem for Markov chains is that $V_j(n) / n$ yields an estimate of $P(s_j) = \pi(s_j)$, the probability of hitting state $s_j$ in the stationary distribution $\pi$ of the chain.  
 	\section{MCMC}
 			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws. Thus, to perform GOFMC, we must know the PDF for $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation tends towards intractability. Thus, we seek an alternative way to simulate draws from $\pi$ when we only know $\pi$ up to a constant. For this, we can use a Markov chain.
 		\subsection*{Metropolis-Hastings}
@@ -685,7 +676,7 @@ $$
 			\begin{center}
 			$ \pi(s_j) p(s_j,s_k) = \pi(s_k) p(s_k,s_j) $
 			\end{center}
-			This condition is not necessary for the convergence of our chain to the posterior, but it suffices \cite{mcmc}.
+			This condition is not necessary for the convergence of our chain to the posterior, but it suffices [Gamerman and Lopes, 2006].
 			
 			Next, we must consider the transition function $p$, which must guarantee that $\pi$ is the unique stationary distribution of our Markov chain. 
 			To that end, we split $p$ into a {\em proposal function} ($q: \mathcal S \rightarrow \mathcal S$), which randomly proposes a new state in $\mathcal S$, and an {\em acceptance rule}, which returns the probability that we accept the proposed transition.
@@ -695,7 +686,7 @@ $$
 			$
 			\end{center}
 			We may assume the proposal function is a random walk with symmetric error.
-			Again, this is not wholly necessary, but it suffices for our purposes \cite{mcmc}.
+			Again, this is not wholly necessary, but it suffices for our purposes [Gamerman and Lopes, 2006].
 			
 			Construction of the acceptance rule is slightly more involved. 
 			Essentially, we define a rule that returns a probability of transitioning to the proposed state.
@@ -734,15 +725,21 @@ $$
 \newpage
 \begin{thebibliography}{1}
 
-\bibitem{msft}{Shami et al 1998} M. Sahami, S. Dumais, D. Heckerman, and E. Horvitz. A Bayesian approach to filtering junk email., AAAI Workshop on Learning for Text Categorization, July 1998, Madison, Wisconsin. AAAI Technical Report WS-98-05
+\bibitem{baes} B. Baesens, M. Egmont-Petersen, R. Castelo, and J. Vanthienen. Learning Bayesian network classifiers for credit scoring using Markov Chain Monte Carlo search. {\em Proceedings of the 16th International Conference on Pattern Recognition}, 2002. doi: 10.1109/ICPR.2002.1047792
 
-\bibitem{mcmc} D. Gamerman and H. F. Lopes. \em{Markov Chain Monte Carlo}. Boca Raton, FL: Chapman \& Hall/CRC, 2006.
-
-\bibitem{hist} S.B. McGrayne. \em{The theory that would not die: How Bayes' rule cracked the enigma code, hunted down Russian submarines, and emerged triumphant from two centuries of controversy}. New Haven, CT: Yale University Press, 2011.
-
-\bibitem{liu} S. Liu, M. Zhu, and Y. Yang. A Bayesian Classifier Learning Algorithm Based on Optimization Model. \em{Mathematical Problems in Engineering}, {2013}. doi: 10.1155/2013/975935. % wtf is DOI?
+\bibitem{domi} P. Domingos and M. Pazzani. Beyond Independence: Conditions for the Optimality of the Simple Bayesian Classifier. {\em Proceedings of the International Conference on Machine Learning}, 1996. URL https://www.ics.uci.edu/~pazzani/Publications/mlc96-pedro.pdf
 
 \bibitem{kiel} N. Friedman and D. Koller. Being Bayesian About Network Structure. Netherlands: Kluwer Academic Publishers, 2000. URL http://robotics.stanford.edu/~koller/Papers/Friedman+Koller:MLJ03.pdf
+
+\bibitem{mcmc} D. Gamerman and H. F. Lopes. {\em Markov Chain Monte Carlo}. Boca Raton, FL: Chapman \& Hall/CRC, 2006.
+
+\bibitem{heck} D. Heckerman. A Tutorial on Learning With Bayesian Networks. Microsoft Research, 1995. URL https://research.microsoft.com/pubs/69588/tr-95-06.pdf
+
+\bibitem{liu} S. Liu, M. Zhu, and Y. Yang. A Bayesian Classifier Learning Algorithm Based on Optimization Model. {\em Mathematical Problems in Engineering}, 2013. doi: 10.1155/2013/975935 % wtf is DOI?
+
+\bibitem{hist} S.B. McGrayne. {\em The theory that would not die: How Bayes' rule cracked the enigma code, hunted down Russian submarines, and emerged triumphant from two centuries of controversy}. New Haven, CT: Yale University Press, 2011.
+
+\bibitem{msft} M. Sahami, S. Dumais, D. Heckerman, and E. Horvitz. A Bayesian approach to filtering junk email., AAAI Workshop on Learning for Text Categorization, July 1998, Madison, Wisconsin. AAAI Technical Report WS-98-05.
 
 \end{thebibliography}
 % if you're using bibtex, the next line forces every entry in the bibtex file to be included

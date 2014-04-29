@@ -1,0 +1,32 @@
+
+	\subsection*{Example: Spam Email Detection}
+	Spam detection is an oft-cited example of classification. It is suitable for our discussion, since it is an area of classification that has benefited greatly from application of Bayes' rule. In a 1998 study, researchers at Microsoft found that filtering emails for spam based off of hard-coded rules (e.g., rules like ``classify all emails containing more than ten hyperlinks as spam") was significantly outperformed by even the most reductive of Bayesian classifiers, the aptly-named {\em Na\"{i}ve Bayes} \cite{msft}. Here, we use their paper to contextualize what is meant by a classification model. We will continue with this example in the next chapter in order to help characterize Bayesian classifiers. \\ \\
+	
+	Suppose we have a set of $1,000$ emails, and for each email, we record four pieces of information according to the table below:
+	
+	\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
+\caption[Example Data for Classifications]{Information on a set of 1,000 emails} 
+% The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
+\begin{center}
+% makes the table centered
+\begin{tabular}{l | l l} 
+ \toprule
+  \textbf{Variable} & \textbf{Description} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+  \midrule % another horizontal line
+  Hyperlinks  & A count of the number of hyperlinks in the body of the email \\ % another row
+  Domain & The domain of the email's sender (e.g., @reed.edu) \\
+  Timestamp & The time at which the email was sent \\
+  Spam & Whether or not the email was spam \\
+\bottomrule % yet another horizontal line
+\end{tabular}
+\end{center}
+\label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
+\end{table}
+
+Note that these data require a human to first classify each email as either spam or not spam. Once we have a set pre-classified data, our model can make predictions about whether or not future, incoming emails are spam. It makes such predictions by comparing the probability that an email is spam to the probability it is not spam, given the data. 
+
+If our data were similar to those used by Sahami et al, we may conclude that, say, a message from @reed.edu, sent at noon and containing zero hyperlinks, is unlikely to be spam. On the other hand, an email from @ALL\_UR\_InBoXX-R-beLoNg-2-us.com, which was sent at midnight and contains thirty hyperlinks, would seem a little suspicious. Hopefully, our model would classify it as spam.
+	
+	\subsection*{A Note on Learning}
+	Our method necessitates data from which we can {\em train} our classification model. That is, in order to use a Bayesian classifier, we must first have a set of pre-classified data from which we can estimate our models' parameters. Thus, in the preceding example, we began with a set of $1,000$ emails that had already been classified as either spam or not-spam. From these initial data, we could make a judgement about new, unclassified data. Such an approach is can be described as {\em learning} the parameters of the model.
+	

@@ -3,20 +3,20 @@
 \contentsline {section}{\numberline {0.2}Bayes'd and Confused}{2}
 \contentsline {section}{\numberline {0.3}The First Rule of Bayes' Club}{3}
 \contentsline {section}{\numberline {0.4}Classification and Learning}{4}
-\contentsline {chapter}{Chapter 1: The Bayesian Network}{7}
-\contentsline {section}{\numberline {1.1}Classification at a Glance}{7}
-\contentsline {section}{\numberline {1.2}Directed Graphs}{8}
-\contentsline {section}{\numberline {1.3}Bayesian Networks}{10}
-\contentsline {section}{\numberline {1.4}Bayesian Classifiers}{10}
-\contentsline {section}{\numberline {1.5}Model Structure}{12}
-\contentsline {chapter}{Chapter 2: Monte Carlo with Markov Chains}{15}
-\contentsline {section}{\numberline {2.1}GOFMC}{15}
-\contentsline {section}{\numberline {2.2}Markov Chains}{17}
-\contentsline {section}{\numberline {2.3}The Ergodic Theorem}{19}
-\contentsline {section}{\numberline {2.4}MCMC}{21}
-\contentsline {chapter}{Chapter 3: Bayesian Model Averaging for Bayesian Networks}{23}
-\contentsline {section}{\numberline {3.1}Bayes' Theorem for Models}{23}
-\contentsline {section}{\numberline {3.2}MCMC for BMA}{23}
-\contentsline {chapter}{Appendix A: Appendix A}{25}
-\contentsline {section}{\numberline {A.1}The Chain Rule for Probability}{25}
-\contentsline {chapter}{References}{27}
+\contentsline {chapter}{Chapter 1: The Bayesian Network}{5}
+\contentsline {section}{\numberline {1.1}Classification at a Glance}{5}
+\contentsline {section}{\numberline {1.2}Directed Graphs}{6}
+\contentsline {section}{\numberline {1.3}Bayesian Networks}{8}
+\contentsline {section}{\numberline {1.4}Bayesian Classifiers}{8}
+\contentsline {section}{\numberline {1.5}Model Structure}{11}
+\contentsline {chapter}{Chapter 2: Monte Carlo with Markov Chains}{13}
+\contentsline {section}{\numberline {2.1}GOFMC}{13}
+\contentsline {section}{\numberline {2.2}Markov Chains}{15}
+\contentsline {section}{\numberline {2.3}The Ergodic Theorem}{17}
+\contentsline {section}{\numberline {2.4}MCMC}{19}
+\contentsline {chapter}{Chapter 3: Bayesian Model Averaging for Bayesian Networks}{21}
+\contentsline {section}{\numberline {3.1}Bayes' Theorem for Models}{21}
+\contentsline {section}{\numberline {3.2}MCMC for BMA}{21}
+\contentsline {chapter}{Appendix A: Appendix A}{23}
+\contentsline {section}{\numberline {A.1}The Chain Rule for Probability}{23}
+\contentsline {chapter}{References}{25}
