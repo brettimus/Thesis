@@ -201,11 +201,11 @@ The above is conventionally presented alongside the pithy, assonant phrase, ``Th
 By a {\em categorical variable}, we mean a random variable whose domain is finite and discrete.
 A {\em classification model} is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}. When we speak of {\em learning} the parameters of a classification model, we assume that there is a set of pre-classified data from which we can estimate the model parameters and thereby make inferences about future unclassified data. 
 
-We shall define a Bayesian classifier in the following chapter, but we will not address the specifics of learning model parameters. For some insightful examples on how Bayesian classifiers learn parameters, the reader is encouraged to read David Heckerman's ``A Tutorial on Learning With Bayesian Networks," which is available online [Heckerman, 1996]. A URL is provided under the references. 
+We shall define a Bayesian classifier in the following chapter, but we will not address the specifics of learning model parameters. For some insightful examples on how Bayesian classifiers learn parameters, the reader is encouraged to glance over David Heckerman's ``A Tutorial on Learning With Bayesian Networks," which is available online [Heckerman, 1996]. A URL is provided under the references. 
 
     \chapter{The Bayesian Network}
 
-    	Bayesian Networks are a useful means of visualizing and reasoning about classification models. Put succinctly, a Bayesian Network is a directed acyclic graph (DAG) where each node represents a random variable in the model, and each edge represents a conditional dependency between two random variables.
+    	Bayesian networks are a useful means of visualizing and reasoning about classification models. Put succinctly, a Bayesian network is a directed acyclic graph (DAG) where each node represents a random variable in the model, and each edge represents a conditional dependency between two random variables.
 
 	\section{Classification at a Glance}
 
@@ -409,7 +409,7 @@ We shall define a Bayesian classifier in the following chapter, but we will not 
 \label{inheritance} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
 \end{table}
 	
-Because of its independence assumption, our Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the structure depicted in Figure 1.3. To complete the classifier, we would learn our model parameters from the training set. The parameters in our example would be $P(V_0 | V_1)$, $P(V_0 | V_2)$, and $P(V_0 | V_3)$, and from the estimates of these parameters (in conjunction with the prior probabilities we would have to assign to them), it is possible to evaluate whether future incoming emails are spam.
+Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the structure depicted in Figure 1.3. To complete the classifier, we would learn our model parameters from the training set. The parameters in our example would be $P(V_0 | V_1)$, $P(V_0 | V_2)$, and $P(V_0 | V_3)$, and from the estimates of these parameters (in conjunction with the prior probabilities we would have to assign to them), it is possible to evaluate whether future incoming emails are spam.
 	
 	\begin{figure}[htpb]
 	\begin{center}
@@ -493,7 +493,7 @@ Because of its independence assumption, our Na\"{i}ve Bayes classifier $\mathcal
 			\begin{figure}[h]
 		       	\centering
 		    	\includegraphics[clip=true, viewport=.3in 1in 6in 6in,scale=0.5]{mn_box_pts}
-		     	\caption{Estimating the Area of an Oddly Shaped State}
+		     	\caption{Estimating the area of an oddly shaped state}
 	 		\label{subd}
 			\end{figure}	
 
@@ -565,7 +565,7 @@ $$
 		
 		A state $s_j$ is {\em periodic} if $\theta^{(i)}$ can only return to $s_j$ after a number of steps equal to a multiple of some positive integer $k > 1$. Markov chains that contain no periodic states are called {\em aperiodic}. We say a Markov chain is $ergodic$ if it is both aperiodic and positive recurrent. \\
 		
-		Lastly, the {\em stationary distribution} $\pi$ of a Markov chain is a PDF such that the transition matrix $T$ of $\theta^{(i)}$ maintains $\pi$. Symbolically, this looks like the following:
+		Lastly, the {\em stationary distribution} $\pi$ of a Markov chain is a PDF such that the transition function $p$ of $\theta^{(i)}$ maintains $\pi$. Symbolically, this looks like the following:
 		\begin{center}
 			$\displaystyle\sum_{s_j \in \mathcal S} \pi(s_j) * p(s_j,s_k) 
 			= \displaystyle\sum_{s_j \in \mathcal S} \pi(s_j) * P(s_k | s_j)
@@ -578,9 +578,9 @@ $$
 %		For a stationary distribution $\pi$, we find that $\pi(s_j) * E[Z_j] = 1$. 
 		
 		\section{The Ergodic Theorem}
-		The Ergodic Theorem for Markov chains is an analog of the Law of Large Numbers for IID data. It ties together the concepts of aperiodicity, positive recurrence, and the stationary distribution. Importantly, it is through a basic corollary to the Ergodic theorem that we are able to justify use of MCMC in order to estimate draws from intractable distributions.
+		The Ergodic Theorem for Markov chains is an analog of the Law of Large Numbers for IID data. Importantly, it is through a basic corollary to the Ergodic theorem that we are able to justify use of MCMC in order to estimate draws from intractable distributions.
 		\subsection*{Preliminary Results}
-		Proof of the Ergodic Theorem for Markov chains requires some preliminary results, which we provide here sans complete proofs.
+		Proof of the Ergodic Theorem for Markov chains requires some preliminary results, which we provide here sans proof.
 		
 		First, the proportion of times we hit $s_j$ in an ergodic Markov chain $\theta^{(i)}$ is the same regardless of the initial state $\theta^0$ of the chain as $n$ goes to $\infty$.
 		
@@ -689,7 +689,7 @@ $$
 	\section{Metropolis-Hastings}
 			Metropolis-Hastings is a class of algorithms for Markov chain Monte Carlo simulation that are particularly useful for Bayesian inference. 
 			The goal of a Metropolis-Hastings algorithm is to construct a transition function for a Markov chain over a state space equivalent to the domain of a posterior distribution $\pi$; moreover, a Metropolis-Hastings algorithm ensures that $\theta^{(i)}$ converges to a unique stationary distribution equal to $\pi$, which we must know up to a constant. 
-			The reason Metropolis-Hastings is so useful for Bayesian inference is that it can simulate draws from a posterior distribution without calculation of the normalization constant of the posterior. After running $\theta^{(i)}$ for a large enough number of steps, we may then treat the states of the chain as a random sample from the posterior $\pi$.
+			The reason Metropolis-Hastings is so useful for Bayesian inference is that it can simulate draws from a posterior distribution without calculation of the normalization constant of the posterior. After running $\theta^{(i)}$ for a large enough number of steps, it is possible to treat the states of the chain as a random sample from the posterior $\pi$.
 			
 %			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws from $\pi$. Thus, to perform GOFMC, we must be able to specify the distribution of $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation can be a function integrated or summed over an extremely large number of dimensions. Thus, we seek an alternative way to simulate draws from $\pi$ when we only wish to calculate the marginal of $\pi$. For this, we use a Markov chain.
 			
@@ -701,7 +701,8 @@ $$
 			\begin{center}
 				$ \pi(s_j) p(s_j,s_k) = \pi(s_k) p(s_k,s_j)$.
 			\end{center}
-			It is easy to see from the definition of a stationary distribution why detailed balance guarantees the stationary distribution of $\theta^{(i)}$ exists and is equal to $\pi$. 
+			It is easy to see from the definition of a stationary distribution why detailed balance guarantees that the stationary distribution of $\theta^{(i)}$ exists and is equal to $\pi$. 
+			
 			We may also rearrange the detailed balance condition as follows:
 			\begin{center}
 				$\displaystyle \frac{\pi(s_j)}{\pi(s_k)} = \frac{p(s_k, s_j)}{p(s_j, s_k)}$.
@@ -723,7 +724,9 @@ $$
 			\begin{center}
 			$ \alpha(s_j,s_k) = \min\{1, \frac{\pi(s_k)q(s_k, s_j)}{\pi(s_j)q(s_j, s_k)}\}$.
 			\end{center}
-			Because we assumed $q(s_j,s_k) = q(s_k, s_j)$, the above reduces to
+			If we fail to accept the proposed state, the chain stays in its current state.
+			
+			Note that because we assumed $q(s_j,s_k) = q(s_k, s_j)$, the acceptance rule reduces to
 			\begin{center} 
 			$
 			\alpha(s_j,s_k) = \min\{1, \frac{\pi(s_k)}{\pi(s_j)}\}.
@@ -734,14 +737,14 @@ $$
 				$p(s_j,s_k) \equiv q(s_j,s_k) \alpha(s_j,s_k)$.
 			\end{center}
 			The intuition behind this construction is that the chain is more likely to transition to states
-			with greater marginal likelihoods. 
+			with greater marginal likelihoods, while still possibly exploring any other states in the support of $\pi$.
 		\subsection*{Statement of the Algorithm}
 			We choose a positive integer $N$, 
 			which shall be the number of steps in the Markov chain generated by the algorithm.
 			Given $N$, we proceed as follows:
 			\begin{enumerate}
 				\item Initialize the chain with a random state $s_j \in \mathcal S$, and record $s_j$.
-				\item Propose a new state: $q(s_j) = s_k$.
+				\item Using $q$, propose a new state $s_k \in \mathcal S$.
 				\item Accept state $s_k$ with the probability given by $\alpha(s_j,s_k)$. 
 				\item Record the state to which the chain transitions in step 3.
 				\item Repeat steps 2 through 4 until $N$ states have been recorded.
@@ -771,14 +774,14 @@ $$
 				$P(G | D) = \displaystyle \frac{P(D|G)P(G)}{P(D)}$,
 			\end{center}
 			where $P(D | G)$ is the likelihood of the data given a graph structure,
-			$P(G)$ is the prior distribution on graph structures in $\mathcal G$, and
+			$P(G)$ is the prior distribution on graph structures of $\mathcal G$, and
 			the denominator evaluates to
 			\begin{center}
 				$P(D) = \displaystyle \sum_{G \in \mathcal G}P(D | G) P(G)$.
 			\end{center}
 			As mentioned, $P(D)$ requires a super-exponential number of computations with respect to the order of $V,$ the number of variables in the model.
 			Thus, calculating the normalization constant of the posterior is undesirable. 
-			However, the likelihood function for the data $D$ given a network structure $G$ has a manageable closed form expression when we the data are composed of categorical random variables [Baesans et al, 2002]. 
+			However, the likelihood function for the data $D$ given a network structure $G$ has a manageable closed form expression when the data are composed of categorical random variables [Baesans et al, 2002]. 
 			If we assume that all random variables in $D$ are categorical, we can use a Metropolis-Hastings algorithm to generate samples from the posterior $P(G | D)$.
 		\subsection*{The Proposal}
 			Suppose the current state of the chain is $G=(V,E)$. 
@@ -811,14 +814,16 @@ $$
 			Hence, running the chain does not involve a summation over $\mathcal G$, 
 			and the chain returns values that we may treat as a random sample from the posterior.
 		\subsection*{Implications for Model Selection and Model Averaging}
-			By the Ergodic theorem, the posterior probability $\pi(G)$ for a graph structure can be approximated by the proportion of times that we hit the network $G$ in a run of the Metropolis-Hastings algorithm. If Metropolis-Hastings suggests that there is one structure $G$ with significantly higher posterior probability than any other $G^{'} \in \mathcal G$, we may prefer to select $G$ as the structure for our Bayesian network. However, MCMC may also reveal a suite of likely structures with roughly equal posterior probabilities. In that case, we could go the route suggested by model averaging. That is, we would make inferences while taking into account the answers provided by all structures in $\mathcal G$, weighted by their respective probabilities.
+			By the Ergodic theorem, the posterior probability $\pi(G)$ for a graph structure can be approximated by the proportion of times that we hit the network $G$ in a run of the foregoing Metropolis-Hastings algorithm. 
+			
+			If the sample obtained by Metropolis-Hastings suggests that there is one structure $G$ with significantly higher posterior probability than any other $G^{'} \in \mathcal G$, we may prefer to select $G$ as the structure for our Bayesian network. However, MCMC may also reveal a suite of likely structures with roughly equal posterior probabilities. In that case, we could go the route suggested by model averaging. That is, we would make inferences while taking into account the answers provided by all structures in $\mathcal G$, weighted by their respective probabilities.
 		\section{Conclusion: ``To Bayes" Continued}
 			Recall from Chapter 1 the issues faced by the Na\"{i}ve Bayes Classifier. Namely, the NBC encountered biases because it failed to accurately represent the conditional dependencies between its feature variables. 
 			We concluded that in order to build an optimal classifier, we would need a means to find a good model structure, given the data. 
-			However, when the number of nodes in $G$ was even moderately large, applying Bayes' theorem to $P(G | D)$ returned a posterior distribution with an unwieldily normalization constant. 
+			However, when the number of nodes in $G$ was even moderately large, applying Bayes' theorem to $P(G | D)$ returned a posterior distribution with an unwieldy normalization constant. 
 			
 			Ultimately, we found that, under certain conditions, Monte Carlo simulation with a Markov chain that converged to the posterior $P(G | D)$ could be used by means of a simple Metropolis-Hastings algorithm to help find the most probable graph structure(s) for a Bayesian network $\mathcal{B}$. 
-			The Metropolis-Hastings algorithm that we described avoided the computation of the normalization constant of $P(G | D)$, and thus would allow us to make a statement about the probability of correctness for a specific Bayesian network given the data and the prior distribution on network structures.
+			The Metropolis-Hastings algorithm that we described avoided computation of the normalization constant of $P(G | D)$, and thus would allow us to make a statement about the estimated probability of correctness for a specific Bayesian network given the data and the prior distribution on network structures.
 			
 			
 			
