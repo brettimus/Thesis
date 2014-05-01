@@ -709,10 +709,8 @@ $$
 			Detailed balance is not necessary for the convergence of the chain to the posterior, but it suffices [Gamerman and Lopes, 2006]. 
 		\subsection*{Proposal and Acceptance}
 			Next, we consider the specifics of the transition function $p$, which must guarantee that $\pi$ is the unique stationary distribution of $\theta^{(i)}$.
-			To that end, we split $p$ into a {\em proposal}, which randomly proposes a new state $S^{'} \in\mathcal S$ given the current state $S$, and an {\em acceptance rule}, $\alpha$, which returns the probability that we accept the proposed transition:
-			\begin{center}
-				$p(s_j,s_k) = q(s_j,s_k) \alpha(s_j,s_k)$.
-			\end{center}
+			To that end, we split $p$ into a {\em proposal}, which randomly proposes a new state $s_k \in\mathcal S$ given the current state $s_j$, and an {\em acceptance rule}, $\alpha$, which returns the probability that we accept the proposed transition.
+			
 			We may assume the proposal $q$ is a random walk over $\mathcal S$, 
 			and we stipulate that $q$ always proposes a state other than the current state of the chain.
 			We let $q(s_j,s_k)$ be the probability $P(q(s_j) = s_k)$.
@@ -731,7 +729,11 @@ $$
 			\alpha(s_j,s_k) = \min\{1, \frac{\pi(s_k)}{\pi(s_j)}\}.
 			$
 			\end{center}
-			The intuition behind this construction is that chain is more likely to transition to states
+			Hence, the transition function $p$ is written
+			\begin{center}
+				$p(s_j,s_k) \equiv q(s_j,s_k) \alpha(s_j,s_k)$.
+			\end{center}
+			The intuition behind this construction is that the chain is more likely to transition to states
 			with greater marginal likelihoods. 
 		\subsection*{Statement of the Algorithm}
 			We choose a positive integer $N$, 
