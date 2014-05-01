@@ -1,6 +1,6 @@
 \contentsline {chapter}{Introduction}{1}
 \contentsline {section}{\numberline {0.1}Much Ado About Bayes}{1}
-\contentsline {section}{\numberline {0.2}Bayes'd and Confused}{2}
+\contentsline {section}{\numberline {0.2}To Bayes or Not to Bayes}{2}
 \contentsline {section}{\numberline {0.3}The First Rule of Bayes' Club}{3}
 \contentsline {section}{\numberline {0.4}Classification and Learning}{4}
 \contentsline {chapter}{Chapter 1: The Bayesian Network}{5}
@@ -13,6 +13,6 @@
 \contentsline {section}{\numberline {2.1}GOFMC}{13}
 \contentsline {section}{\numberline {2.2}Markov Chains}{15}
 \contentsline {section}{\numberline {2.3}The Ergodic Theorem}{17}
-\contentsline {section}{\numberline {2.4}Metropolis-Hastings for MCMC}{19}
-\contentsline {section}{\numberline {2.5}Bayesian Model Averaging for Bayesian Networks}{21}
-\contentsline {chapter}{References}{23}
+\contentsline {section}{\numberline {2.4}The Metropolis-Hastings Algorithm}{19}
+\contentsline {section}{\numberline {2.5}MCMC for Bayesian Networks}{21}
+\contentsline {chapter}{References}{25}
