@@ -48,7 +48,7 @@
 
 % \usepackage{times} % other fonts are available like times, bookman, charter, palatino
 
-\title{To Bayes or Not To Bayes: Bayesian Reasoning About Bayesian Network Structure}
+\title{To Bayes or Not to Bayes: Markov Chain Monte Carlo  the Structure Space of Bayesian Networks}
 \author{Brett T. Beutell}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{May 2014}
@@ -110,7 +110,7 @@
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
     \chapter*{Abstract}
-	Implementing a Bayesian classifier requires finding a suitable network structure and corresponding set of parameters given a set of pre-classified training data. For the most part, estimating the parameters is relatively straightforward, but the space of possible network structures is super-exponential on the number of variables in the model. We explore the use of Markov chain Monte Carlo to simulate draws from the posterior distribution of Bayesian networks given the training data.
+	Implementing an effective Bayesian classifier requires a suitable network structure and corresponding set of parameters given a set of pre-classified training data. Estimating the parameters is relatively straightforward, but finding an accurate network structure is not, since the space of possible network structures is super-exponential on the number of variables in the model. We explore the use of Markov chain Monte Carlo to simulate draws from the posterior distribution of Bayesian networks given the training data.
 	
 	\chapter*{Dedication}
 	This one's for my parents.
@@ -134,7 +134,7 @@
 % \doublespacing
 	If it were not for convention, this introduction could perhaps be titled, ``An Irresponsibly Quick Introduction to Bayes' Theorem." In the following sections, we introduce the ideas, terminology, and some historical minutiae about Bayesian reasoning. Naturally, we provide a statement of Bayes' theorem for events and distributions.
 	\section{Much Ado About Bayes}
-	At its inception, Bayes' theorem was not particularly controversial. Pierre Simon Laplace offered its first formalization in the early nineteenth century, and he believed (incorrectly, as was proven by the mid-twentieth century) that with a sufficiently large amount of data, the answers it provided were equivalent to those obtained from his frequency based methods [McGrayne, 2011]. 
+	At its inception, Bayes' theorem was not particularly controversial. Pierre Simon Laplace offered its first formalization in the early nineteenth century, and he believed (incorrectly, as was shown by the mid-twentieth century) that with a sufficiently large amount of data, the answers it provided were equivalent to those obtained from his frequency based methods [McGrayne, 2011]. 
 	As time passed, Laplace preferred his frequentist techniques for the relative ease of their calculations, but he did not outright condemn the use of Bayes in practice. Interestingly, over a half-century after his death, Laplace's failure to disown Bayesian reasoning caught the attention of Scottish mathematician George Chrystal, who advocated the removal of Bayes' theorem from all academic texts on statistics. He quipped, ``The indiscretions of great men should be quietly allowed to be forgotten" [McGrayne, 2011].
 	
 	Chrystal's comment represents the mindset of many early twentieth century statisticians. At the time, frequentism reigned supreme, and the attitude towards Bayes' theorem and its role in statistics was surprisingly sour. For years, statisticians in the academy who employed Bayesian reasoning feared for their reputation if they explicitly made reference to Bayes' theorem in their work [McGrayne, 2011]. 
@@ -687,12 +687,14 @@ $$
 %		\end{center}
 		Suppose we run an ergodic Markov chain $\theta^{(i)}$ with stationary distribution $\pi$ for $n$ steps, where $n$ is large. A consequence of the Ergodic theorem for Markov chains is that $\frac{V_j(n)}{n}$ yields an estimate of $\frac{1}{m_j}$, which is equal to $\pi(s_j)$, since $\pi(s_j) * m_j = 1$.
 	\section{Metropolis-Hastings}
-			Metropolis-Hastings is a class of algorithms for Markov chain Monte Carlo simulation that are particularly useful for Bayesian inference. The reason for said usefulness is that simulating draws from a posterior distribution with a Metropolis-Hastings algorithm does not require calculation of the normalization constant of the posterior. Hence, let $\pi$ be the posterior distribution, and we seek a Markov chain whose unique stationary distribution is $\pi$.
+			Metropolis-Hastings is a class of algorithms for Markov chain Monte Carlo simulation that are particularly useful for Bayesian inference. 
+			The goal of a Metropolis-Hastings algorithm is to construct a transition function for a Markov chain over a state space equivalent to the domain of a posterior distribution $\pi$; moreover, a Metropolis-Hastings algorithm ensures that $\theta^{(i)}$ converges to a unique stationary distribution equal to $\pi$, which we must know up to a constant. 
+			The reason Metropolis-Hastings is so useful for Bayesian inference is that it can simulate draws from a posterior distribution without calculation of the normalization constant of the posterior. After running $\theta^{(i)}$ for a large enough number of steps, we may then treat the states of the chain as a random sample from the posterior $\pi$.
 			
 %			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws from $\pi$. Thus, to perform GOFMC, we must be able to specify the distribution of $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation can be a function integrated or summed over an extremely large number of dimensions. Thus, we seek an alternative way to simulate draws from $\pi$ when we only wish to calculate the marginal of $\pi$. For this, we use a Markov chain.
 			
 		\subsection*{Detailed Balance}
-			To construct a Markov chain $\theta^{(i)}$ with a stationary distribution equal to $\pi$, 
+			To construct a Markov chain $\theta^{(i)}$ with a stationary distribution equal to some posterior distribution $\pi$, 
 			we need to ensure that a stationary distribution of the chain exists. 
 			To that end, given a transition function $p$, we introduce the {\em detailed balance} condition. 
 			That is, for all $s_j, s_k \in \mathcal S$,
@@ -711,22 +713,26 @@ $$
 			\begin{center}
 				$p(s_j,s_k) = q(s_j,s_k) \alpha(s_j,s_k)$.
 			\end{center}
-			We may assume the proposal is a random walk with symmetric error, and we let $q(s_j,s_k)$ be the probability $P(q(s_j) = s_k)$.
-			It is not wholly necessary to require that $q$ have symmetric error, but it suffices. [Gamerman and Lopes, 2006].
+			We may assume the proposal $q$ is a random walk over $\mathcal S$, 
+			and we stipulate that $q$ always proposes a state other than the current state of the chain.
+			We let $q(s_j,s_k)$ be the probability $P(q(s_j) = s_k)$.
+			We may further assume that $q$ is symmetric, which would mean $q(s_j,s_k) = q(s_k,s_j)$.
+			It is not wholly necessary to require that $q$ be symmetric or that $q(s_j,s_j) = 0$, but it suffices to meet the condition of detailed balance [Gamerman and Lopes, 2006].
 			
 			Construction of the acceptance rule is slightly more involved. 
 			Suppose we are in state $s_j$, and $q$ proposes a move to state $s_k$. 
-			We accept the transition to state $s_j$ with probability equal to
+			We accept the transition to state $s_k$ with probability equal to
 			\begin{center}
-			$ \alpha(s_j,s_k) = 
-			\begin{cases} \textrm{min}\{1, \frac{\pi(s_k)q(s_k, s_j)}{\pi(s_j)q(s_j, s_k)}\}, & \textrm{if\ \ \ } s_j \neq s_k; \\
-			1 - \int q(s_j,s_k)\alpha(s_j,s_k)ds_k, & \textrm{otherwise}. \end{cases}
+			$ \alpha(s_j,s_k) = \min\{1, \frac{\pi(s_k)q(s_k, s_j)}{\pi(s_j)q(s_j, s_k)}\}$.
+			\end{center}
+			Because we assumed $q(s_j,s_k) = q(s_k, s_j)$, the above reduces to
+			\begin{center} 
+			$
+			\alpha(s_j,s_k) = \min\{1, \frac{\pi(s_k)}{\pi(s_j)}\}.
 			$
 			\end{center}
-			When the state space $\mathcal S$ is finite, the integral above is a summation.
-			
-			We note that the foregoing construction of $p$ conforms with the detailed balance condition, since the symmetric error of the random walk $q$ implies $q(s_j,s_k) = q(s_k,s_j)$.
-	
+			The intuition behind this construction is that chain is more likely to transition to states
+			with greater marginal likelihoods. 
 		\subsection*{Statement of the Algorithm}
 			We choose a positive integer $N$, 
 			which shall be the number of steps in the Markov chain generated by the algorithm.
@@ -774,13 +780,13 @@ $$
 			If we assume that all random variables in $D$ are categorical, we can use a Metropolis-Hastings algorithm to generate samples from the posterior $P(G | D)$.
 		\subsection*{The Proposal}
 			Suppose the current state of the chain is $G=(V,E)$. 
-			The proposal $q(G)$ for our Metropolis-Hastings algorithm randomly chooses an ordered pair of vertices $(V_i, V_j)$ for $V_i, V_j \in V, \ i \neq j$. 
-			Then, if $(V_i, V_j) \in E$, $q(G)$ proposes the structure $G^{'} = (V,E - \{(V_i,V_j)\})$, which is the removal of the given arc from $E$. 
-			Otherwise, if $(V_i,V_j) \not\in E$, then $q(G)$ proposes $G^{'} = (V, E \cup \{(V_i, V_j)\})$, which is the addition of the arc $(V_i, V_j)$ to $E$. Of course, such an addition must preserve the acyclic property of the graph structure. 
+			The proposal $q$ for our Metropolis-Hastings algorithm randomly chooses an ordered pair of vertices $(V_i, V_j)$ for $V_i, V_j \in V, \ i \neq j$. 
+			Then, if $(V_i, V_j) \in E$, $q$ proposes the structure $G^{'} = (V,E - \{(V_i,V_j)\})$, which is the removal of the given arc from $E$. 
+			Otherwise, if $(V_i,V_j) \not\in E$, then $q$ proposes $G^{'} = (V, E \cup \{(V_i, V_j)\})$, which is the addition of the arc $(V_i, V_j)$ to $E$. Of course, such an addition must preserve the acyclic property of the graph structure. 
 			We denote the count of all directed acyclic graphs with one fewer or one greater arc than $G$ as $\eta(G)$. 
-			We suppose $q$ has uniform error, which implies 
+			We suppose $q$ chooses random ordered pairs of vertices with uniform probability. Thus,
 			\begin{center}
-			$q(G,G^{i}) = P(q(G) = G^{'}) = \frac{1}{\eta(G)}$.
+			$q(G,G^{'}) = P(q(G) = G^{'}) = \frac{1}{\eta(G)}$.
 			\end{center}
 		\subsection*{Acceptance}
 			Letting $\pi(G) = P(G|D)$,
@@ -800,7 +806,8 @@ $$
 				\displaystyle \min \left\{ 1, \frac{\eta(G)P(G^{'} | D)P(G^{'})}{\eta(G^{'})P(G|D)P(G)} \right\}				
 				$.
 			\end{center}
-			Hence, running the chain according to $p$ avoids the summation over $\mathcal G$ involved in computing the normalization constant, $P(D)$.
+			Hence, running the chain does not involve a summation over $\mathcal G$, 
+			and the chain returns values that we may treat as a random sample from the posterior.
 		\subsection*{Implications for Model Selection and Model Averaging}
 			By the Ergodic theorem, the posterior probability $\pi(G)$ for a graph structure can be approximated by the proportion of times that we hit the network $G$ in a run of the Metropolis-Hastings algorithm. If Metropolis-Hastings suggests that there is one structure $G$ with significantly higher posterior probability than any other $G^{'} \in \mathcal G$, we may prefer to select $G$ as the structure for our Bayesian network. However, MCMC may also reveal a suite of likely structures with roughly equal posterior probabilities. In that case, we could go the route suggested by model averaging. That is, we would make inferences while taking into account the answers provided by all structures in $\mathcal G$, weighted by their respective probabilities.
 		\section{Conclusion: ``To Bayes" Continued}
@@ -810,6 +817,7 @@ $$
 			
 			Ultimately, we found that, under certain conditions, Monte Carlo simulation with a Markov chain that converged to the posterior $P(G | D)$ could be used by means of a simple Metropolis-Hastings algorithm to help find the most probable graph structure(s) for a Bayesian network $\mathcal{B}$. 
 			The Metropolis-Hastings algorithm that we described avoided the computation of the normalization constant of $P(G | D)$, and thus would allow us to make a statement about the probability of correctness for a specific Bayesian network given the data and the prior distribution on network structures.
+			
 			
 			
 									
