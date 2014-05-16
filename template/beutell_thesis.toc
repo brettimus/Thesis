@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {0.1}Much Ado About Bayes}{1}
 \contentsline {section}{\numberline {0.2}To Bayes or Not to Bayes}{2}
 \contentsline {section}{\numberline {0.3}The First Rule of Bayes' Club}{3}
-\contentsline {section}{\numberline {0.4}Classification and Learning}{4}
+\contentsline {section}{\numberline {0.4}Classification and Learning}{3}
 \contentsline {chapter}{Chapter 1: The Bayesian Network}{5}
 \contentsline {section}{\numberline {1.1}Classification at a Glance}{5}
 \contentsline {section}{\numberline {1.2}Directed Graphs}{6}
@@ -14,6 +14,6 @@
 \contentsline {section}{\numberline {2.2}Markov Chains}{15}
 \contentsline {section}{\numberline {2.3}The Ergodic Theorem}{17}
 \contentsline {section}{\numberline {2.4}Metropolis-Hastings}{19}
-\contentsline {section}{\numberline {2.5}MCMC for Bayesian Networks}{21}
+\contentsline {section}{\numberline {2.5}MCMC for Bayesian Networks}{22}
 \contentsline {section}{\numberline {2.6}Conclusion: ``To Bayes" Continued}{23}
 \contentsline {chapter}{References}{25}

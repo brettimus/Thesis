@@ -123,7 +123,7 @@
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
     \chapter*{Abstract}
-	Implementing an effective Bayesian classifier requires a suitable network structure and corresponding set of parameters given a set of pre-classified training data. Estimating the parameters is relatively straightforward, but finding an accurate network structure is not, since the space of possible network structures is super-exponential on the number of variables in the model. We explore the use of Markov chain Monte Carlo to simulate draws from the posterior distribution of Bayesian networks given the training data.
+	Implementing an effective Bayesian classifier requires a suitable network structure and corresponding set of parameters given a set of pre-classified training data. Estimating the parameters is relatively straightforward, but finding an accurate network structure is not, since the space of possible network structures is super-exponential on the number of variables in the model. We explore the use of Markov chain Monte Carlo to simulate draws from the posterior distribution of Bayesian network structures.
 	
 %	\chapter*{Dedication}
 %	This one's for my parents.
@@ -150,9 +150,9 @@
 	At its inception, Bayes' theorem was not particularly controversial. Pierre Simon Laplace offered its first formalization in the early nineteenth century, and he believed (incorrectly, as was shown by the mid-twentieth century) that with a sufficiently large amount of data, the answers it provided were equivalent to those obtained from his frequency based methods [McGrayne, 2011]. 
 	As time passed, Laplace preferred his frequentist techniques for the relative ease of their calculations, but he did not outright condemn the use of Bayes in practice. Interestingly, over a half-century after his death, Laplace's failure to disown Bayesian reasoning caught the attention of Scottish mathematician George Chrystal, who advocated the removal of Bayes' theorem from all academic texts on statistics. He quipped, ``The indiscretions of great men should be quietly allowed to be forgotten" [McGrayne, 2011].
 	
-	Chrystal's comment represents the mindset of many early twentieth century statisticians. At the time, frequentism reigned supreme, and the attitude towards Bayes' theorem and its role in statistics was surprisingly sour. For years, statisticians in the academy who employed Bayesian reasoning feared for their reputation if they explicitly made reference to Bayes' theorem in their work [McGrayne, 2011]. 
+	Mathematically, there was never trouble with Bayes' theorem; its proof is simple and sound. Historically, tensions surrounding Bayes rose when it was applied to statistical models, as Bayesian inference necessarily incorporates the statistician's (subjective) prior knowledge [McGrayne, 2011]. Further, many statisticians eschewed Bayesian methods because the posterior distribution can be exceedingly difficult to calculate for multivariate models.
 	
-	Fortunately, with due thanks to the computational advances of the past three decades, Bayes survived its temporary relegation to the catacombs of statistics, and it has emerged as an astoundingly useful tool for the modern statistician. The phrase ``Bayesian Inference" fails to evoke the contention it once did. Furthermore, it is now far more commonplace for statisticians to use both Bayesian and frequentist techniques in their work, tailoring their methods to the problem at hand [Liu et al, 2013].
+	With due thanks to the computational advances of the past three decades, Bayes has emerged as an astoundingly useful tool for inference. The phrase ``Bayesian Inference" fails to evoke the contention it once did. Furthermore, it is now far more commonplace for statisticians to use both Bayesian and frequentist techniques in their work, tailoring their methods to the problem at hand [Liu et al, 2013].
 	
 	Summarily, the use of Bayesian reasoning is no longer divisive or taboo, and it is a recent phenomenon that we may begin our inquiry without several pages apologizing for our inferential philosophy. With that said, it does not hurt to quickly consider the differences between a Bayesian and a frequentist. 
 		
@@ -163,7 +163,7 @@
 	We represent the conditional probability of $\theta$ given a set of observed data as $P(\theta | \vec{X} = \vec{x})$. Vice versa, the conditional probability of the data given a fixed $\theta = \theta_0$ can be written $P(\vec{X} | \theta = \theta_0)$. Note that for the former conditional distribution, we are fixing our data and considering $\theta$ a random variable, whereas for the latter, we are doing the converse.
 
 	\subsection*{``To Bayes"}
-	Bayesians prefer the former conditional PDF. To a Bayesian, $\theta$ is uncertain, so the best means of knowing more about $\theta$ is directly through the data. Notably, the choice of words here contains an important qualifier; Bayesians want to know ``{\em more}" about $\theta$. Hence, they specify what is already known about the parameter. Similar to the way mathematicians or logicians use axioms, Bayesians find it important to represent in their methods what it is that they already presume to be true.
+	Bayesians prefer the former conditional probability density function. To a Bayesian, $\theta$ is uncertain, so the best means of knowing more about $\theta$ is directly through the data. Notably, the choice of words here contains an important qualifier; Bayesians want to know ``{\em more}" about $\theta$. Hence, they specify what is already known about the parameter. Similar to the way mathematicians or logicians use axioms, Bayesians find it important to represent in their methods what it is that they already presume to be true.
 	
 	We can think of a Bayesian model's presumed truths (often called {\em prior beliefs}, the {\em prior distribution} or, simply, the {\em prior}) as a starting point, from which data are used to {\em update} the subjective belief about the estimate.  Bayesians use what are called {\em non-informative priors} to approximate a lack of prior knowledge about $\theta$. 
 	
@@ -172,26 +172,26 @@
 	\subsection*{``Not To Bayes"}
 	For the student of frequentism, the Bayesian approach may lend itself to confusion (or, years ago, anger), since frequentists prefer to think of how probable their observed data are given a fixed $\theta = \theta_0$.
 	
-	Frequentist techniques have two main advantages. Namely, the math involved in their calculations is generally tidy, and their calculations do not require the subjective prior of Bayes' theorem. However, frequentist methods often suffer from having rigid and unintuitive interpretations. 
-	For instance, a frequentist p-value in a hypothesis test is a conditional probability that assumes the null hypothesis (e.g., $\theta = \theta_0$) is true. Hence, it evaluates how probable the observed data would be if $\theta = \theta_0$. On the other hand, a Bayesian p-value would provide the probability of the null hypothesis being true, conditioned on the data. 
+	Frequentist techniques have two main advantages. Namely, the math involved in their calculations is sometimes tidier, and their calculations do not require the subjective prior of Bayes' theorem. However, frequentist methods often suffer from having rigid and unintuitive interpretations. 
+	For instance, a frequentist p-value in a hypothesis test is a conditional probability that assumes the null hypothesis (e.g., $\theta = \theta_0$) is true. Hence, it evaluates how probable the observed data would be if $\theta = \theta_0$. On the other hand, a Bayesian p-value provides the probability of the null hypothesis being true, conditioned on the data. 
 	To see this symbolically, consider that $P(\vec{X} = \vec{x} | \theta = \theta_0 )$ is, by definition, a statement that concerns the probability of observing $\vec{x}$, given that $\theta = \theta_0$, whereas $P(\theta = \theta_0 | \vec{X} = \vec{x})$ is the probability of the parameter taking a specific value. Frequentists are more apt to talk about the probability of seeing our data, given $\theta$ is a specific value.
 
-\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
-\caption[Comparison of Bayesian and Frequentist Reasoning]{A broad comparison of Bayesian and frequentist methodologies} 
+%\begin{table}[htdp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
+%\caption[Comparison of Bayesian and Frequentist Reasoning]{A broad comparison of Bayesian and frequentist methodologies} 
 % The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
-\begin{center}
+%\begin{center}
 % makes the table centered
-\begin{tabular}{l l l l} 
+%\begin{tabular}{l l l l} 
 
-   &  \textbf{To the Bayesian} & \textbf{To the frequentist} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
-  \midrule % another horizontal line
-\textbf{Parameter estimates are} & Distributions  & Fixed-valued \\ % another row
-\textbf{Subjective assessment is} & Essential & Disturbing \\
-\bottomrule % yet another horizontal line
-\end{tabular}
-\end{center}
-\label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
-\end{table}
+ %  &  \textbf{To the Bayesian} & \textbf{To the frequentist} \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
+%  \midrule % another horizontal line
+%\textbf{Parameter estimates are} & Distributions  & Fixed-valued \\ % another row
+%\textbf{Subjective assessment is} & Essential & Disturbing \\
+%\bottomrule % yet another horizontal line
+%\end{tabular}
+%\end{center}
+%\label{bvf} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
+%\end{table}
 
 \section{The First Rule of Bayes' Club}
 
@@ -200,19 +200,21 @@ We introduce a formal, symbolic expression of Bayes' theorem. Given $\Omega$, th
 \begin{center}
 	$P(A | B) = \displaystyle\frac{P(B | A)P(A)}{P(B)}$,
 \end{center}
-where $P$ is a function from $\Omega$ to $[0,1]$, and $P(\Omega) = 1$. We may also call $\Omega$ the {\em sample space}.
+where $P$ is a function from $\Omega$ to $[0,1]$, and $P(\Omega) = 1$. We also call $\Omega$ the {\em sample space}.
 
-	The proof of Bayes' theorem for events follows quickly from the axioms of probability and the definition of conditional probability. For our purposes, we note that Bayes' theorem also extends to probability distributions. Let $\theta$ be our parameter of interest and $x$ be an observation of a random variable $X$. Let $\pi(\theta)$ be the prior probability distribution on $\theta$, and let $f(X = x | \theta)$ be a density function for $X$. We may then express the posterior as follows:
+	The proof of Bayes' theorem for events follows quickly from the axioms of probability and the definition of conditional probability. For our purposes, we note that Bayes' theorem also extends to probability distributions. Let $\theta$ be our parameter of interest and $x$ be an observation of a random variable $X$. Let $\pi(\theta)$ be the prior probability distribution on $\theta$, and let $f(X = x | \theta)$ be a density function for $X$, called the {\em likelihood} function. We may then express the posterior as follows:
 \begin{center}
 	$\pi(\theta | X = x) = \displaystyle\frac{f(x | \theta)\pi(\theta)}{\int_{\theta \in \Theta}f(x |\theta)\pi(\theta)d\theta} \propto f({x} | \theta)\pi(\theta)$,
 \end{center}
 where $\propto$ denotes proportionality, $\Theta$ is the set of all possible parameter values, and clearly, the denominator is equal to $f(x)$. When the domain of $\theta$ is discrete, we replace the integral in the denominator with a summation.
 
-The above is conventionally presented alongside the pithy, assonant phrase, ``The posterior is proportional to the prior times the likelihood." The numerator of Bayes' theorem is used so frequently that it has its own name, the {\em marginal} of the posterior. Because the denominator, also called the {\em normalization constant}, can be a ghastly integral or sum, it is often more practical to reason about the posterior in terms of its marginal. For example, the denominator of Bayes' theorem disappears from consideration when we compare two possible parameter values given the data. (Not to get ahead of ourselves, but knowing the marginal of the posterior is also central to running Markov Chain Monte Carlo simulations.)
+The above is conventionally presented alongside the pithy, assonant phrase, ``The posterior is proportional to the prior times the likelihood." The numerator of Bayes' theorem is used so frequently that it has its own name, the {\em marginal likelihood function}. Because the denominator, also called the {\em normalization constant}, can be a ghastly integral or sum, it is often more practical to reason about the posterior in terms of its marginal. 
+
+For example, the denominator of Bayes' theorem disappears from consideration when we compare two possible parameter values given the data. (Not to get ahead of ourselves, but knowing the marginal likelihood is also central to running Markov chain Monte Carlo simulations.)
 
 \section{Classification and Learning}
 By a {\em categorical variable}, we mean a random variable whose domain is finite and discrete.
-A {\em classification model} is a statistical model where, given some data about an observation, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}. When we speak of {\em learning} the parameters of a classification model, we assume that there is a set of pre-classified data from which we can estimate the model parameters and thereby make inferences about future unclassified data. 
+A {\em classification model} is a statistical model where, given some data, we seek to predict its {\em class}, an unknown categorical variable. We may borrow the language of machine learning and call the predictor variables in our model {\em features}. When we speak of {\em learning} the parameters of a classification model, we assume that there is a set of pre-classified data from which we can estimate the model parameters and thereby make inferences about future unclassified data. 
 
 We shall define a Bayesian classifier in the following chapter, but we will not address the specifics of learning model parameters. For some insightful examples on how Bayesian classifiers learn parameters, the reader is encouraged to glance over David Heckerman's ``A Tutorial on Learning With Bayesian Networks," which is available online [Heckerman, 1996]. A URL is provided under the references. 
 
@@ -225,7 +227,7 @@ We shall define a Bayesian classifier in the following chapter, but we will not 
 	Suppose we have a set of random variables $V = \{C, X_1, \ldots, X_n\}$, and we seek to predict the value of $C$, a categorical variable, using $X_1, \ldots, X_n$. We call $C$ the {\em class variable}; we call the categories of $C$ {\em classes}; and we refer to the $X_i$ as {\em feature variables}. For notational convenience, we may denote the set of feature variables by $\vec{X}$, and we may denote a single set of observed values of $\vec{X}$ as the vector $\vec{x} = (X_1 = x_1, \ldots, X_n = x_n)$.
 	\subsection*{The Bayesian Approach}
 	Let $C$ have $k$ possible classes. 
-	The goal in a classification setting is to find the probabilities of each class of $C$, given the observed values of the feature variables. Usually (but not always), we seek the value of the class that maximizes the value of $P(C | \vec{X})$. To find $P(C | \vec{X})$, we appeal to Bayes' theorem:
+	The goal in a classification setting is to find the probabilities of each class of $C$, given the observed values of the feature variables. When the cost of misclassification is equal across all classes, we seek the value of the class that maximizes the value of $P(C | \vec{X})$. To find $P(C | \vec{X})$, we appeal to Bayes' theorem:
 	\begin{center}
 		$P(C = c_i | \vec{X}) = \displaystyle\frac{P(\vec{X} | C = c_i) P(C = c_i)}{\displaystyle\sum_{c_j \in \textrm{dom}\{C\}} P(\vec{X} | C = c_j)P(C=c_j)}$,
 	\end{center}
@@ -301,7 +303,7 @@ We shall define a Bayesian classifier in the following chapter, but we will not 
 	\begin{center}
 		$Y = A + A^2 + \cdots + A^{n+1} = \displaystyle\sum_{i=1}^{n+1} A^{i}$.
 	\end{center}
-	The resulting matrix is $(y_{ij})$, where $y_{ij}$ represents the number of unique paths $P$ where $V_s(P) \equiv V_{i-1}$, and $V_t(P) \equiv V_{j-1}$ in $\mathcal P(G)$. 
+	The resulting matrix is $Y = (y_{ij})$, where $y_{ij}$ represents the number of unique paths $P$ where $V_s(P) \equiv V_{i-1}$, and $V_t(P) \equiv V_{j-1}$ in $\mathcal P(G)$. 
 	Thus, to formalize the notion of an acyclic graph, we say that $G=(V,E)$ is acyclic if $tr(Y) = 0$. 
 	Otherwise, $G$ is cyclic.
 	To continue our example from above, we calculate $Y$ to be
@@ -342,7 +344,7 @@ We shall define a Bayesian classifier in the following chapter, but we will not 
 	A Bayesian classifier is simply a Bayesian network applied to a classification problem.
 	We consider the necessary structural and decision theoretic modifications to $\mathcal{B}$ that are necessary for this application.
 	
-		\subsection*{Network Constraints}
+		\subsection*{Classifier Network Constraints}
 	In a classification setting, we call $V_0$ the class variable, and we also place particular constraints on the graph of $\mathcal{B}$ [Liu et al, 2013].
 	Namely, we require that the adjacency matrix $A$ of $G$ satisfies the following properties:
 	\begin{center}
@@ -355,9 +357,9 @@ We shall define a Bayesian classifier in the following chapter, but we will not 
 	
 	To predict the class $C$ of an input $\vec{x}$, we use a {\em decision rule}.
 	Our decision rule provides a means of selecting one proposed classification over another, given a set of pre-classified data and the unclassified input $\vec{x}$.
-	Recall that in surveying the general problem of classification, we chose a decision rule that returned the class maximizing our posterior probability. 
+	Recall that in surveying the general problem of classification, we chose the class that maximized our posterior probability. This resulted from using a {\em zero-one loss function}, which penalizes misclassifications uniformly. In such a case, correct classification implies zero loss, and incorrect classification implies loss equal to one. Our decision was thus based on a minimization of the loss function.
 	Albeit common, this is not the only possible decision rule. 
-	For instance, there may be an unequal cost associated with certain misclassifications of $\vec{x}$. In such cases, we can modify our decision rule's {\em loss function} accordingly; however, this facet of decision theory is not central to our discussion.
+	For instance, there may be an unequal cost associated with certain misclassifications of $\vec{x}$. In such cases, we can modify our decision rule's loss function accordingly; however, this facet of decision theory is not central to our discussion.
 	 
 	\subsection*{The Naive Bayes Classifier} % \"{} won't compile
 	The Na\"{i}ve Bayes classifier (NBC) assumes conditional independence amongst feature variables of the model in order to yield a more wieldy computation of the posterior. 
@@ -422,7 +424,7 @@ We shall define a Bayesian classifier in the following chapter, but we will not 
 \label{inheritance} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
 \end{table}
 	
-Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the structure depicted in Figure 1.3. To complete the classifier, we would learn our model parameters from the training set. The parameters in our example would be $P(V_0 | V_1)$, $P(V_0 | V_2)$, and $P(V_0 | V_3)$, and from the estimates of these parameters (in conjunction with the prior probabilities we would have to assign to them), it is possible to evaluate whether future incoming emails are spam.
+Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal B = (G,\Theta)$ has a graph with the structure depicted in Figure 1.3. To complete the classifier, we would learn our model parameters from the training set. Using estimates of the parameters (in conjunction with the prior probabilities we would have to assign to them), it would then be possible to evaluate whether future, incoming emails were spam.
 	
 	\begin{figure}[htpb]
 	\begin{center}
@@ -446,7 +448,7 @@ Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal
 	
 	%For example, suppose we that $C$ has two possible classes, $c_i$ and $c_j$, such that for an input $\vec{x}$, our NBC returns the biased estimates $P(c_i | \vec{x}) = .9$ and $P(c_j | \vec{x}) = .1$. Obviously, we would assign $\vec{x}$ to class $c_j$. If the unbiased estimates, obtained from a classifier that accounted for the true dependence structure of the feature variables, were $P(c_i | \vec{x}) = .6$ and $P(c_j | \vec{x})$, we would come to the same conclusion as the NBC.
 	
-	That being said, the NBC is not all-powerful. It works better than we would expect, but it is not guaranteed to be optimal when the feature variables of a model are not all independent of each other [Domingos and Pazzani, 1996]. Hence, to improve upon the NBC, we need a means of finding a suitable structure for a Bayesian classifier's network.
+	That being said, the NBC is not all-powerful. It works better than we would expect, but it is not guaranteed to be optimal when the feature variables of a model are not independent of each other [Domingos and Pazzani, 1996]. Hence, to improve upon the NBC, we need a means of finding a suitable structure for a Bayesian classifier's network.
 	
 	\subsection*{The Structure Space}
 	By $\mathcal G$, we denote the space of all possible graphs for a set of random variables, $V.$
@@ -456,10 +458,10 @@ Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal
 
 	\subsection*{Model Selection}	
 		Importantly, we may choose between two modes of reasoning about model structure. 
-	The first, called {\em model selection}, involves finding the most probable model structure given our data, which we can then use to estimate our parameters. Generally, this would involve cleverly searching through $\mathcal G$ (or a subset thereof) and ranking structures according to a scoring function. The structure with the highest score would be our most likely model, and we then would use it to estimate our parameters.  
+	The first, called {\em model selection}, involves finding the most probable model structure given our data, which we can then use to estimate our parameters. Generally, this would involve cleverly searching through $\mathcal G$ (or a subset thereof) and ranking structures according to a scoring function. The structure with the highest score would be the most likely model, and we then would use it to estimate the model's parameters.  
 	
 	\subsection*{Model Averaging}
-	The second technique, called {\em model averaging} is a little more nuanced. In lieu of selecting one high-scoring model, model averaging makes estimates across $\mathcal G$, which are each weighted by their probability of being the correct model. Hence, model averaging is a useful tool when we have several model structures that are roughly equiprobable. 
+	The second technique, called {\em model averaging} is a little more nuanced. In lieu of selecting one high-scoring model, model averaging makes estimates across $\mathcal G$, where each model is weighted by its relative probability of being the correct model. Hence, model averaging is a useful tool when we have several model structures that are roughly equiprobable. 
 	
 	There are a handful ways to go about model averaging, and we shall explore one of them in Chapter 2. For now, though, it suffices to know that model averaging is computationally very difficult, so we require a means to approximate it by simulation.
 	
@@ -471,7 +473,7 @@ Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal
 	
 	\section{GOFMC}
 		\subsection*{An Intuitive Example}
-		Imagine we seek to find the area of a peculiar two-dimensional shape called Minnesota. 
+		Imagine we seek to find the area of a peculiar two-dimensional shape called Minnesota, and we are given no general formula for its area. 
 		\begin{figure}[h]
 	% the options are h = here, t = top, b = bottom, p = page of figures.
 	% you can add an exclamation mark to make it try harder, and multiple
@@ -483,7 +485,7 @@ Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal
 	     	\caption{A two-dimensional shape called Minnesota}
 	 	\label{subd}
 		\end{figure}	
-		We are given no general formula for its area, and all of our attempts to analytically represent the curve that traces its perimeter have proven themselves fruitless. With credit to a talk on Monte Carlo Tree Search given by Peter Drake at the University of Portland, the technique suggested by GOFMC would be the following:
+		With credit to a talk on Monte Carlo Tree Search given by Peter Drake at the University of Portland, the technique suggested by GOFMC would be the following:
 			\begin{enumerate}
 				\item Place Minnesota inside a square with edges of known length $s$.
 				\item Randomly throw $n$ darts such that they land inside the square. 
@@ -521,7 +523,7 @@ Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal
 			\begin{center}
 				$\epsilon = E[f(\pi)] - \displaystyle\frac{1}{n}\displaystyle\sum_{i=1}^{n}f(X_i)$.
 			\end{center}
-			By application of the Central Limit Theorem, we know that as $n \rightarrow \infty$, the above converges to a normal distribution with a mean $\mu = 0$ and variance inversely proportional to $n$.
+			By application of the Central Limit Theorem, we know that for large $n$, $\epsilon$ converges to a normal distribution with a mean $\mu = 0$ and variance inversely proportional to $n$.
 			Hence, with large enough $n$, we can produce accurate estimates from our randomly generated data. 
 	\section{Markov Chains}
 	Andrey Markov used his eponymous chain only once in practice, to analyze the occurrence of vowels in a Pushkin poem [McGrayne, 2011]. According to legend, Enrico Fermi could run Markov chains in his head (which he did to combat insomnia), but we normal humans tend to reserve such calculations for computers [McGrayne, 2011]. Though they can be treacherous to compute, the basic intuition behind Markov chains is, thankfully, fairly easy to grasp.
@@ -529,7 +531,7 @@ Because of its independence assumption, the Na\"{i}ve Bayes classifier $\mathcal
 	 			\subsection*{Definition}
 			Let $\mathcal S$ be a set of states (the {\em state space}), and let $I$ be an index set. What we call a {\em Markov chain}, denoted $\theta^{(i)}$, is a collection of states from $\mathcal S$ indexed by members of $I$, such that, for $s_j, s_k \in \mathcal S$, the probability of transitioning from some $\theta^i = s_j$ to the next state in the chain, $\theta^{i+1} = s_k$, depends solely on $s_j$, and not on any other past or future states of the chain. 
 			
-			Markov chains can be thought of as a sequence of probabilistic transitions from state to state.
+			A Markov chain can be thought of as a sequence of probabilistic transitions from state to state.
 			Thus, for any Markov chain with state space $\mathcal S$, 
 			the states in $\mathcal S$ have associated {\em transition probabilities}.
 			We may define a {\em transition function}, $p: \mathcal{S}\times\mathcal{S} \rightarrow [0,1],$ for a Markov chain, where $p(s_j,s_k) = P(\theta^{i+1} = s_k | \theta^{i} = s_j)$. 
@@ -571,10 +573,12 @@ $$
 		We say a state $s_j \in \mathcal{S}$ is {\em irreducible} if it is possible to get to any other $s_k \in \mathcal{S}$, starting from $s_j$, in a finite number of steps. If all $s_j \in \mathcal{S}$ are irreducible, the Markov chain $\theta^{(i)}$ over $\mathcal{S}$ is also said to be irreducible. \\
 		
 		By $Z_j$ we denote the number of steps before a chain hits state $s_j$ for the first time. 
-		We refer to this quantity as the {\em recurrence} or {\em hitting time} for state $s_j$.
+		We refer to this quantity as the {\em hitting time} for state $s_j$.
 		We denote the number of steps before a chain hits $s_j$ a total of $q$ times as $Z^{q}_j$, where $q \in \mathbb Z^+$. Clearly, $Z_j$ is simply shorthand for $Z^{1}_j$. We also define $Z^{0}_j = 0$. \\
 		
-		Since Markov chains are stochastic processes, $Z^{q}_j$ is a random variable. Hence, we may consider its expectation $E[Z^{q}_j]$. If for all $s_j \in \mathcal S$, the expected hitting time is finite ($E[Z^{1}_j] < \infty$), then we say our Markov chain is {\em positive recurrent}. \\
+		Since Markov chains are stochastic processes, $Z^{q}_j$ is a random variable, and we may consider its expectation $E[Z^{q}_j]$. 
+		Likewise, we may also consider the expected {\em recurrence time} for a state $s_k$, where the recurrence time for $s_k$ simply counts the number of steps to hit $s_k$, beginning from state $s_k$.   
+		If for all $s_j \in \mathcal S$ the expected recurrence time is finite, then we say that the corresponding Markov chain is {\em positive recurrent}. \\
 		
 		A state $s_j$ is {\em periodic} if $\theta^{(i)}$ can only return to $s_j$ after a number of steps equal to a multiple of some positive integer $k > 1$. Markov chains that contain no periodic states are called {\em aperiodic}. We say a Markov chain is $ergodic$ if it is both aperiodic and positive recurrent. \\
 		
@@ -593,7 +597,7 @@ $$
 		\section{The Ergodic Theorem}
 		The Ergodic Theorem for Markov chains is an analog of the Law of Large Numbers for IID data. Importantly, it is through a basic corollary to the Ergodic theorem that we are able to justify use of MCMC in order to estimate draws from intractable distributions.
 		\subsection*{Preliminary Results}
-		Proof of the Ergodic Theorem for Markov chains requires some preliminary results, which we provide here sans proof.
+		Proof of the Ergodic Theorem for Markov chains requires some preliminary results, which we provide here sans proof. Rigorous treatment of the following results can be found in Chapter 1 of James Norris' {\em Markov Chains} [Norris, 1998]. 
 		
 		First, the proportion of times we hit $s_j$ in an ergodic Markov chain $\theta^{(i)}$ is the same regardless of the initial state $\theta^0$ of the chain as $n$ goes to $\infty$.
 		
@@ -611,9 +615,8 @@ $$
 		\end{center}
 		This follows from the linearity of expectation.
 		
-		Lastly, we note that for a stationary distribution $\pi$, we have $\pi(s_j)*E[Z_j] = 1$.
+		Lastly, we note that for a stationary distribution $\pi$, we have $\pi(s_j)*E[Z_j] = 1$. The intuition behind his result is fairly easy to establish. For example, if we ran a Markov chain in a stationary distribution $\pi$ for 100 steps, and $\pi(s_j) = \frac{1}{10}$, we would {\em expect} to hit state $s_j$ a total of $\pi(s_j)*100 = 10$ times.
 		
-		Rigorous treatment of the foregoing results can be found in Chapter 1 of James Norris' {\em Markov Chains} [Norris, 1998]. 
 		\subsection*{Statement and Proof}
 		\begin{theorem}
 		Let $\theta^{(i)}$ be an ergodic Markov chain. 
@@ -630,7 +633,7 @@ $$
 			$
 		\end{center}
 		We interpret $V_j(n)$ as the number of visits to state $s_j$ before $\theta^n$ in the Markov chain. 
-		Let $E[Z_j] = m_j$ be the expected hitting time of state $s_j$. Then,
+		Let $E[Z_j] = m_j$ be the expected recurrence time of state $s_j$. Then,
 		\begin{center}
 			$P\left(\displaystyle\frac{V_j(n)}{n} \longrightarrow \frac{1}{m_j}
 			\textrm{, as } n \rightarrow \infty \right) = 1$.
@@ -660,7 +663,7 @@ $$
 		\end{center}
 		Now, we write
 		\begin{center}
-		$\displaystyle\sum_{k=1}^{V_j(n) - 1}U_j^k \leq n -1$, 
+		$\displaystyle\sum_{k=1}^{V_j(n)}U_j^k \leq n -1$, 
 		\end{center}
 		where the summation represents the number of steps until the penultimate hit of $s_j$ before $\theta^n$ in the chain.
 		Obviously, then, the sum could not exceed $n -1$, since we are only considering the number of steps to a state that necessarily occurs before $\theta^{n-1}$. We may also consider 
@@ -670,17 +673,17 @@ $$
 		which is the number of steps until the first hit of $s_j$ after step $\theta^{n-1}$. 
 		Thus, we may squeeze $n$ and divide the resulting inequality by $V_j(n)$, as follows:
 		\begin{center}
-		$$\displaystyle\frac{\displaystyle\sum_{k=1}^{V_j(n)-1}U_j^k}{V_j(n)} \leq 
+		$$\displaystyle\frac{\displaystyle\sum_{k=1}^{V_j(n)}U_j^k}{V_j(n)} \leq 
 		\frac{n}{V_j(n)} \leq 
 		\frac{\displaystyle\sum_{k=1}^{V_j(n) + 1}U_j^k}{V_j(n)}$$.
 		\end{center}
 		Using the convergence of the $U_j^k$ to $m_j$, the sums become
 		\begin{center}
-		$$\displaystyle\frac{(V_j(n) - 1) * m_j}{V_j(n)} \leq 
+		$$\displaystyle\frac{(V_j(n)) * m_j}{V_j(n)} \leq 
 		\frac{n}{V_j(n)} \leq 
 		\frac{(V_j(n) + 1) * m_j}{V_j(n)}$$,
 		\end{center}		
-		and since $\displaystyle\lim_{n \rightarrow \infty}\frac{V_j(n) - 1}{V_j(n)} = \displaystyle\lim_{n \rightarrow \infty}\frac{V_j(n) + 1}{V_j(n)} = 1$, the above becomes
+		and since $\displaystyle\lim_{n \rightarrow \infty}\frac{V_j(n) + 1}{V_j(n)} = 1$, the above becomes
 		 \begin{center}
 		 	$ m_j \leq \displaystyle\frac{n}{V_j(n)} \leq m_j$.
 		 \end{center}
@@ -701,7 +704,8 @@ $$
 		Suppose we run an ergodic Markov chain $\theta^{(i)}$ with stationary distribution $\pi$ for $n$ steps, where $n$ is large. A consequence of the Ergodic theorem for Markov chains is that $\frac{V_j(n)}{n}$ yields an estimate of $\frac{1}{m_j}$, which is equal to $\pi(s_j)$, since $\pi(s_j) * m_j = 1$.
 	\section{Metropolis-Hastings}
 			Metropolis-Hastings is a class of algorithms for Markov chain Monte Carlo simulation that are particularly useful for Bayesian inference. 
-			The goal of a Metropolis-Hastings algorithm is to construct a transition function for a Markov chain over a state space equivalent to the domain of a posterior distribution $\pi$; moreover, a Metropolis-Hastings algorithm ensures that $\theta^{(i)}$ converges to a unique stationary distribution equal to $\pi$, which we must know up to a constant. 
+			The goal of a Metropolis-Hastings algorithm is to construct a transition function for a Markov chain over a state space equivalent to the domain of a posterior distribution $\pi$, such that $\theta^{(i)}$ converges to a unique stationary distribution equal to $\pi$. Importantly, we must know $\pi$ up to a constant. 
+			
 			The reason Metropolis-Hastings is so useful for Bayesian inference is that it can simulate draws from a posterior distribution without calculation of the normalization constant of the posterior. After running $\theta^{(i)}$ for a large enough number of steps, it is possible to treat the states of the chain as a random sample from the posterior $\pi$.
 			
 %			Recall that in the case of GOFMC, we have a distribution $\pi$ from which we can easily simulate random draws, and we then estimate the expectation of a function over $\pi$ through random draws from $\pi$. Thus, to perform GOFMC, we must be able to specify the distribution of $\pi$. Sometimes, however, we are not so lucky as to be able to fully compute the PDF of our distribution of interest. This occurs frequently in high-dimensional Bayesian analyses, where the denominator of our posterior calculation can be a function integrated or summed over an extremely large number of dimensions. Thus, we seek an alternative way to simulate draws from $\pi$ when we only wish to calculate the marginal of $\pi$. For this, we use a Markov chain.
@@ -714,8 +718,13 @@ $$
 			\begin{center}
 				$ \pi(s_j) p(s_j,s_k) = \pi(s_k) p(s_k,s_j)$.
 			\end{center}
-			It is easy to see from the definition of a stationary distribution why detailed balance guarantees that the stationary distribution of $\theta^{(i)}$ exists and is equal to $\pi$. 
-			
+			It is easy to see from the definition of a stationary distribution why detailed balance guarantees that the stationary distribution of $\theta^{(i)}$ exists and is equal to $\pi$, since for all $k$ that index states in $\mathcal S$:
+			\begin{center}
+				$$\displaystyle\sum_{s_j \in \mathcal S}{\pi(s_j) * p(s_j, s_k)} =
+				\displaystyle\sum_{s_j \in \mathcal S}{\pi(s_k) * p(s_k,s_j)} = 
+				\pi(s_k) * \displaystyle\sum_{s_j \in \mathcal S}{p(s_k,s_j)} =
+				\pi(s_k) $$.
+			\end{center}
 			We may also rearrange the detailed balance condition as follows:
 			\begin{center}
 				$\displaystyle \frac{\pi(s_j)}{\pi(s_k)} = \frac{p(s_k, s_j)}{p(s_j, s_k)}$.
@@ -801,14 +810,14 @@ $$
 			The proposal $q$ for our Metropolis-Hastings algorithm randomly chooses an ordered pair of vertices $(V_i, V_j)$ for $V_i, V_j \in V, \ i \neq j$. 
 			Then, if $(V_i, V_j) \in E$, $q$ proposes the structure $G^{'} = (V,E - \{(V_i,V_j)\})$, which is the removal of the given arc from $E$. 
 			Otherwise, if $(V_i,V_j) \not\in E$, then $q$ proposes $G^{'} = (V, E \cup \{(V_i, V_j)\})$, which is the addition of the arc $(V_i, V_j)$ to $E$. Of course, such an addition must preserve the acyclic property of the graph structure. 
-			We denote the count of all directed acyclic graphs with one fewer or one greater arc than $G$ as $\eta(G)$. 
+			We denote by $\eta(G)$ the count of all directed acyclic graphs that differ from $G$ by only the removal or addition of a single arc. 
 			We suppose $q$ chooses random ordered pairs of vertices with uniform probability. Thus,
 			\begin{center}
 			$q(G,G^{'}) = P(q(G) = G^{'}) = \frac{1}{\eta(G)}$.
 			\end{center}
 		\subsection*{Acceptance}
 			Letting $\pi(G) = P(G|D)$,
-			the acceptance rule stipulated by Metropolis-Hastings follows immediately. 
+			the acceptance rule stipulated by Metropolis-Hastings follows tidily. 
 			Given the current state $G$ and the proposed structure $G^{'}$, 
 			we transition to $G^{'}$ with probability equal to
 			\begin{center}
@@ -825,13 +834,13 @@ $$
 				$.
 			\end{center}
 			Hence, running the chain does not involve a summation over $\mathcal G$, 
-			and the chain returns values that we may treat as a random sample from the posterior.
+			and the chain returns values that we may (eventually) treat as a random sample from the posterior.
 		\subsection*{Implications for Model Selection and Model Averaging}
 			By the Ergodic theorem, the posterior probability $\pi(G)$ for a graph structure can be approximated by the proportion of times that we hit the network $G$ in a run of the foregoing Metropolis-Hastings algorithm. 
 			
 			If the sample obtained by Metropolis-Hastings suggests that there is one structure $G$ with significantly higher posterior probability than any other $G^{'} \in \mathcal G$, we may prefer to select $G$ as the structure for our Bayesian network. However, MCMC may also reveal a suite of likely structures with roughly equal posterior probabilities. In that case, we could go the route suggested by model averaging. That is, we would make inferences while taking into account the answers provided by all structures in $\mathcal G$, weighted by their respective probabilities.
 		\section{Conclusion: ``To Bayes" Continued}
-			Recall from Chapter 1 the issues faced by the Na\"{i}ve Bayes Classifier. Namely, the NBC encountered biases because it failed to accurately represent the conditional dependencies between its feature variables. 
+			Recall from Chapter 1 the issues faced by the Na\"{i}ve Bayes classifier. Namely, the NBC encountered biases because it failed to accurately represent the conditional dependencies between its feature variables. 
 			We concluded that in order to build an optimal classifier, we would need a means to find a good model structure, given the data. 
 			However, when the number of nodes in $G$ was even moderately large, applying Bayes' theorem to $P(G | D)$ returned a posterior distribution with an unwieldy normalization constant. 
 			
